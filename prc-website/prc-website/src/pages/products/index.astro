@@ -71,11 +71,11 @@ const categories = [
                 {p.tiers && p.tiers.length > 0 ? (
                   <div style="margin-top:1rem;">
                     {p.tiers.map(tier => (
-                      <div style="margin-bottom:0.75rem; padding:0.75rem; background:#f5f5f5; border-radius:4px;">
-                        <p style="margin:0; font-weight:600; font-size:0.9rem;">{tier.tier}</p>
-                        <p style="margin:0.25rem 0; font-size:0.85rem; color:#666;">{tier.features}</p>
-                        <p style="margin:0.5rem 0; font-weight:700; color:#516784;">{tier.price}</p>
-                        <a href={tier.href} target="_blank" style="font-size:0.9rem;">Buy on Selar →</a>
+                      <div style="margin-bottom:1rem; padding:1rem; background:#f0f4f8; border-radius:6px; border-left:4px solid #516784;">
+                        <p style="margin:0 0 0.5rem 0; font-weight:700; font-size:1rem; color:#362622;">{tier.tier}</p>
+                        <p style="margin:0.25rem 0 0.5rem 0; font-size:0.85rem; color:#666;">{tier.features}</p>
+                        <p style="margin:0.75rem 0 1rem 0; font-weight:700; font-size:1.2rem; color:#516784;">{tier.price}</p>
+                        <a href={tier.href} target="_blank" class="btn btn-primary" style="display:block; text-align:center; padding:0.75rem; background:#516784; color:white; text-decoration:none; border-radius:4px; font-weight:600; font-size:1rem;">Get {tier.tier === 'E-Book' ? 'Now' : tier.tier} on Selar →</a>
                       </div>
                     ))}
                   </div>
