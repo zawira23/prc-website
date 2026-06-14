@@ -1,12 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
-// TODO: load the full 65-office dataset (10 regions) compiled in the PRC directory project.
-// Replace the sample rows below with the real data, ideally from a JSON file in src/data/.
-const offices = [
-  { region: 'Greater Accra', office: 'Accra Head Office', contact: '[number]', gps: '[GPS code]' },
-  { region: 'Greater Accra', office: 'Sowutuom Rent Control Office', contact: '[number]', gps: '[GPS code]' },
-  { region: 'Ashanti', office: 'Kumasi Office', contact: '[number]', gps: '[GPS code]' },
-];
+import officesData from '../../data/rent-offices.json';
+
+const offices = officesData;
 ---
 <Base title="Rent Control Office Directory — All Regions of Ghana" description="Find your nearest Rent Control Department office: locations, contact numbers, and GPS codes for 65 offices across 10 regions of Ghana.">
   <section class="section">
@@ -15,9 +11,9 @@ const offices = [
       <h1>Rent Control Office Directory</h1>
       <p class="muted" style="max-width:680px;">Every Rent Control Department office in Ghana — 65 offices across 10 regions, with call numbers and GPS codes. Spot an error or a change? <a href="/contact/">Tell us</a> and we'll verify and update it.</p>
       <table class="ledger" style="margin-top:1.5rem;">
-        <thead><tr><th>Region</th><th>Office</th><th>Contact</th><th>GPS code</th></tr></thead>
+        <thead><tr><th>S/N</th><th>Region</th><th>Office</th><th>Contact</th><th>GPS code</th></tr></thead>
         <tbody>
-          {offices.map(o => <tr><td>{o.region}</td><td>{o.office}</td><td>{o.contact}</td><td>{o.gps}</td></tr>)}
+          {offices.map(o => <tr><td style="font-weight:600; color:#516784;">{o.sn}</td><td>{o.region}</td><td>{o.office}</td><td><a href={`tel:${o.contact}`} style="color:#516784; text-decoration:none; font-weight:600;">{o.contact}</a></td><td>{o.gps}</td></tr>)}
         </tbody>
       </table>
       <p class="small muted" style="margin-top:1rem;">Directory data is maintained by PRC and verified periodically. Need to know what happens after you walk in? Read <a href="/knowledge/rent-control-complaint-ghana/">How to File a Complaint at the Rent Control Department</a>.</p>

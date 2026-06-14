@@ -1,0 +1,457 @@
+[
+  {
+    "sn": 1,
+    "region": "Greater Accra",
+    "office": "RCD Head Office, Accra",
+    "contact": "0544124535",
+    "gps": "—"
+  },
+  {
+    "sn": 2,
+    "region": "Greater Accra",
+    "office": "Accra Regional Office",
+    "contact": "0544127885",
+    "gps": "—"
+  },
+  {
+    "sn": 3,
+    "region": "Greater Accra",
+    "office": "Adenta",
+    "contact": "0544165246",
+    "gps": "GD-171-4918"
+  },
+  {
+    "sn": 4,
+    "region": "Greater Accra",
+    "office": "Adjen Kotoku",
+    "contact": "0545476815",
+    "gps": "GW-0707-9302"
+  },
+  {
+    "sn": 5,
+    "region": "Greater Accra",
+    "office": "Amasaman",
+    "contact": "0545446380",
+    "gps": "GG-008-9466"
+  },
+  {
+    "sn": 6,
+    "region": "Greater Accra",
+    "office": "Ashaiman",
+    "contact": "0548845001",
+    "gps": "GB-004-2802"
+  },
+  {
+    "sn": 7,
+    "region": "Greater Accra",
+    "office": "Atadeka",
+    "contact": "0544124736",
+    "gps": "GK-0434-7462"
+  },
+  {
+    "sn": 8,
+    "region": "Greater Accra",
+    "office": "Dansoman",
+    "contact": "0544166460",
+    "gps": "GU-541-0546"
+  },
+  {
+    "sn": 9,
+    "region": "Greater Accra",
+    "office": "Dodowa",
+    "contact": "0547139756",
+    "gps": "GO-0010-1065"
+  },
+  {
+    "sn": 10,
+    "region": "Greater Accra",
+    "office": "Ningo-Prampram",
+    "contact": "0546805340",
+    "gps": "—"
+  },
+  {
+    "sn": 11,
+    "region": "Greater Accra",
+    "office": "Ofankor Barrier",
+    "contact": "0544166492",
+    "gps": "GG-545-8665"
+  },
+  {
+    "sn": 12,
+    "region": "Greater Accra",
+    "office": "Sowutuom",
+    "contact": "0544121166",
+    "gps": "GC-007-0897"
+  },
+  {
+    "sn": 13,
+    "region": "Greater Accra",
+    "office": "Tema",
+    "contact": "0544128169",
+    "gps": "GT-020-4436"
+  },
+  {
+    "sn": 14,
+    "region": "Greater Accra",
+    "office": "Tema Newtown",
+    "contact": "0544156002",
+    "gps": "GT-151-9529"
+  },
+  {
+    "sn": 15,
+    "region": "Greater Accra",
+    "office": "Weija",
+    "contact": "0540656899",
+    "gps": "GJ-096-9865"
+  },
+  {
+    "sn": 16,
+    "region": "Ashanti",
+    "office": "Agogo",
+    "contact": "0548306881",
+    "gps": "—"
+  },
+  {
+    "sn": 17,
+    "region": "Ashanti",
+    "office": "Ashanti Mampong",
+    "contact": "0540808028",
+    "gps": "AM-0020-1047"
+  },
+  {
+    "sn": 18,
+    "region": "Ashanti",
+    "office": "Asokore Mampong",
+    "contact": "0544122999",
+    "gps": "AS-024-7881"
+  },
+  {
+    "sn": 19,
+    "region": "Ashanti",
+    "office": "Bekwai",
+    "contact": "0544156144",
+    "gps": "AB-0010-4432"
+  },
+  {
+    "sn": 20,
+    "region": "Ashanti",
+    "office": "Effiduase",
+    "contact": "0540657395",
+    "gps": "AR-0030-5829"
+  },
+  {
+    "sn": 21,
+    "region": "Ashanti",
+    "office": "Ejisu",
+    "contact": "0549180233",
+    "gps": "AE-000-6119"
+  },
+  {
+    "sn": 22,
+    "region": "Ashanti",
+    "office": "Konongo",
+    "contact": "0543495153",
+    "gps": "AC-0017-7777"
+  },
+  {
+    "sn": 23,
+    "region": "Ashanti",
+    "office": "Kumasi",
+    "contact": "0542392893",
+    "gps": "AK-020-0381"
+  },
+  {
+    "sn": 24,
+    "region": "Ashanti",
+    "office": "Mamponteng",
+    "contact": "0543553297",
+    "gps": "AD-010-4054"
+  },
+  {
+    "sn": 25,
+    "region": "Ashanti",
+    "office": "Nkawie-Akropong",
+    "contact": "0541858559",
+    "gps": "AH-0769-4173"
+  },
+  {
+    "sn": 26,
+    "region": "Ashanti",
+    "office": "Obuasi",
+    "contact": "0542384585",
+    "gps": "AO-017-4383"
+  },
+  {
+    "sn": 27,
+    "region": "Ashanti",
+    "office": "Offinso",
+    "contact": "0543285181",
+    "gps": "A7-0002-2023"
+  },
+  {
+    "sn": 28,
+    "region": "Bono & Bono East",
+    "office": "Berekum",
+    "contact": "0544127486",
+    "gps": "BB-0068-4737"
+  },
+  {
+    "sn": 29,
+    "region": "Bono & Bono East",
+    "office": "Goaso",
+    "contact": "0544155415",
+    "gps": "—"
+  },
+  {
+    "sn": 30,
+    "region": "Bono & Bono East",
+    "office": "Kintampo",
+    "contact": "0543046369",
+    "gps": "BK-00018-7831"
+  },
+  {
+    "sn": 31,
+    "region": "Bono & Bono East",
+    "office": "Nkoranza",
+    "contact": "0544123003",
+    "gps": "BO-0007-6764"
+  },
+  {
+    "sn": 32,
+    "region": "Bono & Bono East",
+    "office": "Sunyani",
+    "contact": "0544121020",
+    "gps": "—"
+  },
+  {
+    "sn": 33,
+    "region": "Bono & Bono East",
+    "office": "Techiman",
+    "contact": "0546650728",
+    "gps": "BT-0010-0296"
+  },
+  {
+    "sn": 34,
+    "region": "Eastern",
+    "office": "Akim Oda",
+    "contact": "0544163417",
+    "gps": "EB-0007-4489"
+  },
+  {
+    "sn": 35,
+    "region": "Eastern",
+    "office": "Asamankese",
+    "contact": "0544155666",
+    "gps": "EW-0000-9390"
+  },
+  {
+    "sn": 36,
+    "region": "Eastern",
+    "office": "Kibi",
+    "contact": "0544125846",
+    "gps": "E5-0016-9105"
+  },
+  {
+    "sn": 37,
+    "region": "Eastern",
+    "office": "Koforidua",
+    "contact": "0547927803",
+    "gps": "EN-010-0456"
+  },
+  {
+    "sn": 38,
+    "region": "Eastern",
+    "office": "Krobo Odumase",
+    "contact": "0544124268",
+    "gps": "—"
+  },
+  {
+    "sn": 39,
+    "region": "Eastern",
+    "office": "Nkawkaw",
+    "contact": "0544125853",
+    "gps": "EJ-0177-2331"
+  },
+  {
+    "sn": 40,
+    "region": "Eastern",
+    "office": "Nsawam",
+    "contact": "0546567562",
+    "gps": "EG-042-5450"
+  },
+  {
+    "sn": 41,
+    "region": "Central",
+    "office": "Agona Swedru",
+    "contact": "0540807862",
+    "gps": "C0-0004-4385"
+  },
+  {
+    "sn": 42,
+    "region": "Central",
+    "office": "Breku",
+    "contact": "0544121016",
+    "gps": "CG-0334-1137"
+  },
+  {
+    "sn": 43,
+    "region": "Central",
+    "office": "Cape Coast",
+    "contact": "0546814078",
+    "gps": "CC-007-2214"
+  },
+  {
+    "sn": 44,
+    "region": "Central",
+    "office": "Kasoa",
+    "contact": "0544127502",
+    "gps": "CX-003-8463"
+  },
+  {
+    "sn": 45,
+    "region": "Central",
+    "office": "Mankessim",
+    "contact": "0546825213",
+    "gps": "—"
+  },
+  {
+    "sn": 46,
+    "region": "Central",
+    "office": "Winneba",
+    "contact": "0544124270",
+    "gps": "CE-007-9734"
+  },
+  {
+    "sn": 47,
+    "region": "Volta",
+    "office": "Akatsi",
+    "contact": "0545432898",
+    "gps": "VX-0040-4597"
+  },
+  {
+    "sn": 48,
+    "region": "Volta",
+    "office": "Denu (Denu-Tokor)",
+    "contact": "0546894560",
+    "gps": "VZ-0008-582"
+  },
+  {
+    "sn": 49,
+    "region": "Volta",
+    "office": "Ho",
+    "contact": "0540810481",
+    "gps": "VH-0002-3512"
+  },
+  {
+    "sn": 50,
+    "region": "Volta",
+    "office": "Hohoe",
+    "contact": "0548882945",
+    "gps": "VC-0056-4675"
+  },
+  {
+    "sn": 51,
+    "region": "Volta",
+    "office": "Kedjebi",
+    "contact": "0543364455",
+    "gps": "—"
+  },
+  {
+    "sn": 52,
+    "region": "Volta",
+    "office": "Kpando",
+    "contact": "0544166163",
+    "gps": "—"
+  },
+  {
+    "sn": 53,
+    "region": "Western",
+    "office": "Ellembelle",
+    "contact": "0544126775",
+    "gps": "WE-0002-2850"
+  },
+  {
+    "sn": 54,
+    "region": "Western",
+    "office": "Jomoro",
+    "contact": "0544165491",
+    "gps": "—"
+  },
+  {
+    "sn": 55,
+    "region": "Western",
+    "office": "Sefwi-Wiawso",
+    "contact": "0544164638",
+    "gps": "WG-0307-3005"
+  },
+  {
+    "sn": 56,
+    "region": "Western",
+    "office": "Sekondi-Takoradi",
+    "contact": "0544127503",
+    "gps": "WS-201-2870"
+  },
+  {
+    "sn": 57,
+    "region": "Western",
+    "office": "Tarkwa",
+    "contact": "0544166503",
+    "gps": "WT-0000-9573"
+  },
+  {
+    "sn": 58,
+    "region": "Western",
+    "office": "Wassa Akropong",
+    "contact": "0544124970",
+    "gps": "WX-0001-7712"
+  },
+  {
+    "sn": 59,
+    "region": "Northern",
+    "office": "Tamale",
+    "contact": "0544121040",
+    "gps": "NT-0024-1578"
+  },
+  {
+    "sn": 60,
+    "region": "Northern",
+    "office": "Yendi",
+    "contact": "0544121048",
+    "gps": "NY-0010-7253"
+  },
+  {
+    "sn": 61,
+    "region": "Upper East",
+    "office": "Bolgatanga",
+    "contact": "0546423633",
+    "gps": "UB-0032-1784"
+  },
+  {
+    "sn": 62,
+    "region": "Upper East",
+    "office": "Navrongo",
+    "contact": "0541606557",
+    "gps": "UK-0000-5072"
+  },
+  {
+    "sn": 63,
+    "region": "Upper West",
+    "office": "Jirapa",
+    "contact": "0542123367",
+    "gps": "XJ-0021-1122"
+  },
+  {
+    "sn": 64,
+    "region": "Upper West",
+    "office": "Lawra",
+    "contact": "0544122119",
+    "gps": "—"
+  },
+  {
+    "sn": 65,
+    "region": "Upper West",
+    "office": "Wa",
+    "contact": "0543360261",
+    "gps": "XW-0007-8817"
+  }
+]
