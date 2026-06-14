@@ -1,218 +1,937 @@
 ---
 import Base from '../../layouts/Base.astro';
-// Force rebuild: 2026-06-13 14:30 UTC
-const services = [
-  { name: 'Rent Assessment Advisory', desc: 'Evidence-based written position on the lawful, defensible rent for your premises under Act 220 and L.I. 369 — delivered before you serve notice.', price: 'GHS 200 – 400', time: '2–3 working days', slug: '/services/rent-assessment-advisory/' },
-  { name: 'Tenancy Documentation Review', desc: 'Your lease, offer letter, or notice reviewed line-by-line against Act 220 compliance, with marked corrections and a summary of gaps.', price: 'GHS 150 per agreement', time: '1–2 working days', slug: '/services/tenancy-documentation-review/' },
-  { name: 'Landlord Compliance Audit', desc: 'Full property-by-property review of your documentation, advance handling, rent receipts, and notice practices — with remediation checklist.', price: 'GHS 500 – 1,000', time: '3–5 working days', slug: '/services/landlord-compliance-audit/' },
-  { name: 'Dispute Guidance (Consultation)', desc: 'Structured file preparation and position-building before you lodge or respond to a complaint — evidence audit, chronology, and options.', price: 'GHS 200 per session', time: 'Same day / within 24 hours', slug: '/services/dispute-guidance/' },
-  { name: 'Rent Increase Advisory', desc: 'Written guidance on whether a proposed rent increase is lawful, how much you can increase under Act 220, and the proper notice procedure.', price: 'GHS 250', time: '2 working days', slug: '/services/rent-increase-advisory/' },
-  { name: 'Tenancy Agreement Drafting', desc: 'Custom drafting of a residential, commercial, furnished, or month-to-month lease fully compliant with Act 220 and L.I. 369.', price: 'GHS 350 – 600', time: '2–3 working days', slug: '/services/tenancy-agreement-drafting/' },
-  { name: 'Property Inspection & Advisory Report', desc: 'Professional property inspection with condition assessment, photographic record, cost-to-repair estimates, and a written advisory report.', price: 'GHS 400 – 800', time: '2–4 working days', slug: '/services/property-inspection-advisory-report/' },
-  { name: 'Property Management Consultation', desc: 'Hourly consultation on rent policy, tenant relations, property maintenance schedules, compliance, and operational best practices.', price: 'GHS 250 per hour', time: 'By appointment', slug: '/services/property-management-consultation/' },
-  { name: 'Property Record Review & Setup', desc: 'Audit of your existing property records and setup of a compliant documentation system for leases, tenants, payments, and notices.', price: 'GHS 300 – 700', time: '2–5 working days', slug: '/services/property-record-review-setup/' },
-  { name: 'Eviction and Recovery of Possession Guidance', desc: 'Step-by-step guidance on the legal eviction process under Act 220, including notice service, Form 9 preparation, and Rent Magistrate procedure.', price: 'GHS 400', time: '2–3 working days', slug: '/services/eviction-recovery-guidance/' },
-  { name: 'Rental Market Analysis Report', desc: 'Market research report on comparable rental rates in your location, property type, and tenure — data-driven positioning for rent-setting.', price: 'GHS 500 – 1,000', time: '3–5 working days', slug: '/services/rental-market-analysis-report/' },
-];
 ---
-<Base title="Consultations & Services" description="Written, fixed-scope advisory from PRC's consulting desk: rent assessment, documentation review, compliance audits, and dispute guidance for Ghana.">
-  <section class="section">
+<Base title="Consultancy Services" description="Five service categories, 24 advisory services — grounded in Ghana's Rent Act, 1963 (Act 220). Written advice, fixed scope, transparent pricing.">
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="svc-hero">
     <div class="wrap">
-      <span class="cite">The consulting desk</span>
-      <h1>Get Quote buttons now work! Some situations need more than a template.</h1>
-      <p class="muted" style="max-width:680px;">Written advice, fixed scope, transparent pricing. Send your situation; receive a scope and quote; get a written advisory you can act on.</p>
-
-      <div class="grid grid-2" style="margin-top:2rem;">
-        <div class="card">
-          <h3>Rent Assessment Advisory</h3>
-          <p class="small muted">Evidence-based written position on the lawful, defensible rent for your premises under Act 220 and L.I. 369 — delivered before you serve notice.</p>
-          <p class="small"><strong>GHS 200 – 400</strong> · Turnaround: 2–3 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(0); return false;" class="get-quote-btn" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/rent-assessment-advisory/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Tenancy Documentation Review</h3>
-          <p class="small muted">Your lease, offer letter, or notice reviewed line-by-line against Act 220 compliance, with marked corrections and a summary of gaps.</p>
-          <p class="small"><strong>GHS 150 per agreement</strong> · Turnaround: 1–2 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(1); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/tenancy-documentation-review/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Landlord Compliance Audit</h3>
-          <p class="small muted">Full property-by-property review of your documentation, advance handling, rent receipts, and notice practices — with remediation checklist.</p>
-          <p class="small"><strong>GHS 500 – 1,000</strong> · Turnaround: 3–5 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(2); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/landlord-compliance-audit/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Dispute Guidance (Consultation)</h3>
-          <p class="small muted">Structured file preparation and position-building before you lodge or respond to a complaint — evidence audit, chronology, and options.</p>
-          <p class="small"><strong>GHS 200 per session</strong> · Turnaround: Same day / within 24 hours</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(3); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/dispute-guidance/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Rent Increase Advisory</h3>
-          <p class="small muted">Written guidance on whether a proposed rent increase is lawful, how much you can increase under Act 220, and the proper notice procedure.</p>
-          <p class="small"><strong>GHS 250</strong> · Turnaround: 2 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(4); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/rent-increase-advisory/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Tenancy Agreement Drafting</h3>
-          <p class="small muted">Custom drafting of a residential, commercial, furnished, or month-to-month lease fully compliant with Act 220 and L.I. 369.</p>
-          <p class="small"><strong>GHS 350 – 600</strong> · Turnaround: 2–3 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(5); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/tenancy-agreement-drafting/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Property Inspection & Advisory Report</h3>
-          <p class="small muted">Professional property inspection with condition assessment, photographic record, cost-to-repair estimates, and a written advisory report.</p>
-          <p class="small"><strong>GHS 400 – 800</strong> · Turnaround: 2–4 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(6); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/property-inspection-advisory-report/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Property Management Consultation</h3>
-          <p class="small muted">Hourly consultation on rent policy, tenant relations, property maintenance schedules, compliance, and operational best practices.</p>
-          <p class="small"><strong>GHS 250 per hour</strong> · Turnaround: By appointment</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(7); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/property-management-consultation/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Property Record Review & Setup</h3>
-          <p class="small muted">Audit of your existing property records and setup of a compliant documentation system for leases, tenants, payments, and notices.</p>
-          <p class="small"><strong>GHS 300 – 700</strong> · Turnaround: 2–5 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(8); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/property-record-review-setup/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Eviction and Recovery of Possession Guidance</h3>
-          <p class="small muted">Step-by-step guidance on the legal eviction process under Act 220, including notice service, Form 9 preparation, and Rent Magistrate procedure.</p>
-          <p class="small"><strong>GHS 400</strong> · Turnaround: 2–3 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(9); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/eviction-recovery-guidance/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Rental Market Analysis Report</h3>
-          <p class="small muted">Market research report on comparable rental rates in your location, property type, and tenure — data-driven positioning for rent-setting.</p>
-          <p class="small"><strong>GHS 500 – 1,000</strong> · Turnaround: 3–5 working days</p>
-          <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-            <a href="#" onclick="window.selectService(10); return false;" style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</a>
-            <a href="/services/rental-market-analysis-report/" style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
-          </div>
-        </div>
+      <span class="cite svc-cite">Consultancy Services</span>
+      <h1 class="svc-h1">Expert guidance for every stage of your property journey.</h1>
+      <p class="svc-sub">From rent assessment to legal eviction — PRC provides structured, evidence-based advisory services grounded in Ghana's Rent Act, 1963 (Act 220).</p>
+      <div class="svc-ctas">
+        <a href="#quote-form" class="btn btn-steel svc-cta-js" data-target="quote-form" data-focus="qf-name">Request a Service</a>
+        <a href="#service-categories" class="btn btn-outline-paper svc-cta-js" data-target="service-categories">View All Services</a>
       </div>
+      <div class="svc-stats">
+        <div class="svc-stat"><span class="svc-stat-num">5</span><span class="svc-stat-label">Service Categories</span></div>
+        <div class="svc-stat"><span class="svc-stat-num">24+</span><span class="svc-stat-label">Advisory Services</span></div>
+        <div class="svc-stat"><span class="svc-stat-num svc-stat-sm">Act 220</span><span class="svc-stat-label">Legal Grounding</span></div>
+        <div class="svc-stat"><span class="svc-stat-num svc-stat-sm">Same Day</span><span class="svc-stat-label">Dispute Response</span></div>
+        <div class="svc-stat"><span class="svc-stat-num svc-stat-sm">Written</span><span class="svc-stat-label">Every Delivery</span></div>
+      </div>
+    </div>
+  </section>
 
-      <h2 style="margin-top:3rem;">How it works</h2>
-      <ol>
-        <li><strong>Send your situation</strong> — the form below or WhatsApp, with the documents you have.</li>
-        <li><strong>Receive a scope and quote</strong> — what we will deliver, by when, for how much.</li>
-        <li><strong>Written advisory delivered</strong> — a document you can keep, act on, and refer back to.</li>
-      </ol>
+  <!-- ── POSITIONING BAND ──────────────────────────────────── -->
+  <section class="svc-band">
+    <div class="wrap svc-band-inner">
+      <div class="svc-band-line"></div>
+      <p class="svc-band-quote">"PRC provides end-to-end property advisory and management solutions, helping landlords, tenants, investors, and institutions maximise property value, maintain compliance, reduce risks, and achieve sustainable rental performance in Ghana."</p>
+      <p class="svc-band-attr">— Property and Rent Consult</p>
+    </div>
+  </section>
 
-      <div class="grid grid-2" style="margin-top:2rem; align-items:start;">
-        <form class="card" name="consultation" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="consultation" />
-          <p><label for="name">Name</label><input id="name" name="name" required /></p>
-          <p><label for="email">Email</label><input id="email" type="email" name="email" required /></p>
-          <p><label for="whatsapp">WhatsApp number</label><input id="whatsapp" name="whatsapp" /></p>
-          <p><label for="service">Service</label>
-            <select id="service" name="service" required>
-              <option value="">Select a service</option>
-              {services.map(s => <option>{s.name}</option>)}
-              <option>Not sure yet</option>
-            </select></p>
-          <p><label for="brief">Briefly describe the situation</label><textarea id="brief" name="brief" rows="4"></textarea></p>
-          <p><button class="btn btn-primary" type="submit">Request a quote</button></p>
-        </form>
-        <div>
-          <div class="card" style="margin-bottom:1.25rem;">
-            <h3 style="margin-top:0;">Prefer WhatsApp?</h3>
-            <p class="small muted">Most clients do. Message the consulting desk directly and we'll take it from there.</p>
-            <a class="btn btn-ghost" href="https://wa.me/233208071633" rel="noopener">Chat on WhatsApp</a>
+  <!-- ── CATEGORY OVERVIEW ─────────────────────────────────── -->
+  <section id="service-categories" class="section">
+    <div class="wrap">
+      <span class="cite">What we do</span>
+      <h2 style="max-width:560px;">Five service categories. One trusted advisory practice.</h2>
+      <p class="muted" style="max-width:560px; margin-bottom:2.5rem;">Whether you need a rent assessment, help navigating the Rent Control Department, or a full compliance audit — our services are structured, evidence-based, and grounded in Ghanaian property law.</p>
+
+      <div class="svc-cat-grid">
+        <a href="#tenancy-rent" class="svc-cat-card svc-cta-js" data-target="tenancy-rent">
+          <div class="svc-cat-top">
+            <div class="svc-cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#516984" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 8.5l-7.5 7.5"/><path d="M16 3l5 5-2.5 2.5L13.5 5.5z"/></svg>
+            </div>
+            <span class="svc-cat-num">01</span>
           </div>
-          <div class="notice">
-            <strong>Scope of PRC's services.</strong> PRC advises and prepares documentation. PRC does not appear for or represent parties in Rent Control proceedings, and engagement of PRC confers no advantage in any matter before any Rent Control office. Content and advisories are professional guidance, not legal advice.
+          <h3 class="svc-cat-name">Tenancy &amp; Rent Services</h3>
+          <p class="svc-cat-desc">Advisory on rent assessment, tenancy drafting, lease renewal, and lawful recovery of unpaid rent — grounded in Act 220 and L.I. 369.</p>
+          <div class="svc-cat-foot">
+            <span class="tag">5 services</span>
+            <span class="svc-view-link">View services →</span>
           </div>
+        </a>
+
+        <a href="#property-operations" class="svc-cat-card svc-cta-js" data-target="property-operations">
+          <div class="svc-cat-top">
+            <div class="svc-cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#516984" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg>
+            </div>
+            <span class="svc-cat-num">02</span>
+          </div>
+          <h3 class="svc-cat-name">Property Operations &amp; Maintenance</h3>
+          <p class="svc-cat-desc">Structured support for inspections, maintenance coordination, utility management, and renovation supervision across your portfolio.</p>
+          <div class="svc-cat-foot">
+            <span class="tag">5 services</span>
+            <span class="svc-view-link">View services →</span>
+          </div>
+        </a>
+
+        <a href="#advisory-compliance" class="svc-cat-card svc-cta-js" data-target="advisory-compliance">
+          <div class="svc-cat-top">
+            <div class="svc-cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#516984" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <span class="svc-cat-num">03</span>
+          </div>
+          <h3 class="svc-cat-name">Advisory &amp; Compliance</h3>
+          <p class="svc-cat-desc">Compliance audits, Rent Control advisory, health and safety assessments, and investment due diligence for landlords and investors.</p>
+          <div class="svc-cat-foot">
+            <span class="tag">5 services</span>
+            <span class="svc-view-link">View services →</span>
+          </div>
+        </a>
+
+        <a href="#dispute-representation" class="svc-cat-card svc-cta-js" data-target="dispute-representation">
+          <div class="svc-cat-top">
+            <div class="svc-cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#516984" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><path d="M7 21h10"/><path d="M4 8l4 8H4M23 8l-4 8h4"/><path d="M8 8h8"/></svg>
+            </div>
+            <span class="svc-cat-num">04</span>
+          </div>
+          <h3 class="svc-cat-name">Dispute &amp; Representation</h3>
+          <p class="svc-cat-desc">Pre-lodgement dispute preparation, mediation support, court documentation, and direct representation before the Rent Control Department.</p>
+          <div class="svc-cat-foot">
+            <span class="tag">4 services</span>
+            <span class="svc-view-link">View services →</span>
+          </div>
+        </a>
+
+        <a href="#training-digital" class="svc-cat-card svc-cta-js" data-target="training-digital">
+          <div class="svc-cat-top">
+            <div class="svc-cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#516984" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+            </div>
+            <span class="svc-cat-num">05</span>
+          </div>
+          <h3 class="svc-cat-name">Training &amp; Digital Solutions</h3>
+          <p class="svc-cat-desc">Landlord and tenant education, property record digitisation, management system setup, and standard operating procedure development.</p>
+          <div class="svc-cat-foot">
+            <span class="tag">5 services</span>
+            <span class="svc-view-link">View services →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TENANCY & RENT SERVICES ───────────────────────────── -->
+  <section id="tenancy-rent" class="svc-acc-section svc-acc-tint">
+    <div class="wrap svc-acc-inner">
+      <div class="svc-acc-left">
+        <div class="svc-acc-deco">01</div>
+        <h2 class="svc-acc-title">Tenancy &amp; Rent Services</h2>
+        <p class="svc-acc-desc muted">Advisory on rent assessment, tenancy drafting, lease renewal, and lawful recovery of unpaid rent — grounded in Act 220 and L.I. 369.</p>
+        <button class="btn btn-steel svc-request-btn" data-cat="Tenancy &amp; Rent Services">Request this service</button>
+      </div>
+      <div class="svc-acc-right">
+        <ul class="acc-list" role="list">
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tr-1">
+              <span class="acc-name">Rent Assessment Advisory</span>
+              <span class="acc-right"><span class="acc-fee">GHS 200 – 400</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-tr-1" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A written, evidence-based advisory on the rent your premises can lawfully and defensibly command — prepared before you serve any increase or commencement notice. Includes comparable market analysis and a concluded rent range referenced to Act 220 and L.I. 369. Delivered as a formal PDF advisory report.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–3 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 200 – 400</p></div></div>
+                <button class="acc-request-link" data-cat="Tenancy &amp; Rent Services" data-svc="Rent Assessment Advisory">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tr-2">
+              <span class="acc-name">Tenancy Agreement Drafting</span>
+              <span class="acc-right"><span class="acc-fee">GHS 350 – 600</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-tr-2" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A bespoke tenancy agreement drafted for your specific premises, parties, and agreed terms — grounded in Act 220 and current Ghanaian practice. Covers fixed-term, month-to-month, room rental, commercial, and kiosk/container tenancies. One round of revisions included. Delivered in Word and PDF.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–3 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 350 – 600</p></div></div>
+                <button class="acc-request-link" data-cat="Tenancy &amp; Rent Services" data-svc="Tenancy Agreement Drafting">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tr-3">
+              <span class="acc-name">Rent Collection &amp; Recovery</span>
+              <span class="acc-right"><span class="acc-fee">GHS 250 / session</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-tr-3" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Structured advisory on lawful rent collection procedures, arrears management, and the formal recovery process under Act 220 — including the correct sequence of warning notices, formal demand letters, and Rent Control referral. Includes a personalised arrears recovery action plan.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 250 per session</p></div></div>
+                <button class="acc-request-link" data-cat="Tenancy &amp; Rent Services" data-svc="Rent Collection &amp; Recovery">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tr-4">
+              <span class="acc-name">Lease Renewal Management</span>
+              <span class="acc-right"><span class="acc-fee">GHS 200 – 350</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-tr-4" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Advisory and documentation support for tenancy renewals — including review of existing terms, preparation of a renewal offer letter, negotiation guidance, and drafting of the renewal agreement. Ensures compliance with L.I. 369 notice requirements for any rent revision.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–3 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 200 – 350</p></div></div>
+                <button class="acc-request-link" data-cat="Tenancy &amp; Rent Services" data-svc="Lease Renewal Management">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tr-5">
+              <span class="acc-name">Eviction Guidance</span>
+              <span class="acc-right"><span class="acc-fee">GHS 400</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-tr-5" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Step-by-step written guidance on the lawful process for recovering possession of your property — covering required notices, mandatory timelines, Form 9 preparation, Rent Control Department filing, and Magistrate Court procedure. Includes draft notices where applicable.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–3 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 400</p></div></div>
+                <button class="acc-request-link" data-cat="Tenancy &amp; Rent Services" data-svc="Eviction Guidance">Request this service →</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROPERTY OPERATIONS ───────────────────────────────── -->
+  <section id="property-operations" class="svc-acc-section">
+    <div class="wrap svc-acc-inner">
+      <div class="svc-acc-left">
+        <div class="svc-acc-deco">02</div>
+        <h2 class="svc-acc-title">Property Operations &amp; Maintenance</h2>
+        <p class="svc-acc-desc muted">Structured support for inspections, maintenance coordination, utility management, and renovation supervision across your portfolio.</p>
+        <button class="btn btn-steel svc-request-btn" data-cat="Property Operations &amp; Maintenance">Request this service</button>
+      </div>
+      <div class="svc-acc-right">
+        <ul class="acc-list" role="list">
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-po-1">
+              <span class="acc-name">Property Inspections</span>
+              <span class="acc-right"><span class="acc-fee">GHS 400 – 800</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-po-1" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">On-site or document-based inspection with a written advisory report covering structural condition, electrical and plumbing assessment, pest findings, and recommendations — suitable for move-in, routine, move-out, and pre-letting inspections. Report can serve as evidence in Rent Control or court proceedings.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–4 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 400 – 800</p></div></div>
+                <button class="acc-request-link" data-cat="Property Operations &amp; Maintenance" data-svc="Property Inspections">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-po-2">
+              <span class="acc-name">Maintenance Coordination</span>
+              <span class="acc-right"><span class="acc-fee">GHS 250 / hour</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-po-2" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Structured support in identifying, scoping, and coordinating maintenance works across one or more properties — including vendor sourcing, cost benchmarking, work order preparation, and completion verification. Particularly useful for absent landlords and portfolio managers.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 250 per hour</p></div></div>
+                <button class="acc-request-link" data-cat="Property Operations &amp; Maintenance" data-svc="Maintenance Coordination">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-po-3">
+              <span class="acc-name">Preventive Maintenance Planning</span>
+              <span class="acc-right"><span class="acc-fee">GHS 300 – 700</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-po-3" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A property-specific preventive maintenance schedule covering electrical, plumbing, structural, roofing, and compound systems — with recommended inspection intervals, estimated costs, and a prioritised action list. Delivered as a written maintenance plan document.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 300 – 700</p></div></div>
+                <button class="acc-request-link" data-cat="Property Operations &amp; Maintenance" data-svc="Preventive Maintenance Planning">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-po-4">
+              <span class="acc-name">Renovation Supervision</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,500</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-po-4" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Advisory and supervisory support for renovation and refurbishment projects — including scope of works review, contractor assessment, progress monitoring visits, and a final completion sign-off report. Fee based on project scale and number of site visits required.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">Project-based</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,500</p></div></div>
+                <button class="acc-request-link" data-cat="Property Operations &amp; Maintenance" data-svc="Renovation Supervision">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-po-5">
+              <span class="acc-name">Utility Management</span>
+              <span class="acc-right"><span class="acc-fee">GHS 200 – 400</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-po-5" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Advisory on shared utility billing, ECG/NEDCo account management, service charge structures, and utility dispute resolution between landlords and tenants. Includes a written utility management framework for shared-occupancy properties.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–3 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 200 – 400</p></div></div>
+                <button class="acc-request-link" data-cat="Property Operations &amp; Maintenance" data-svc="Utility Management">Request this service →</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADVISORY & COMPLIANCE ─────────────────────────────── -->
+  <section id="advisory-compliance" class="svc-acc-section svc-acc-tint">
+    <div class="wrap svc-acc-inner">
+      <div class="svc-acc-left">
+        <div class="svc-acc-deco">03</div>
+        <h2 class="svc-acc-title">Advisory &amp; Compliance</h2>
+        <p class="svc-acc-desc muted">Compliance audits, Rent Control advisory, health and safety assessments, and investment due diligence for landlords and investors.</p>
+        <button class="btn btn-steel svc-request-btn" data-cat="Advisory &amp; Compliance">Request this service</button>
+      </div>
+      <div class="svc-acc-right">
+        <ul class="acc-list" role="list">
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-ac-1">
+              <span class="acc-name">Landlord Compliance Audits</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,000</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-ac-1" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A property-by-property review of documentation, advance rent handling, receipt practices, and notice procedures — assessed against Act 220 and L.I. 369. Delivers a written audit report and a prioritised remediation checklist identifying all areas of non-compliance.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,000</p></div></div>
+                <button class="acc-request-link" data-cat="Advisory &amp; Compliance" data-svc="Landlord Compliance Audits">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-ac-2">
+              <span class="acc-name">Rent Control Advisory</span>
+              <span class="acc-right"><span class="acc-fee">GHS 250 / session</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-ac-2" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Structured advisory on Rent Control Department procedures — including complaint filing, hearing preparation, Form 9 guidance, and understanding of Rent Officer and Rent Magistrate roles. Suitable for landlords preparing to file or respond to a complaint.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">Same day / within 24 hours</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 250 per session</p></div></div>
+                <button class="acc-request-link" data-cat="Advisory &amp; Compliance" data-svc="Rent Control Advisory">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-ac-3">
+              <span class="acc-name">Health &amp; Safety Assessments</span>
+              <span class="acc-right"><span class="acc-fee">GHS 350 – 700</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-ac-3" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A written assessment of the health and safety condition of a residential or commercial property — covering structural hazards, electrical risk, water supply quality, sanitation, ventilation, and pest risk. Recommendations provided with priority classifications.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–4 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 350 – 700</p></div></div>
+                <button class="acc-request-link" data-cat="Advisory &amp; Compliance" data-svc="Health &amp; Safety Assessments">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-ac-4">
+              <span class="acc-name">Property Due Diligence</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,200</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-ac-4" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A comprehensive due diligence review for prospective property purchasers, investors, or tenants — covering title verification, physical condition assessment, rental yield analysis, compliance status, and a concluded risk summary. Delivered as a formal Due Diligence Report.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,200</p></div></div>
+                <button class="acc-request-link" data-cat="Advisory &amp; Compliance" data-svc="Property Due Diligence">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-ac-5">
+              <span class="acc-name">Investment Advisory</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,000</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-ac-5" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Evidence-based advisory on residential and commercial property investment decisions in Ghana — including rental yield projections, market comparisons, location analysis, and risk assessment. Delivered as a written investment advisory note for a specific property or portfolio decision.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,000</p></div></div>
+                <button class="acc-request-link" data-cat="Advisory &amp; Compliance" data-svc="Investment Advisory">Request this service →</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DISPUTE & REPRESENTATION ──────────────────────────── -->
+  <section id="dispute-representation" class="svc-acc-section">
+    <div class="wrap svc-acc-inner">
+      <div class="svc-acc-left">
+        <div class="svc-acc-deco">04</div>
+        <h2 class="svc-acc-title">Dispute &amp; Representation</h2>
+        <p class="svc-acc-desc muted">Pre-lodgement dispute preparation, mediation support, court documentation, and direct representation before the Rent Control Department.</p>
+        <button class="btn btn-steel svc-request-btn" data-cat="Dispute &amp; Representation Services">Request this service</button>
+      </div>
+      <div class="svc-acc-right">
+        <ul class="acc-list" role="list">
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-dr-1">
+              <span class="acc-name">Dispute Guidance (Pre-Lodgement)</span>
+              <span class="acc-right"><span class="acc-fee">GHS 200 / session</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-dr-1" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Structured preparation of your file and position before lodging or responding to a complaint at the Rent Control Department — including chronology preparation, evidence assessment, and a written guidance note summarising your options and the likely procedural path.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">Same day / within 24 hours</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 200 per session</p></div></div>
+                <button class="acc-request-link" data-cat="Dispute &amp; Representation Services" data-svc="Dispute Guidance">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-dr-2">
+              <span class="acc-name">Mediation Services</span>
+              <span class="acc-right"><span class="acc-fee">GHS 300 – 500</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-dr-2" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Facilitated mediation between landlord and tenant for disputes involving unpaid rent, deposit deductions, maintenance obligations, or notice compliance — conducted with both parties present. A written mediation agreement is prepared if settlement is reached.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 300 – 500</p></div></div>
+                <button class="acc-request-link" data-cat="Dispute &amp; Representation Services" data-svc="Mediation Services">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-dr-3">
+              <span class="acc-name">Court Documentation Support</span>
+              <span class="acc-right"><span class="acc-fee">GHS 400 – 800</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-dr-3" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Preparation and review of documentation for Rent Control or Magistrate Court proceedings — including Form 9, written statements of facts, rent ledgers, and supporting evidence packages. Does not constitute legal representation; engagement of a lawyer is recommended for court appearances.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–4 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 400 – 800</p></div></div>
+                <button class="acc-request-link" data-cat="Dispute &amp; Representation Services" data-svc="Court Documentation Support">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-dr-4">
+              <span class="acc-name">Landlord Representation</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,000</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-dr-4" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Direct representation of the landlord's position before the Rent Control Department — attending hearings, presenting documents, and engaging with Rent Officers on the landlord's behalf. Available in Greater Accra. Scope and fee confirmed at initial consultation.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,000</p></div></div>
+                <button class="acc-request-link" data-cat="Dispute &amp; Representation Services" data-svc="Landlord Representation">Request this service →</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRAINING & DIGITAL ─────────────────────────────────── -->
+  <section id="training-digital" class="svc-acc-section svc-acc-tint">
+    <div class="wrap svc-acc-inner">
+      <div class="svc-acc-left">
+        <div class="svc-acc-deco">05</div>
+        <h2 class="svc-acc-title">Training &amp; Digital Solutions</h2>
+        <p class="svc-acc-desc muted">Landlord and tenant education, property record digitisation, management system setup, and standard operating procedure development.</p>
+        <button class="btn btn-steel svc-request-btn" data-cat="Training &amp; Digital Solutions">Request this service</button>
+      </div>
+      <div class="svc-acc-right">
+        <ul class="acc-list" role="list">
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-td-1">
+              <span class="acc-name">Landlord Training</span>
+              <span class="acc-right"><span class="acc-fee">GHS 300 – 600 / session</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-td-1" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Structured training for individual landlords or small landlord groups covering: Ghanaian tenancy law fundamentals, correct documentation practices, advance rent and deposit handling, notice procedures, and Rent Control processes. Delivered in person or remotely. Certificate of attendance available.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 300 – 600 per session</p></div></div>
+                <button class="acc-request-link" data-cat="Training &amp; Digital Solutions" data-svc="Landlord Training">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-td-2">
+              <span class="acc-name">Tenant Orientation</span>
+              <span class="acc-right"><span class="acc-fee">GHS 150 – 300 / session</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-td-2" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">A structured orientation session for new or prospective tenants covering their rights and obligations under Act 220 — including rent receipts, notice requirements, deposit protection, maintenance reporting, and Rent Control access. Delivered individually or in small groups.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">By appointment</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 150 – 300 per session</p></div></div>
+                <button class="acc-request-link" data-cat="Training &amp; Digital Solutions" data-svc="Tenant Orientation">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-td-3">
+              <span class="acc-name">Property Record Digitisation</span>
+              <span class="acc-right"><span class="acc-fee">GHS 300 – 700</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-td-3" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Review and organisation of existing property records, or setup of a structured digital record system covering tenancy agreements, rent receipts, inspection records, and correspondence — in formats compatible with Google Drive, OneDrive, or local storage. Includes a brief record-keeping guide.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">2–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 300 – 700</p></div></div>
+                <button class="acc-request-link" data-cat="Training &amp; Digital Solutions" data-svc="Property Record Digitisation">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-td-4">
+              <span class="acc-name">Property Management System Setup</span>
+              <span class="acc-right"><span class="acc-fee">GHS 500 – 1,500</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-td-4" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Advisory and hands-on setup of a property management system for landlords and agents — including configuration of tracking tools, rent collection workflows, maintenance logs, and reporting templates. Scope and fee confirmed at initial consultation based on portfolio size and system choice.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–7 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 500 – 1,500</p></div></div>
+                <button class="acc-request-link" data-cat="Training &amp; Digital Solutions" data-svc="Property Management System Setup">Request this service →</button>
+              </div>
+            </div>
+          </li>
+          <li class="acc-item">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-td-5">
+              <span class="acc-name">SOP Development</span>
+              <span class="acc-right"><span class="acc-fee">GHS 400 – 1,000</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="acc-panel" id="acc-td-5" role="region">
+              <div class="acc-body">
+                <p class="acc-desc">Development of Standard Operating Procedures for property management operations — covering tenant onboarding, rent collection, maintenance management, inspection protocols, and staff responsibilities. Delivered as editable Word documents with version control. Suitable for agencies and multi-property landlords.</p>
+                <div class="acc-meta"><div><p class="acc-meta-label">Turnaround</p><p class="acc-meta-val">3–5 working days</p></div><div><p class="acc-meta-label">Fee</p><p class="acc-meta-val">GHS 400 – 1,000</p></div></div>
+                <button class="acc-request-link" data-cat="Training &amp; Digital Solutions" data-svc="SOP Development">Request this service →</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+  <section class="section" style="background: var(--paper);">
+    <div class="wrap">
+      <span class="cite">The process</span>
+      <h2>From enquiry to delivery — a simple, structured process.</h2>
+      <div class="svc-steps">
+        <div class="svc-step">
+          <div class="svc-step-num">01</div>
+          <h3 class="svc-step-title">Submit your request</h3>
+          <p class="small muted">Complete the service request form below. Tell us about your property, the service you need, and your timeline.</p>
+        </div>
+        <div class="svc-step">
+          <div class="svc-step-num">02</div>
+          <h3 class="svc-step-title">We confirm and scope</h3>
+          <p class="small muted">We review your request, confirm the service scope, and send you a written fee proposal within one working day.</p>
+        </div>
+        <div class="svc-step">
+          <div class="svc-step-num">03</div>
+          <h3 class="svc-step-title">We do the work</h3>
+          <p class="small muted">Your advisory, document, or consultation is prepared to the stated timelines — grounded in Act 220, L.I. 369, and Ghanaian practice.</p>
+        </div>
+        <div class="svc-step">
+          <div class="svc-step-num">04</div>
+          <h3 class="svc-step-title">Delivered in writing</h3>
+          <p class="small muted">Every service is delivered as a written document, report, or structured session — not a verbal opinion. You keep a record.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <script>
-    const SERVICES = ["Rent Assessment Advisory","Tenancy Documentation Review","Landlord Compliance Audit","Dispute Guidance (Consultation)","Rent Increase Advisory","Tenancy Agreement Drafting","Property Inspection & Advisory Report","Property Management Consultation","Property Record Review & Setup","Eviction and Recovery of Possession Guidance","Rental Market Analysis Report"];
+  <!-- ── WHY PRC ────────────────────────────────────────────── -->
+  <section class="section svc-acc-tint">
+    <div class="wrap">
+      <span class="cite">Why PRC</span>
+      <h2>Grounded in law. Delivered in writing.</h2>
+      <div class="grid grid-3" style="margin-top:2rem;">
+        <div class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--steel)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:1rem;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <h3>Every service delivered in writing</h3>
+          <p class="small muted">No verbal opinions. Every advisory, audit, and guidance note is a formal written document you can file, reference, or present at the Rent Control Department.</p>
+        </div>
+        <div class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--steel)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:1rem;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <h3>Built for Ghana's rental market</h3>
+          <p class="small muted">Our services are grounded in the Rent Act, 1963 (Act 220) and Rent Regulations, 1964 (L.I. 369) — not generic property management templates from other jurisdictions.</p>
+        </div>
+        <div class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--steel)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:1rem;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Clear timelines, no surprises</h3>
+          <p class="small muted">Every service carries a stated turnaround. You know what you are getting, when you will receive it, and what it will cost before we begin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function handleQuoteClick() {
-      const btns = document.querySelectorAll('.get-quote-btn');
-      btns.forEach((btn, idx) => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const serviceName = SERVICES[idx];
-          const serviceSelect = document.getElementById('service');
-          if (serviceSelect) {
-            serviceSelect.value = serviceName;
-            const nameInput = document.getElementById('name');
-            if (nameInput) nameInput.focus();
-            const form = document.querySelector('form[name="consultation"]');
-            if (form) {
-              const formTop = form.getBoundingClientRect().top + window.scrollY;
-              window.scrollTo({ top: formTop - 100, behavior: 'smooth' });
-            }
+  <!-- ── SERVICE REQUEST FORM ───────────────────────────────── -->
+  <section id="quote-form" class="svc-form-section">
+    <div class="wrap" style="max-width:680px;">
+      <span class="cite svc-cite">Request a Service</span>
+      <h2 class="svc-form-title">Ready to get started?</h2>
+      <p style="color:rgba(246,243,238,0.85); margin-bottom:2rem; line-height:1.65;">Complete the form below and we will respond within one working day with a written fee proposal.</p>
+
+      <form class="card" id="consultation-form" name="consultation" method="POST" data-netlify="true" novalidate>
+        <input type="hidden" name="form-name" value="consultation" />
+
+        <div class="svc-form-row">
+          <p><label for="qf-name">Full name <span style="color:#c0392b">*</span></label><input id="qf-name" name="name" required placeholder="e.g. Kofi Mensah" /></p>
+          <p><label for="qf-phone">Phone / WhatsApp <span style="color:#c0392b">*</span></label><input id="qf-phone" name="phone" type="tel" required placeholder="e.g. 024 000 0000" /></p>
+        </div>
+
+        <p><label for="qf-email">Email address</label><input id="qf-email" name="email" type="email" placeholder="e.g. kofi@email.com" /></p>
+
+        <p><label for="qf-role">Your role <span style="color:#c0392b">*</span></label>
+          <select id="qf-role" name="role" required>
+            <option value="">Select your role</option>
+            <option>Landlord</option>
+            <option>Tenant</option>
+            <option>Property Manager</option>
+            <option>Investor</option>
+            <option>Institution / Organisation</option>
+            <option>Other</option>
+          </select>
+        </p>
+
+        <p><label for="qf-category">Service category <span style="color:#c0392b">*</span></label>
+          <select id="qf-category" name="category" required>
+            <option value="">Select a category</option>
+            <option>Tenancy &amp; Rent Services</option>
+            <option>Property Operations &amp; Maintenance</option>
+            <option>Advisory &amp; Compliance</option>
+            <option>Dispute &amp; Representation Services</option>
+            <option>Training &amp; Digital Solutions</option>
+          </select>
+        </p>
+
+        <p><label for="qf-service">Specific service</label>
+          <select id="qf-service" name="service" disabled>
+            <option value="">Select a category first</option>
+          </select>
+        </p>
+
+        <p><label for="qf-location">Property address or area</label><input id="qf-location" name="location" placeholder="e.g. Sowutuom, Accra" /></p>
+
+        <p><label for="qf-brief">Briefly describe your situation <span style="color:#c0392b">*</span></label><textarea id="qf-brief" name="brief" rows="4" required placeholder="Describe what you need help with and any relevant background..."></textarea></p>
+
+        <div id="qf-form-error" style="display:none; color:#c0392b; font-size:.875rem; margin-bottom:.75rem;">Please fill in all required fields.</div>
+
+        <p style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-primary" type="submit" id="qf-submit">Submit request →</button>
+          <a class="btn btn-ghost" href="https://wa.me/233208071633" rel="noopener" style="white-space:nowrap;">WhatsApp instead</a>
+        </p>
+      </form>
+
+      <div id="qf-success" class="card" style="display:none; text-align:center; padding:2.5rem;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="var(--steel)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:1rem;"><circle cx="24" cy="24" r="20"/><polyline points="16 24 21 30 32 18"/></svg>
+        <h2>Request received.</h2>
+        <p class="muted">Thank you, <span id="qf-firstname">there</span>. We will review your request and respond within one working day with a written fee proposal.</p>
+        <p class="small muted" style="margin-top:.5rem;font-style:italic;">For urgent matters, call or WhatsApp us directly at +233208071633.</p>
+      </div>
+
+      <div class="notice" style="margin-top:1.5rem;">
+        <strong>Scope of PRC's services.</strong> PRC advises and prepares documentation. PRC does not appear for or represent parties in Rent Control proceedings, and engagement of PRC confers no advantage in any matter before any Rent Control office. Content and advisories are professional guidance, not legal advice.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────────── -->
+  <script>
+    // Services per category
+    const CAT_SERVICES = {
+      'Tenancy & Rent Services': ['Rent Assessment Advisory','Tenancy Agreement Drafting','Rent Collection & Recovery','Lease Renewal Management','Eviction Guidance'],
+      'Property Operations & Maintenance': ['Property Inspections','Maintenance Coordination','Preventive Maintenance Planning','Renovation Supervision','Utility Management'],
+      'Advisory & Compliance': ['Landlord Compliance Audits','Rent Control Advisory','Health & Safety Assessments','Property Due Diligence','Investment Advisory'],
+      'Dispute & Representation Services': ['Dispute Guidance','Mediation Services','Court Documentation Support','Landlord Representation'],
+      'Training & Digital Solutions': ['Landlord Training','Tenant Orientation','Property Record Digitisation','Property Management System Setup','SOP Development']
+    };
+
+    function scrollToId(id, focusId) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const offset = 72;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+      if (focusId) {
+        setTimeout(() => { const f = document.getElementById(focusId); if (f) f.focus(); }, 500);
+      }
+    }
+
+    // Smooth-scroll links
+    document.querySelectorAll('.svc-cta-js').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToId(this.dataset.target, this.dataset.focus);
+      });
+    });
+
+    // Category cards → section scroll
+    document.querySelectorAll('.svc-cat-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToId(this.dataset.target);
+      });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToId(this.dataset.target); }
+      });
+    });
+
+    // Accordion
+    document.querySelectorAll('.acc-list').forEach(function(list) {
+      const items = list.querySelectorAll('.acc-item');
+      const headers = list.querySelectorAll('.acc-header');
+
+      headers.forEach(function(btn, i) {
+        btn.addEventListener('click', function() {
+          const item = items[i];
+          const isOpen = item.classList.contains('open');
+          // Close all in this list
+          items.forEach(function(it) {
+            it.classList.remove('open');
+            it.querySelector('.acc-header').setAttribute('aria-expanded', 'false');
+          });
+          // Toggle clicked
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
           }
         });
+        // Arrow key navigation
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowDown' && headers[i + 1]) { e.preventDefault(); headers[i + 1].focus(); }
+          if (e.key === 'ArrowUp' && headers[i - 1])   { e.preventDefault(); headers[i - 1].focus(); }
+        });
       });
+    });
+
+    // Dynamic service dropdown
+    const catSelect = document.getElementById('qf-category');
+    const svcSelect = document.getElementById('qf-service');
+
+    function populateServices(catVal) {
+      const services = CAT_SERVICES[catVal] || [];
+      if (services.length) {
+        svcSelect.innerHTML = '<option value="">Select a service</option>' +
+          services.map(function(s) { return '<option value="' + s + '">' + s + '</option>'; }).join('');
+        svcSelect.disabled = false;
+      } else {
+        svcSelect.innerHTML = '<option value="">Select a category first</option>';
+        svcSelect.disabled = true;
+      }
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', handleQuoteClick);
-    } else {
-      handleQuoteClick();
+    catSelect.addEventListener('change', function() { populateServices(this.value); });
+
+    // Pre-fill form from "Request this service" buttons
+    function prefillForm(cat, svc) {
+      scrollToId('quote-form', 'qf-name');
+      setTimeout(function() {
+        if (cat && catSelect) {
+          catSelect.value = cat;
+          populateServices(cat);
+          if (svc && svcSelect) {
+            setTimeout(function() { svcSelect.value = svc; }, 100);
+          }
+        }
+      }, 400);
     }
+
+    document.querySelectorAll('.svc-request-btn, .acc-request-link').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var cat = this.dataset.cat || '';
+        var svc = this.dataset.svc || '';
+        // Decode HTML entities
+        cat = cat.replace(/&amp;/g, '&');
+        svc = svc.replace(/&amp;/g, '&');
+        prefillForm(cat, svc);
+      });
+    });
+
+    // Form submission
+    const form = document.getElementById('consultation-form');
+    const submitBtn = document.getElementById('qf-submit');
+    const successPanel = document.getElementById('qf-success');
+    const firstNameSpan = document.getElementById('qf-firstname');
+    const errorMsg = document.getElementById('qf-form-error');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+
+      // Validate required fields
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function(field) {
+        if (!field.value.trim()) { valid = false; field.style.borderColor = '#c0392b'; }
+        else { field.style.borderColor = ''; }
+      });
+
+      if (!valid) { errorMsg.style.display = 'block'; return; }
+
+      // Simulate submission
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      setTimeout(function() {
+        var nameVal = document.getElementById('qf-name').value.trim();
+        firstNameSpan.textContent = nameVal.split(' ')[0] || 'there';
+        form.style.display = 'none';
+        successPanel.style.display = 'block';
+      }, 1200);
+    });
   </script>
 
+  <!-- ── STYLES ─────────────────────────────────────────────── -->
   <style>
-    .card:hover {
-      background: rgba(81, 103, 132, 0.02);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Hero */
+    .svc-hero { background: var(--ink); padding: 4rem 0 0; }
+    .svc-cite { color: #a0b4c8; border-color: #a0b4c8; }
+    .svc-h1 { color: #fff; max-width: 700px; font-size: clamp(1.9rem, 4vw, 3rem); }
+    .svc-sub { color: rgba(246,243,238,0.85); max-width: 600px; font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+    .svc-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-steel { background: var(--steel); border-color: var(--steel); color: #fff; }
+    .btn-steel:hover { background: var(--steel-dark); border-color: var(--steel-dark); color: #fff; }
+    .btn-outline-paper { background: transparent; border-color: var(--paper); color: var(--paper); }
+    .btn-outline-paper:hover { background: rgba(246,243,238,0.1); color: var(--paper); }
+
+    /* Stats bar */
+    .svc-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; background: rgba(0,0,0,0.2); margin: 0 -1.25rem; padding: 1.5rem 1.25rem; }
+    .svc-stat { text-align: center; }
+    .svc-stat-num { display: block; font-family: "Fraunces", Georgia, serif; font-size: 2.2rem; font-weight: 600; color: #fff; line-height: 1; margin-bottom: .3rem; }
+    .svc-stat-sm { font-size: 1.1rem; padding-top: .6rem; }
+    .svc-stat-label { display: block; font-size: .75rem; color: rgba(246,243,238,0.7); letter-spacing: .04em; line-height: 1.3; }
+    @media (max-width: 760px) {
+      .svc-stats { grid-template-columns: repeat(5, minmax(110px, 1fr)); overflow-x: auto; scrollbar-width: none; }
+      .svc-stats::-webkit-scrollbar { display: none; }
     }
-    .get-quote-btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #f0f4f8;
-      color: #516784;
-      border: 1px solid #516784;
+
+    /* Positioning band */
+    .svc-band { background: var(--tint); padding: 3.5rem 0; }
+    .svc-band-inner { max-width: 720px; text-align: center; }
+    .svc-band-line { width: 3px; height: 40px; background: var(--ink); margin: 0 auto 1.5rem; }
+    .svc-band-quote { font-family: "Fraunces", Georgia, serif; font-size: clamp(1rem, 2vw, 1.2rem); font-style: italic; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; }
+    .svc-band-attr { font-size: .85rem; color: var(--grey); }
+
+    /* Category cards */
+    .svc-cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .svc-cat-grid .svc-cat-card:nth-child(4),
+    .svc-cat-grid .svc-cat-card:nth-child(5) { grid-column: span 1; }
+    /* Centre last 2 on desktop using offset trick */
+    @media (min-width: 761px) {
+      .svc-cat-grid { grid-template-columns: repeat(6, 1fr); }
+      .svc-cat-card { grid-column: span 2; }
+      .svc-cat-card:nth-child(4) { grid-column: 2 / span 2; }
+      .svc-cat-card:nth-child(5) { grid-column: 4 / span 2; }
+    }
+    @media (max-width: 760px) {
+      .svc-cat-grid { grid-template-columns: 1fr; }
+    }
+
+    .svc-cat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 4px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
+      padding: 1.5rem;
       text-decoration: none;
-      transition: all 0.2s ease;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
     }
-    .get-quote-btn:hover {
-      background: #516784;
-      color: #fff;
+    .svc-cat-card:hover {
+      box-shadow: 0 6px 20px rgba(54,34,28,0.1);
+      border-color: var(--steel);
+      transform: translateY(-2px);
+      color: var(--ink);
     }
+    .svc-cat-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .svc-cat-icon { width: 44px; height: 44px; background: #e8eef3; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .svc-cat-num { font-size: .75rem; font-weight: 600; color: var(--steel); }
+    .svc-cat-name { font-size: 1.05rem; font-family: "Fraunces", Georgia, serif; font-weight: 600; color: var(--ink); margin-bottom: .5rem; line-height: 1.3; }
+    .svc-cat-desc { font-size: .875rem; color: var(--grey); line-height: 1.6; flex-grow: 1; margin-bottom: 1.25rem; }
+    .svc-cat-foot { display: flex; align-items: center; justify-content: space-between; }
+    .svc-view-link { font-size: .8rem; font-weight: 600; color: var(--steel); }
+
+    /* Accordion sections */
+    .svc-acc-section { padding: 4rem 0; }
+    .svc-acc-tint { background: var(--tint); }
+    .svc-acc-inner { display: grid; grid-template-columns: 28% 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 900px) { .svc-acc-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .svc-acc-left { position: sticky; top: 72px; }
+    @media (max-width: 900px) { .svc-acc-left { position: static; } }
+    .svc-acc-deco { font-family: "Fraunces", Georgia, serif; font-size: 4rem; font-weight: 600; color: rgba(54,34,28,0.08); line-height: 1; margin-bottom: .25rem; }
+    .svc-acc-title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin-bottom: .75rem; }
+    .svc-acc-desc { font-size: .9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+    /* Accordion items */
+    .acc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; padding: 0; margin: 0; }
+    .acc-item {}
+    .acc-header {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      text-align: left;
+      color: var(--ink);
+      transition: border-color .15s, border-radius .15s;
+    }
+    .acc-item.open .acc-header { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-color: var(--steel); }
+    .acc-name { font-size: .95rem; font-weight: 600; }
+    .acc-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; margin-left: 1rem; }
+    .acc-fee { font-size: .85rem; color: var(--steel); white-space: nowrap; }
+    .acc-chevron { color: var(--grey); transition: transform .2s ease; flex-shrink: 0; }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); }
+
+    .acc-panel { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .acc-item.open .acc-panel { max-height: 800px; }
+    .acc-body {
+      background: var(--paper);
+      border: 1px solid var(--steel);
+      border-top: none;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      padding: 1.25rem;
+    }
+    .acc-desc { font-size: .9rem; color: var(--grey); line-height: 1.7; margin-bottom: 1rem; }
+    .acc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; padding: .75rem; background: var(--tint); border-radius: 2px; }
+    .acc-meta-label { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: .2rem; }
+    .acc-meta-val { font-size: .875rem; color: var(--ink); font-weight: 600; }
+    .acc-request-link { background: none; border: none; padding: 0; cursor: pointer; font-size: .875rem; font-weight: 600; color: var(--steel); font-family: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .acc-request-link:hover { color: var(--ink); }
+
+    /* Steps */
+    .svc-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    @media (max-width: 760px) { .svc-steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .svc-steps { grid-template-columns: 1fr; } }
+    .svc-step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600; font-size: .95rem;
+      color: var(--ink); margin-bottom: 1rem;
+    }
+    .svc-step-title { font-size: 1rem; margin-bottom: .5rem; }
+
+    /* Form section */
+    .svc-form-section { background: var(--ink); padding: 4.5rem 0; }
+    .svc-form-title { color: #fff; margin-bottom: .5rem; }
+    .svc-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+    @media (max-width: 540px) { .svc-form-row { grid-template-columns: 1fr; } }
+    #consultation-form input:focus, #consultation-form select:focus, #consultation-form textarea:focus {
+      outline: 3px solid var(--steel); outline-offset: 1px; border-color: var(--steel);
+    }
+
+    /* Mobile fee hide on narrow screens */
+    @media (max-width: 480px) { .acc-fee { display: none; } }
   </style>
 </Base>
