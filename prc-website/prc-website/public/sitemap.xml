@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
+  <url><loc>https://www.propertynrentconsult.homes/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/about/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/contact/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Consultancy services -->
+  <url><loc>https://www.propertynrentconsult.homes/services/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/rent-assessment-advisory/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/tenancy-documentation-review/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/tenancy-agreement-drafting/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/landlord-compliance-audit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/dispute-guidance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/rent-increase-advisory/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/property-inspection-advisory-report/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/property-management-consultation/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/property-record-review-setup/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/eviction-recovery-guidance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/services/rental-market-analysis-report/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Digital products -->
+  <url><loc>https://www.propertynrentconsult.homes/products/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/residential-tenancy-agreement/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/maintenance-request-log/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/tenant-screening-checklist/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/property-inspection-checklist/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/rent-collection-tracker/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/utility-payment-tracker/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/lease-agreement-pack/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/communication-scripts-pack/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/products/eviction-guide/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Knowledge Hub -->
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/advance-rent-ghana-act-220/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/compliance-audit-importance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/custom-lease-advantages/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/documentation-insurance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/eviction-mistakes/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/eviction-process-ghana/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/ghanaian-rent-glossary/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/know-market-rent/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/lease-agreement-mistakes/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/property-condition-matters/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/property-management-systems/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/rent-control-complaint-ghana/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/rent-disputes-prevention/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/rent-increase-law-ghana/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/rent-increase-laws/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/tenancy-agreement-ghana-requirements/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/knowledge/why-rent-assessment-matters/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Resources -->
+  <url><loc>https://www.propertynrentconsult.homes/resources/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/resources/rent-control-offices/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/resources/rent-advance-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Free downloads -->
+  <url><loc>https://www.propertynrentconsult.homes/free/tenant-rights-guide/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>
