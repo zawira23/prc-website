@@ -7,9 +7,50 @@ const categories = [
     { code: 'PRC-LA-COM-01', name: 'Commercial Lease Agreement', blurb: 'Built for shops, offices, and mixed-use premises in Ghana.', href: '#', price: 'GHS [price]' },
     { code: 'PRC-OL-01', name: 'Tenancy Offer Letter', blurb: 'Set the terms in writing before the agreement is drawn.', href: '#', price: 'GHS [price]' },
   ]},
-  { name: 'Rent & Tenancy Tools', items: [] },
-  { name: 'Property Management Systems', items: [] },
-  { name: 'Advisory & Education', items: [] },
+  { name: 'Rent & Tenancy Tools', items: [
+    {
+      code: 'PRC-MLR-001',
+      name: 'Maintenance Request Log',
+      blurb: 'Track maintenance requests, vendors, costs, and unit inventory across your properties.',
+      tiers: [
+        { tier: 'Landlord', price: 'GHS 49', features: '1 property, up to 15 units', href: 'https://selar.com/9380s42111' },
+        { tier: 'Manager', price: 'GHS 99', features: 'Unlimited properties & units', href: 'https://selar.com/5712z42216' },
+        { tier: 'Portfolio', price: 'GHS 179', features: '+ WhatsApp cards, Excel template', href: 'https://selar.com/36o104c137' }
+      ]
+    },
+    {
+      code: 'PRC-RTR-001',
+      name: 'Rent Collection Tracker',
+      blurb: 'Automated rent tracking with late fee calculations, arrears register, and dashboard KPIs.',
+      tiers: [
+        { tier: 'Landlord', price: 'GHS 49', features: 'Up to 10 units', href: 'https://selar.com/t18i981du5' },
+        { tier: 'Manager', price: 'GHS 99', features: 'Unlimited + PDF guide', href: 'https://selar.com/g2x1377cmx' },
+        { tier: 'Portfolio', price: 'GHS 179', features: '+ WhatsApp cards', href: 'https://selar.com/8873100u71' }
+      ]
+    }
+  ]},
+  { name: 'Property Management Systems', items: [
+    {
+      code: 'PRC-PIC-001',
+      name: 'Ghana Property Inspection Checklist',
+      blurb: 'Comprehensive 60-item inspection with automated register, color-coded ratings, and cost tracking.',
+      tiers: [
+        { tier: 'Landlord', price: 'GHS 39', features: 'Fillable PDF checklist', href: 'https://selar.com/0n237w0851' },
+        { tier: 'Manager', price: 'GHS 79', features: '+ Interactive app, Excel register', href: 'https://selar.com/10e07c38m5' },
+        { tier: 'Portfolio', price: 'GHS 139', features: '+ WhatsApp cards', href: 'https://selar.com/bb4331eeuz' }
+      ]
+    }
+  ]},
+  { name: 'Advisory & Education', items: [
+    {
+      code: 'PRC-EVG-001',
+      name: 'Legal Eviction Process in Ghana E-Book',
+      blurb: 'Plain-language guide to legal eviction under Act 220 (Rent Act 1963). 12 chapters, step-by-step process.',
+      tiers: [
+        { tier: 'E-Book', price: 'GHS 89', features: '12 chapters, HTML + PDF + WhatsApp cards', href: 'https://selar.com/0e9417p776' }
+      ]
+    }
+  ]},
 ];
 ---
 <Base title="Digital Products" description="Act 220-compliant tenancy agreements, leases, notices, and property tools for Ghana — from Property and Rent Consult.">
@@ -27,8 +68,23 @@ const categories = [
                 <span class="tag">{p.code}</span>
                 <h3 style="font-size:1.1rem;">{p.name}</h3>
                 <p class="small muted">{p.blurb}</p>
-                <p><strong>{p.price}</strong></p>
-                <a href={p.href}>View details →</a>
+                {p.tiers && p.tiers.length > 0 ? (
+                  <div style="margin-top:1rem;">
+                    {p.tiers.map(tier => (
+                      <div style="margin-bottom:0.75rem; padding:0.75rem; background:#f5f5f5; border-radius:4px;">
+                        <p style="margin:0; font-weight:600; font-size:0.9rem;">{tier.tier}</p>
+                        <p style="margin:0.25rem 0; font-size:0.85rem; color:#666;">{tier.features}</p>
+                        <p style="margin:0.5rem 0; font-weight:700; color:#516784;">{tier.price}</p>
+                        <a href={tier.href} target="_blank" style="font-size:0.9rem;">Buy on Selar →</a>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <p><strong>{p.price}</strong></p>
+                    <a href={p.href}>View details →</a>
+                  </>
+                )}
               </div>
             ))}
           </div>
