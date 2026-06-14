@@ -1,0 +1,132 @@
+/* ── PRC design tokens ─────────────────────────────────────
+   Palette from the PRC wordmark: deep brown, steel blue, warm grey.
+   Aesthetic: statutory gazette / registry ledger. */
+:root {
+  --ink: #36221C;          /* primary — deep brown */
+  --steel: #516984;        /* secondary — steel blue */
+  --steel-dark: #3E5269;
+  --grey: #63645A;         /* supporting text */
+  --paper: #F6F3EE;        /* page ground */
+  --card: #FFFFFF;
+  --line: #D8D1C6;
+  --tint: #ECE6DC;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Public Sans", system-ui, -apple-system, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, .display {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 .5em;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.25rem; }
+
+a { color: var(--steel-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--steel); outline-offset: 2px; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+.section { padding: 3.5rem 0; }
+
+/* Signature device: statutory citation eyebrow with gazette double rule */
+.cite {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--steel-dark);
+  border-top: 1px solid var(--steel);
+  border-bottom: 3px double var(--steel);
+  padding: .3rem 0;
+  margin-bottom: 1.1rem;
+}
+
+.rule-double { border: 0; border-bottom: 3px double var(--line); margin: 0; }
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: .95rem;
+  padding: .75rem 1.4rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--steel-dark); border-color: var(--steel-dark); color: #fff; }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--tint); color: var(--ink); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1.5rem;
+}
+.grid { display: grid; gap: 1.25rem; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 760px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+.tag {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--steel-dark);
+  background: var(--tint);
+  padding: .15rem .55rem;
+  border-radius: 2px;
+}
+
+.muted { color: var(--grey); }
+.small { font-size: .9rem; }
+
+.notice {
+  border-left: 4px solid var(--steel);
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+  font-size: .95rem;
+  color: var(--grey);
+}
+
+/* Prose (article body) */
+.prose { max-width: 720px; }
+.prose h2 { margin-top: 2.2rem; }
+.prose ul { padding-left: 1.25rem; }
+.prose li { margin-bottom: .4rem; }
+
+table.ledger { width: 100%; border-collapse: collapse; background: var(--card); }
+table.ledger th, table.ledger td { border: 1px solid var(--line); padding: .6rem .8rem; text-align: left; font-size: .95rem; }
+table.ledger th { background: var(--ink); color: var(--paper); font-weight: 600; }
+
+input, select, textarea {
+  font: inherit;
+  padding: .65rem .8rem;
+  border: 1px solid var(--grey);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--ink);
+  width: 100%;
+}
+label { font-weight: 600; font-size: .9rem; display: block; margin-bottom: .3rem; }

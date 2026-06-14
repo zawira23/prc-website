@@ -1,0 +1,316 @@
+SELAR LISTING COPY — PRC PRODUCTS 3 & 4
+Ghana Edition | Property and Rent Consult
+
+═══════════════════════════════════════════════════════════════════════════════
+PRODUCT 3 — LEGAL EVICTION PROCESS IN GHANA (E-BOOK)
+═══════════════════════════════════════════════════════════════════════════════
+
+SINGLE PRODUCT — GHS 89
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+The Legal Eviction Process in Ghana — A Plain-Language Guide for Landlords
+
+Short Description:
+Know the law. Follow the process. Recover your property. A complete step-by-step
+guide to legal eviction in Ghana — from the first warning to the bailiff.
+
+Full Description:
+Most landlords in Ghana do not know the legal eviction process. Frustrated by
+unpaid rent, they change locks, cut utilities, remove roofing, or give threats.
+All of these are illegal under the Rent Act 1963 (Act 220) and expose landlords
+to criminal prosecution.
+
+This guide explains every step of the legal eviction process in plain English —
+written for landlords with no legal background.
+
+12 Full Chapters:
+✔ Chapter 1: What the Law Says — Act 220, Rent Control, and why self-help
+  eviction is illegal
+✔ Chapter 2: The 6 Lawful Grounds for Recovery of Possession
+✔ Chapter 3: Before You Serve Any Notice (critical preparation steps)
+✔ Chapter 4: The Formal Warning — Your First Step
+✔ Chapter 5: The Quit Notice — How to Serve It Correctly
+✔ Chapter 6: The Rent Control Department — What They Do
+✔ Chapter 7: Form 9 — The Official Application (explained field by field)
+✔ Chapter 8: The Rent Magistrate Court Hearing — What to Expect
+✔ Chapter 9: After the Order — Enforcement and Bailiffs
+✔ Chapter 10: What Tenants Can Do — Know Both Sides
+✔ Chapter 11: The 10 Most Common Mistakes Landlords Make
+✔ Chapter 12: 12 Frequently Asked Questions
+
+Plus: Glossary of 20 key legal terms in plain language.
+
+What Is Inside This Download:
+✔ PRC-Eviction-Guide-Ghana.pdf — Complete e-book (40+ pages)
+  - Ready to read on any device
+  - Professional layout with call-out boxes for warnings and key rules
+  - Running headers and footers on every page
+
+✔ PRC-Eviction-Guide-Ghana.docx — Fully editable Word version
+  - Add your own logo or branding
+  - Distribute to your team or clients
+  - Modify for firm-specific use
+
+✔ 5 WhatsApp Image Cards
+  - Cover card: The 7-step process at a glance
+  - Illegal actions card: What NOT to do (with red warning)
+  - Form 9 explainer: Why this form matters
+  - Plus 2 additional marketing cards
+  - 1080×1350px, ready to share on WhatsApp, Instagram, Facebook
+
+✔ PRC-READ-ME-FIRST.txt — Quick-start guide
+
+Key Features:
+✔ Plain language — no legal jargon
+✔ Step-by-step process from warning to enforcement
+✔ Real examples and common mistakes
+✔ Ghana-specific references (Act 220, L.I. 369, Rent Control Department)
+✔ Practical guidance on Form 9
+✔ What to expect at the Rent Magistrate Court
+✔ How to prepare your documents
+✔ How to work with bailiffs
+
+Perfect For:
+• Individual landlords who've never evicted before
+• Property managers overseeing multiple properties
+• Real estate agents advising landlords
+• Anyone facing an unpaid rent situation
+• Landlords who want to know the law before taking action
+
+The Problem This Solves:
+Without this guide, landlords either:
+  - Break the law and risk criminal prosecution
+  - Lose months to a confusing legal process
+  - Make procedural mistakes that get their cases dismissed
+  - Spend money on lawyers they could have saved with proper planning
+
+This Guide Gets You:
+  - A clear roadmap from first warning to recovery
+  - Confidence in each step of the process
+  - Knowledge to spot and avoid common mistakes
+  - Understanding of your legal rights and the tenant's rights
+  - Ability to work effectively with the Rent Control Department
+
+Legal Note:
+This guide provides general information and does not constitute legal advice.
+For complex cases, disputes over amounts, or commercial evictions, consult a
+qualified Ghanaian legal practitioner. This guide is a supplement to legal
+advice, not a replacement.
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get the Guide — GHS 89"
+
+Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+Delivery Line: Instant download after payment
+
+Selar Tags:
+eviction Ghana, legal eviction Ghana, quit notice Ghana, Form 9 Ghana,
+Rent Control Department Ghana, rent magistrate Ghana, Act 220, L.I. 369,
+landlord guide Ghana, recover possession Ghana, PRC Ghana,
+property and rent consult, eviction ebook Ghana, landlord rights Ghana,
+Ghana eviction process, residential tenancy Ghana, rent dispute Ghana
+
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+PRODUCT 4 — RENT COLLECTION TRACKER (EXCEL WORKBOOK)
+═══════════════════════════════════════════════════════════════════════════════
+
+LANDLORD TIER — GHS 49
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Rent Collection Tracker — Ghana Edition (Landlord, Excel)
+
+Short Description:
+Stop chasing rent manually. Automated tracking with late fee calculations —
+works in Excel and Google Sheets. Built for Ghana landlords.
+
+Full Description:
+Tracking rent manually means missing late payments, forgetting who owes what,
+and having no paper trail when disputes arise. This workbook automates the
+math so you can focus on collecting.
+
+What It Automates:
+✔ Payment status (Paid / Partial / Unpaid) — updates automatically
+✔ Days overdue — calculated from the due date you set per tenant
+✔ Late fee — calculates automatically after your grace period expires
+✔ Total outstanding per tenant — rent + late fee
+✔ Colour coding — green (paid), amber (partial), red (unpaid)
+
+What's Inside:
+✔ 7 sheets: Setup · Tenant Register · Rent Roll · Arrears Register ·
+  Dashboard · Receipts Log · How to Use
+✔ Works in Microsoft Excel AND Google Sheets (full compatibility)
+✔ Completely offline — no internet, no cloud, no subscriptions
+✔ All your data stays on your computer — fully private
+
+How It Works:
+1. Fill the Setup sheet once with your grace period and late fee settings
+2. Add your tenants in the Tenant Register
+3. Each month, enter payments as they arrive on the Rent Roll
+4. Status, days late, and fees calculate automatically
+5. Check the Arrears Register for all unpaid accounts
+6. Use the Dashboard for a one-page summary
+
+Perfect For:
+• Landlords renting out 1–10 units
+• Property owners managing multiple tenants
+• Anyone struggling to track who paid what
+• Landlords who want to calculate late fees fairly and automatically
+
+The Problem This Solves:
+Without this tracker, landlords often:
+  - Lose track of partial payments
+  - Forget when rent is due for each tenant
+  - Calculate late fees manually (and inconsistently)
+  - Have no proof of arrears if disputes arise
+  - Spend hours on spreadsheets each month
+
+This Workbook Gets You:
+  - Automatic status updates (no manual cell-filling)
+  - Consistent late fee calculations
+  - A paper trail for all payments
+  - Arrears register (all unpaid accounts at a glance)
+  - Dashboard with monthly KPIs
+  - Peace of mind that nothing is forgotten
+
+Works In:
+✔ Microsoft Excel (Windows & Mac)
+✔ Google Sheets (100% compatible — just upload the .xlsx file)
+✔ Fully offline — no internet required
+✔ Works across devices (Excel desktop, web, mobile)
+
+Produced by Property and Rent Consult.
+
+Website Button:
+- Button Text: "Get Landlord — GHS 49"
+
+Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+Delivery Line: Instant download after payment
+
+Selar Tags:
+rent collection tracker Ghana, rent arrears Ghana, late fee calculator Ghana,
+rent Excel Ghana, landlord Excel Ghana, Google Sheets rent Ghana,
+property management Ghana, PRC Ghana, property and rent consult,
+automated rent tracking Ghana, rent ledger Ghana, payment tracker Ghana,
+Ghana landlord tools, rental management Excel
+
+---
+
+MANAGER TIER — GHS 99
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Rent Collection Tracker — Ghana Edition (Manager, Unlimited)
+
+Short Description:
+Unlimited tenants and properties with property-by-property dashboard and
+step-by-step PDF guide — the complete rent tracking system for managers.
+
+Full Description:
+Everything in Landlord tier, with no property or tenant limits.
+
+What It Adds:
+✔ Unlimited tenants and unlimited properties
+✔ Property breakdown dashboard — see collected vs outstanding per property
+✔ "How to Use" guide sheet built into the workbook
+✔ PRC-Rent-Tracker-Guide.pdf (12-page illustrated PDF with screenshots)
+
+Perfect For:
+• Property managers overseeing multiple buildings
+• Letting agents managing dozens of properties
+• Real estate companies with large tenant bases
+• Organizations needing a centralized rent tracking system
+
+Produced by Property and Rent Consult.
+
+Website Button:
+- Button Text: "Get Manager — GHS 99"
+
+Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+Delivery Line: Instant download after payment
+
+Selar Tags:
+property manager tools Ghana, rent collection software Ghana, letting agent
+tracker, property portfolio management, automated rent tracking Ghana,
+multi-property rent management, Ghana property manager Excel
+
+---
+
+PORTFOLIO TIER — GHS 179
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Rent Collection Tracker — Ghana Edition (Portfolio, Complete Bundle)
+
+Short Description:
+The complete rent tracking bundle — Excel workbook, PDF guide, and 5 branded
+WhatsApp cards for property management companies.
+
+Full Description:
+Everything in Manager tier, plus:
+
+✔ WhatsApp Image Set — 5 branded cards:
+  - Cover card: "Automated Rent Collection Tracking — Ghana Edition"
+  - Features card: What the tracker automates (5 items)
+  - Late fee explanation: Visual step-by-step process
+  - Excel vs Google Sheets: How to use in both platforms
+  - CTA card: Pricing (Landlord / Manager / Portfolio) with Selar link
+  - 1080×1350px PNG files, ready to share
+
+Perfect For:
+• Property management companies with in-house teams
+• Real estate firms marketing their services
+• Landlords building a management business
+• Organizations wanting branded tools for clients
+
+Produced by Property and Rent Consult.
+
+Website Button:
+- Button Text: "Get Portfolio — GHS 179"
+
+Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+Delivery Line: Instant download after payment
+
+Selar Tags:
+property management software Ghana, rent collection toolkit, property manager
+tools, automated rent tracking, landlord software Ghana, property management
+company tools, real estate software Ghana, PRC Ghana
+
+═══════════════════════════════════════════════════════════════════════════════
+GLOBAL MESSAGING
+
+About PRC:
+Property and Rent Consult provides practical, offline-first tools for landlords,
+property managers, and real estate professionals in Ghana. All products are
+built on three principles:
+
+1. Privacy: Your data stays on your computer. No cloud, no servers, no snooping.
+2. Simplicity: Built for Ghana. No confusing jargon. Tools that work offline.
+3. Value: Affordable, one-time purchase. No subscriptions, no hidden fees.
+
+All products are produced in Ghana, for Ghana, and designed for Ghanaian
+property management challenges.
+
+Customer Support:
+Email: info@propertynrentconsult.homes
+Website: propertynrentconsult.homes
+
+Payment:
+All products are sold via Selar. We accept:
+• Mobile Money (Vodafone, MTN, AirtelTigo)
+• Debit Card
+• Credit Card
+• Selar Wallet
+
+Trust & Security:
+• Secure payment via Selar
+• Instant download after payment
+• No account required
+• No spam, no follow-up emails
+
+═══════════════════════════════════════════════════════════════════════════════

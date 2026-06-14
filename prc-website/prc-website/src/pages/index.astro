@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('knowledge', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const products = [
+  { code: 'PRC-TA-RES-01', name: 'Residential Tenancy Agreement', blurb: 'The clauses Act 220 expects, the protections most agreements miss.', href: '/products/residential-tenancy-agreement/' },
+  { code: 'PRC-LA-COM-01', name: 'Commercial Lease Agreement', blurb: 'Built for shops, offices, and mixed-use premises in Ghana.', href: '/products/' },
+  { code: 'PRC-OL-01', name: 'Tenancy Offer Letter', blurb: 'Set the terms in writing before the agreement is drawn.', href: '/products/' },
+];
+---
+<Base title="Get the tenancy right — before you sign it" description="Act 220-compliant tenancy documents, rent tools, and consultations for Ghanaian tenants, landlords, and property professionals.">
+
+  <!-- Hero -->
+  <section class="section hero">
+    <div class="wrap">
+      <span class="cite">Grounded in the Rent Act, 1963 (Act 220) · L.I. 369</span>
+      <h1>Get the tenancy right —<br/>before you sign it.</h1>
+      <p class="lede">PRC turns Ghana's rent and tenancy law into documents, tools, and guidance that hold up in practice. Built by chartered surveyors with frontline experience in rent administration — for tenants, landlords, and the professionals who serve them.</p>
+      <p>
+        <a class="btn btn-primary" href="/products/">Browse Documents</a>
+        <a class="btn btn-ghost" href="/services/">Book a Consultation</a>
+      </p>
+      <p class="small muted" style="font-style:italic;">Trusted Guidance in Property &amp; Tenancy</p>
+    </div>
+  </section>
+
+  <!-- Audience router -->
+  <section class="section" style="background: var(--tint);">
+    <div class="wrap">
+      <h2>Start where you stand.</h2>
+      <div class="grid grid-3">
+        <a class="card route" href="/knowledge/">
+          <span class="tag">I am a Tenant</span>
+          <h3>Know what the law lets a landlord ask of you — and what it doesn't.</h3>
+          <p class="small muted">Your rights on advance rent, notice, and repairs, in plain language.</p>
+        </a>
+        <a class="card route" href="/knowledge/">
+          <span class="tag">I am a Landlord</span>
+          <h3>Collect rent, increase it, and recover possession the lawful way.</h3>
+          <p class="small muted">Compliant agreements and step-by-step process guidance.</p>
+        </a>
+        <a class="card route" href="/knowledge/">
+          <span class="tag">I am a Professional</span>
+          <h3>Documentation standards that protect you and your principal.</h3>
+          <p class="small muted">For agents, caretakers, and property managers.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authority strip -->
+  <section class="section">
+    <div class="wrap">
+      <span class="cite">Why PRC is different</span>
+      <p class="lede" style="max-width: 800px;">Every PRC product is grounded in statutory authority — the Rent Act, 1963 (Act 220) and the Rent Regulations, 1964 (L.I. 369) — and shaped by genuine frontline experience in rent administration, valuation, and property management. You are not buying generic templates. You are buying documents and tools built by people who see, every working day, exactly where tenancies go wrong.</p>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section class="section" style="background: var(--ink); color: var(--paper);">
+    <div class="wrap">
+      <h2 style="color: var(--paper);">Documents that hold up.</h2>
+      <div class="grid grid-3">
+        {products.map(p => (
+          <div class="card">
+            <span class="tag">{p.code}</span>
+            <h3>{p.name}</h3>
+            <p class="small muted">{p.blurb}</p>
+            <a href={p.href}>View details →</a>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top: 1.5rem;"><a href="/products/" style="color: var(--paper);">See the full catalogue →</a></p>
+    </div>
+  </section>
+
+  <!-- Knowledge Hub teaser -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Learn it before you need it.</h2>
+      <p class="muted" style="max-width: 680px;">Practical, statute-grounded answers to the questions Ghanaian tenants and landlords actually ask — published in the PRC Knowledge Hub.</p>
+      <div class="grid grid-3">
+        {articles.map(a => (
+          <a class="card route" href={`/knowledge/${a.slug}/`}>
+            <span class="tag">{a.data.topic}</span>
+            <h3 style="font-size: 1.1rem;">{a.data.title}</h3>
+            <p class="small muted">{a.data.description}</p>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top: 1.5rem;"><a href="/knowledge/">Visit the Knowledge Hub →</a></p>
+    </div>
+  </section>
+
+  <!-- Lead magnet -->
+  <section class="section" style="background: var(--tint);">
+    <div class="wrap">
+      <div class="grid grid-2" style="align-items: center;">
+        <div>
+          <span class="cite">Free download</span>
+          <h2>The Tenant's Rights Pocket Guide</h2>
+          <p class="muted">What your landlord can ask for, what they can't, and what to do when the line is crossed — Act 220, condensed to a guide you can read in ten minutes. Enter your email and it's yours.</p>
+        </div>
+        <form class="card" name="lead-magnet" method="POST" data-netlify="true" action="/free/tenant-rights-guide/">
+          <input type="hidden" name="form-name" value="lead-magnet" />
+          <label for="email">Email address</label>
+          <input id="email" type="email" name="email" required placeholder="you@example.com" />
+          <p><button class="btn btn-primary" type="submit">Send me the guide</button></p>
+          <p class="small muted">We send guidance, not noise. Unsubscribe any time. <a href="/privacy/">Privacy notice</a> applies.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation CTA -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Some situations need more than a template.</h2>
+      <p class="muted" style="max-width: 680px;">Rent assessment advisory. Tenancy documentation review. Landlord compliance audits. Dispute guidance. Written advice, fixed scope, transparent pricing — from PRC's consulting desk.</p>
+      <p>
+        <a class="btn btn-primary" href="/services/">Book a Consultation</a>
+        <a class="btn btn-ghost" href="https://wa.me/233000000000" rel="noopener">Chat on WhatsApp</a>
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .hero { padding-top: 4.5rem; }
+    .lede { font-size: 1.2rem; max-width: 680px; }
+    .route { text-decoration: none; display: block; transition: border-color .15s; }
+    .route:hover { border-color: var(--steel); }
+  </style>
+</Base>

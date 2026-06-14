@@ -1,0 +1,38 @@
+===============================================================
+PROPERTY AND RENT CONSULT
+PRC Utility Payment Tracker -- Ghana Edition
+Thank you for your purchase.
+===============================================================
+
+WHAT IS IN THIS PACKAGE
+---------------------------------------------------------
+  PRC-Utility-Tracker-Pro.html  -- The tracker app (unlimited tenants)
+  PRC-Utility-Tracker-User-Guide.pdf  -- Full user guide
+  PRC-READ-ME-FIRST.txt  -- This file
+
+HOW TO START
+---------------------------------------------------------
+1. Double-click the .html file. It opens in your browser.
+2. Click the gear icon (top-right) and enter your property details.
+3. Go to the Tenants tab and add your tenants.
+4. Go to Billing, select the current month, and start recording payments.
+
+Your data is saved automatically. No internet needed.
+
+PRINTING RECEIPTS
+---------------------------------------------------------
+After recording a payment, click "Print / Save PDF" in the receipt window.
+Choose "Save as PDF" in your browser's print dialog to save a PDF copy.
+
+SUPPORT
+---------------------------------------------------------
+Read the full User Guide (PDF) for detailed instructions and FAQ.
+For other queries, contact Property and Rent Consult at info@propertynrentconsult.com
+
+TERMS OF USE
+---------------------------------------------------------
+Licensed for personal and internal business use only.
+Do not resell, redistribute, or share this file.
+(c) 2026 Property and Rent Consult. All rights reserved.
+
+===============================================================

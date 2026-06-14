@@ -1,0 +1,113 @@
+PRC RENT COLLECTION TRACKER — LANDLORD TIER
+Ghana Edition | GHS 49
+© 2026 Property and Rent Consult
+
+═══════════════════════════════════════════════════════════════
+
+WELCOME!
+
+Thank you for purchasing the PRC Rent Collection Tracker. This Excel workbook
+automates rent tracking and late fee calculations for landlords and property
+managers in Ghana.
+
+═══════════════════════════════════════════════════════════════
+
+WHAT'S IN THIS FOLDER:
+
+• PRC-Rent-Tracker-Landlord.xlsx — The workbook (7 sheets)
+• PRC-READ-ME-FIRST.txt — This file
+
+═══════════════════════════════════════════════════════════════
+
+GET STARTED:
+
+1. Open the Excel file: PRC-Rent-Tracker-Landlord.xlsx
+
+2. Go to the SETUP sheet and fill in:
+   - Your grace period (default: 7 days)
+   - Late fee type (Fixed Amount or Percentage)
+   - Late fee amount
+   - Maximum cap (optional)
+
+3. Add your tenants in the TENANT REGISTER sheet
+
+4. Each month, go to RENT ROLL and enter:
+   - Period (YYYY-MM format)
+   - Date Paid and Amount Paid for each tenant
+   - Everything else calculates automatically
+
+5. Check ARREARS REGISTER for unpaid accounts
+
+6. Review DASHBOARD for monthly summary
+
+═══════════════════════════════════════════════════════════════
+
+KEY FEATURES:
+
+✓ Automated payment status (Paid / Partial / Unpaid)
+✓ Days overdue calculation (from due date)
+✓ Late fee calculation (after grace period expires)
+✓ Respects maximum late fee cap from Setup
+✓ Total outstanding per tenant (rent + late fee)
+✓ Arrears register (auto-pulled unpaid accounts)
+✓ Dashboard with monthly KPIs
+✓ Colour coding (green = paid, amber = partial, red = unpaid)
+
+═══════════════════════════════════════════════════════════════
+
+LANDLORD TIER DETAILS:
+
+• Supports up to 10 units
+• Single property
+• Perfect for individual landlords
+• Price: GHS 49
+
+═══════════════════════════════════════════════════════════════
+
+SYSTEM REQUIREMENTS:
+
+✓ Microsoft Excel 2016 or later
+✓ Google Sheets (import the .xlsx file)
+✓ Works on Windows, Mac, and iPad
+✓ All offline — no internet required
+✓ All your data stays on your computer
+
+═══════════════════════════════════════════════════════════════
+
+FREQUENTLY ASKED QUESTIONS:
+
+Q: Can I use this in Google Sheets?
+A: Yes. Upload the .xlsx file to Google Drive. All formulas and dropdowns
+   work identically.
+
+Q: What if I make an error — can I edit a payment?
+A: Yes. Simply update the Amount Paid or Date Paid cell. All calculations
+   recalculate automatically.
+
+Q: How do I archive old months?
+A: Copy the rows from the Rent Roll and paste into a separate "Archive"
+   sheet if desired. The tracker will always show the current month.
+
+Q: Can multiple people edit at the same time?
+A: Excel: No, one user at a time. Google Sheets: Yes, if you share the file.
+
+═══════════════════════════════════════════════════════════════
+
+SUPPORT & FEEDBACK:
+
+For questions:
+Email: info@propertynrentconsult.homes
+Website: propertynrentconsult.homes
+
+═══════════════════════════════════════════════════════════════
+
+COPYRIGHT & DISCLAIMER:
+
+© 2026 Property and Rent Consult
+This product is for purchaser use only. Not for resale.
+
+All rent calculations and late fee determinations are your responsibility.
+Property and Rent Consult is not liable for rent disputes or collection
+outcomes arising from use of this tool.
+
+═══════════════════════════════════════════════════════════════

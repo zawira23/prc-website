@@ -1,0 +1,110 @@
+SELAR LISTING COPY -- PRC UTILITY PAYMENT TRACKER
+==========================================================================
+
+LISTING 1 -- BASIC TIER
+==========================================================================
+Title: PRC Utility Payment Tracker -- Ghana Edition (Basic, up to 10 tenants)
+Price: GHS 49.00
+
+Short Description:
+Track electricity, water, and service charge payments for up to 10 tenants --
+generate numbered receipts instantly, see who has paid, runs offline on any device.
+
+Full Description:
+Do you know exactly which of your tenants paid their utilities last month?
+Can you produce a receipt for a specific payment from three months ago in under a minute?
+
+If not, the PRC Utility Payment Tracker is built for you.
+
+This is a self-contained browser application -- a single file you open in Chrome,
+Firefox, or any browser on your phone or computer. No installation. No subscription.
+No internet required after download.
+
+What it does:
++ Add up to 10 tenants with their unit, monthly electricity, water, and service charge amounts
++ Record payments month by month -- full payment, partial payment, or mark unpaid
++ Generate a numbered payment receipt (RCP-XXXXXXXX) for every transaction, instantly and automatically
++ Print or save receipts as PDF directly from your browser
++ View your full payment history -- searchable by tenant name, unit, status, or billing period
++ Dashboard shows total expected, collected, and outstanding for the current month
++ All data saved automatically on your device -- no cloud, no server, completely private
+
+What is inside the download:
++ PRC-Utility-Tracker-Basic.html -- the tracker app (open in any browser)
++ PRC-Utility-Tracker-User-Guide.pdf -- 10-page illustrated user guide
++ PRC-READ-ME-FIRST.txt -- quick-start instructions
+
+Under Ghanaian tenancy law (Rent Act, 1963 -- Act 220), landlords are required to issue receipts
+for payments received. This tracker makes that requirement effortless for every utility payment.
+
+Terms: Personal and internal business use only. Not for resale.
+Produced by Property and Rent Consult.
+
+==========================================================================
+LISTING 2 -- PRO TIER
+==========================================================================
+Title: PRC Utility Payment Tracker -- Ghana Edition (Pro, unlimited tenants)
+Price: GHS 99.00
+
+Short Description:
+Unlimited tenants, unlimited properties, full data export -- the complete utility payment
+tracking system for property managers and growing portfolios.
+
+Full Description:
+Everything in the Basic tier, with no limits.
+
+The Pro version removes the 10-tenant cap entirely and adds:
++ Unlimited tenants and units -- manage a 50-unit block or multiple properties in a single tracker
++ Property / Block field on each tenant -- organise tenants by building or property name
++ Export data button -- downloads all your tenants and payment records as a JSON file for backup
++ All features from Basic (receipts, history, dashboard, settings, print)
+
+What is inside the download:
++ PRC-Utility-Tracker-Pro.html -- the full Pro tracker (no tenant limit)
++ PRC-Utility-Tracker-User-Guide.pdf -- 10-page illustrated user guide
++ PRC-READ-ME-FIRST.txt -- quick-start instructions
+
+Produced by Property and Rent Consult.
+
+==========================================================================
+LISTING 3 -- AGENCY TIER
+==========================================================================
+Title: PRC Utility Payment Tracker -- Ghana Edition (Agency, Full Bundle)
+Price: GHS 179.00
+
+Short Description:
+The complete utility tracker bundle for property management companies -- unlimited tenants,
+Excel backup, WhatsApp image set, and the full Pro app.
+
+Full Description:
+Everything in Pro, plus three additional tools for property management teams.
+
+What is added in Agency:
++ PRC-Utility-Tracker-Pro.html -- the full Pro tracker (unlimited tenants)
++ PRC-Utility-Tracker-Backup-Template.xlsx -- a three-sheet Excel workbook:
+  Sheet 1 -- Tenant Register (all tenants and their amounts)
+  Sheet 2 -- Payment Log (all payments with conditional colour coding: green/red/amber by status)
+  Sheet 3 -- Monthly Summary (period-by-period collection overview)
++ WhatsApp Image Set -- 5 professionally designed 1080 x 1350px cards
++ PRC-Utility-Tracker-User-Guide.pdf -- full user guide
++ PRC-READ-ME-FIRST.txt -- quick-start instructions
+
+Produced by Property and Rent Consult.
+
+==========================================================================
+WEBSITE BUTTON COPY
+==========================================================================
+Basic button:   Get Basic -- GHS 49
+Pro button:     Get Pro -- GHS 99
+Agency button:  Get Agency -- GHS 179
+Trust line:     Secure payment via Selar, Mobile Money and Card accepted
+Delivery:       Instant download after payment -- works offline on any device
+
+==========================================================================
+SELAR TAGS
+==========================================================================
+utility tracker Ghana, landlord tools Ghana, rent receipt Ghana, payment tracker
+Ghana, electricity bill tracker, water bill tracker, service charge Ghana,
+property management Ghana, receipt generator Ghana, offline tool Ghana,
+property and rent consult, PRC Ghana, Act 220 receipt, tenant payment tracker,
+Ghana landlord app, utility payment record Ghana

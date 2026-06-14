@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRC Utility Payment Tracker — Ghana Edition</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:1.6;background:#F8F5F2;color:#2D2D2D}
+:root{--db:#36221C;--sb:#516984;--wg:#63645A;--ow:#F5EDE8;--lb:#E8EEF3;--wh:#fff;--paid-bg:#EAF3DE;--paid-c:#3B6D11;--unpaid-bg:#FCEBEB;--unpaid-c:#A32D2D;--partial-bg:#FAEEDA;--partial-c:#854F0B}
+
+/* HEADER */
+.app-header{background:var(--db);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;min-height:64px;position:sticky;top:0;z-index:100}
+.brand-block .brand-org{color:var(--wg);font-size:12px;letter-spacing:.04em}
+.brand-block .brand-name{color:#fff;font-weight:600;font-size:18px}
+.header-right{display:flex;align-items:center;gap:.75rem}
+.badge{background:var(--sb);color:#fff;font-size:11px;padding:.2rem .65rem;border-radius:20px;font-weight:500}
+.icon-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:.35rem .6rem;cursor:pointer;font-size:15px;display:flex;align-items:center;gap:.3rem}
+.icon-btn:hover{background:rgba(255,255,255,.1)}
+
+/* TABS */
+.tab-bar{background:#fff;border-bottom:1px solid #E0D8D4;display:flex;gap:0;padding:0 1.5rem}
+.tab-btn{padding:.85rem 1.2rem;background:none;border:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--wg);border-bottom:3px solid transparent;white-space:nowrap}
+.tab-btn.active{color:var(--db);border-bottom-color:var(--db)}
+.tab-btn:hover{color:var(--db)}
+
+/* MAIN */
+.main{max-width:1100px;margin:1.5rem auto;padding:0 1.5rem}
+.panel{display:none}.panel.active{display:block}
+
+/* CARDS */
+.card{background:#fff;border:1px solid #E0D8D4;border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+.card-title{font-weight:600;font-size:14px;color:var(--wg);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem}
+@media(max-width:600px){.metric-grid{grid-template-columns:1fr 1fr}}
+.metric-card{background:#fff;border:1px solid #E0D8D4;border-radius:12px;padding:1rem;text-align:center}
+.metric-label{font-size:12px;color:var(--wg);margin-bottom:.3rem}
+.metric-value{font-size:24px;font-weight:600;color:var(--db)}
+.metric-value.green{color:var(--paid-c)}
+.metric-value.red{color:var(--unpaid-c)}
+
+/* TABLES */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:var(--db);color:#fff;padding:.6rem .75rem;text-align:left;font-weight:500;font-size:13px;white-space:nowrap}
+td{padding:.55rem .75rem;border-bottom:1px solid #F0EBE7;vertical-align:middle}
+tr:nth-child(even) td{background:var(--ow)}
+tr:hover td{background:var(--lb)}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:3rem 1rem;color:var(--wg)}
+.empty-icon{font-size:2.5rem;margin-bottom:.75rem}
+.empty p{margin-bottom:1rem}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .9rem;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:.15s}
+.btn-primary{background:var(--db);color:#fff}.btn-primary:hover{opacity:.88}
+.btn-secondary{background:transparent;border:1px solid var(--sb);color:var(--sb)}.btn-secondary:hover{background:var(--lb)}
+.btn-success{background:#3B6D11;color:#fff}.btn-success:hover{opacity:.88}
+.btn-danger{background:transparent;border:1px solid #c0392b;color:#c0392b}.btn-danger:hover{background:#FCEBEB}
+.btn-sm{padding:.3rem .65rem;font-size:12px}
+.btn-icon{background:none;border:none;cursor:pointer;padding:.3rem;border-radius:6px;color:var(--sb);font-size:15px}
+.btn-icon:hover{background:var(--lb)}
+.btn-icon.red{color:#c0392b}.btn-icon.red:hover{background:#FCEBEB}
+
+/* STATUS PILLS */
+.pill{display:inline-block;padding:.2rem .65rem;border-radius:20px;font-size:12px;font-weight:600}
+.pill-paid{background:var(--paid-bg);color:var(--paid-c)}
+.pill-unpaid{background:var(--unpaid-bg);color:var(--unpaid-c)}
+.pill-partial{background:var(--partial-bg);color:var(--partial-c)}
+
+/* NOTICE BAR */
+.notice-bar{background:var(--sb);color:#fff;padding:.65rem 1rem;border-radius:8px;font-size:13px;margin-bottom:1rem}
+
+/* MODALS */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:12px;padding:1.5rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:17px;font-weight:600;color:var(--db);margin-bottom:1.25rem}
+.modal-actions{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+
+/* FORMS */
+.form-group{margin-bottom:1rem}
+label{display:block;font-size:13px;font-weight:500;color:var(--db);margin-bottom:.3rem}
+input,select,textarea{width:100%;padding:.55rem .75rem;border:1px solid #D0CCC8;border-radius:8px;font-size:14px;font-family:inherit;background:#fff}
+input:focus,select:focus{outline:2px solid var(--sb);border-color:var(--sb)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.form-note{font-size:12px;color:var(--wg);margin-top:.4rem}
+
+/* PERIOD BAR */
+.period-bar{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap}
+
+/* RECEIPT */
+.receipt-body{font-size:13px;line-height:1.7}
+.receipt-header-bar{background:var(--db);color:#fff;padding:.75rem 1rem;border-radius:8px 8px 0 0;text-align:center;margin:-1.5rem -1.5rem 1rem}
+.receipt-header-bar .r-org{font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+.receipt-header-bar .r-title{font-size:17px;font-weight:600}
+.receipt-no{text-align:center;font-size:12px;color:var(--wg);margin-bottom:1rem}
+.receipt-table{width:100%;border-collapse:collapse;margin:.75rem 0}
+.receipt-table td{padding:.35rem .5rem;font-size:13px}
+.receipt-table td:last-child{text-align:right;font-weight:500}
+.receipt-divider{border:none;border-top:1px solid #E0D8D4;margin:.5rem 0}
+.receipt-total td{font-weight:700;font-size:14px}
+.receipt-footer{text-align:center;font-size:11px;color:var(--wg);margin-top:1rem;padding-top:.75rem;border-top:1px solid #E0D8D4}
+
+/* SEARCH BAR */
+.search-bar{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.search-bar input,.search-bar select{flex:1;min-width:140px}
+
+/* SETTINGS */
+.settings-note{background:var(--lb);border-left:3px solid var(--sb);padding:.65rem .85rem;border-radius:0 8px 8px 0;font-size:13px;color:var(--db);margin-bottom:1rem}
+
+/* HEADER ROW */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+.section-header h2{font-size:16px;font-weight:600;color:var(--db)}
+
+@media(max-width:480px){.form-row{grid-template-columns:1fr}.modal{padding:1rem}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="brand-block">
+    <div class="brand-org">Property and Rent Consult</div>
+    <div class="brand-name">Utility Payment Tracker</div>
+  </div>
+  <div class="header-right">
+    <span class="badge">Ghana Edition</span>
+    <button class="icon-btn" onclick="openExport()" title="Export data">⬇ Export</button>
+    <button class="icon-btn" onclick="openSettings()" title="Settings">⚙ Settings</button>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('dashboard',this)">Dashboard</button>
+  <button class="tab-btn" onclick="switchTab('tenants',this)">Tenants</button>
+  <button class="tab-btn" onclick="switchTab('billing',this)">Billing</button>
+  <button class="tab-btn" onclick="switchTab('history',this)">Payment History</button>
+</nav>
+
+<main class="main">
+
+<!-- ═══ TAB: DASHBOARD ═══ -->
+<section id="tab-dashboard" class="panel active">
+  <div class="metric-grid" id="metrics-grid"></div>
+  <div class="card">
+    <div class="section-header">
+      <div class="card-title" id="outstanding-title">Outstanding payments</div>
+      <select id="dash-period" onchange="renderDashboard()" style="width:auto;padding:.3rem .6rem;font-size:13px"></select>
+    </div>
+    <div id="outstanding-body"></div>
+  </div>
+</section>
+
+<!-- ═══ TAB: TENANTS ═══ -->
+<section id="tab-tenants" class="panel">
+  <div class="card">
+    <div class="section-header">
+      <h2 id="tenant-count-label">Tenants</h2>
+      <button class="btn btn-primary" id="add-tenant-btn" onclick="openTenantModal(null)">+ Add tenant</button>
+    </div>
+    <div class="table-wrap">
+      <table id="tenant-table">
+        <thead><tr>
+          <th>Tenant / Unit</th><th>Electricity (GHS)</th><th>Water (GHS)</th>
+          <th>Service Charge (GHS)</th><th>Total/Month</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="tenant-tbody"></tbody>
+      </table>
+    </div>
+    <div id="tenant-empty" class="empty" style="display:none">
+      <div class="empty-icon">🏠</div>
+      <p>No tenants yet. Add your first tenant to get started.</p>
+      <button class="btn btn-primary" onclick="openTenantModal(null)">+ Add tenant</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TAB: BILLING ═══ -->
+<section id="tab-billing" class="panel">
+  <div class="card">
+    <div class="period-bar">
+      <input type="month" id="billing-period" style="width:180px">
+      <button class="btn btn-primary" onclick="loadBillingPeriod()">Load period</button>
+    </div>
+    <div class="notice-bar">Select a billing period, then record each tenant's payment status. A receipt is generated automatically after each payment.</div>
+    <div class="table-wrap">
+      <table id="billing-table" style="display:none">
+        <thead><tr>
+          <th>Tenant / Unit</th><th>Electricity</th><th>Water</th>
+          <th>Service Charge</th><th>Total</th><th>Status</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="billing-tbody"></tbody>
+      </table>
+    </div>
+    <div id="billing-empty" class="empty">
+      <div class="empty-icon">📅</div>
+      <p>Select a billing period above and click 'Load period' to see your tenants and record payments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TAB: HISTORY ═══ -->
+<section id="tab-history" class="panel">
+  <div class="card">
+    <div class="search-bar">
+      <input type="search" id="hist-search" placeholder="Search tenant or unit…" oninput="renderHistory()">
+      <select id="hist-status" onchange="renderHistory()">
+        <option value="">All statuses</option>
+        <option>paid</option><option>unpaid</option><option>partial</option>
+      </select>
+      <select id="hist-period" onchange="renderHistory()"><option value="">All periods</option></select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Tenant / Unit</th><th>Period</th><th>Elec</th><th>Water</th>
+          <th>Svc Chg</th><th>Total</th><th>Paid</th><th>Status</th>
+          <th>Date Paid</th><th>Method</th><th>Receipt</th>
+        </tr></thead>
+        <tbody id="history-tbody"></tbody>
+      </table>
+    </div>
+    <div id="history-empty" class="empty" style="display:none">
+      <div class="empty-icon">📋</div>
+      <p>No payment records yet. Records appear here after you record payments in the Billing tab.</p>
+    </div>
+    <div id="history-no-results" class="empty" style="display:none">
+      <p>No records match your search. Try a different name, unit, or clear the filters.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════════ -->
+
+<!-- TENANT MODAL -->
+<div class="modal-overlay" id="tenant-modal">
+  <div class="modal">
+    <div class="modal-title" id="tenant-modal-title">Add tenant</div>
+    <input type="hidden" id="edit-tenant-id">
+    <div class="form-row">
+      <div class="form-group"><label>Full name *</label><input id="t-name" placeholder="e.g. Kwame Asante"></div>
+      <div class="form-group"><label>Unit / Room *</label><input id="t-unit" placeholder="e.g. Flat 3B"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Phone</label><input id="t-phone" placeholder="0XX XXX XXXX"></div>
+      <div class="form-group"><label>Tenancy start</label><input type="month" id="t-start"></div>
+    </div>
+    <div class="form-group"><label>Property / Block</label><input id="t-property" placeholder="e.g. Block A, Legon Hills"></div>
+    <div class="form-row">
+      <div class="form-group"><label>Electricity (GHS)</label><input type="number" id="t-elec" min="0" step="0.01" value="0"></div>
+      <div class="form-group"><label>Water (GHS)</label><input type="number" id="t-water" min="0" step="0.01" value="0"></div>
+    </div>
+    <div class="form-group"><label>Service Charge (GHS)</label><input type="number" id="t-svc" min="0" step="0.01" value="0"></div>
+    <div class="form-note">These are the fixed monthly amounts charged to this tenant. Edit them any time — changes apply from the next billing period.</div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveTenant()">Save tenant</button>
+      <button class="btn btn-secondary" onclick="closeModal('tenant-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payment-modal">
+  <div class="modal">
+    <div class="modal-title" id="pay-modal-title">Record payment</div>
+    <input type="hidden" id="pay-tenant-id">
+    <input type="hidden" id="pay-period">
+    <input type="hidden" id="pay-is-partial">
+    <div class="card" style="background:var(--lb);margin-bottom:1rem;padding:.85rem">
+      <div id="pay-summary"></div>
+    </div>
+    <div class="form-group" id="partial-amount-group" style="display:none">
+      <label>Amount received (GHS)</label>
+      <input type="number" id="pay-partial-amount" min="0" step="0.01" placeholder="0.00">
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Date paid</label><input type="date" id="pay-date"></div>
+      <div class="form-group"><label>Payment method</label>
+        <select id="pay-method">
+          <option>Mobile Money (MoMo)</option><option>Cash</option>
+          <option>Bank Transfer</option><option>Cheque</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Received by</label><input id="pay-received-by" placeholder="Staff member name (optional)"></div>
+    <div class="form-group"><label>Notes</label><input id="pay-notes" placeholder="Any additional information (optional)"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="confirmPayment()">Confirm payment</button>
+      <button class="btn btn-secondary" onclick="closeModal('payment-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- RECEIPT MODAL -->
+<div class="modal-overlay" id="receipt-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="receipt-body" id="receipt-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="printReceipt()">🖨 Print / Save PDF</button>
+      <button class="btn btn-secondary" onclick="closeModal('receipt-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal">
+    <div class="modal-title">⚙ Settings</div>
+    <div class="settings-note">This information appears on every receipt you generate.</div>
+    <div class="form-group"><label>Property / Company Name</label><input id="s-company" placeholder="e.g. Asante Properties"></div>
+    <div class="form-group"><label>Owner / Manager Name</label><input id="s-owner" placeholder="Your full name"></div>
+    <div class="form-group"><label>Address</label><input id="s-address" placeholder="Property or office address"></div>
+    <div class="form-group"><label>Phone</label><input id="s-phone" placeholder="0XX XXX XXXX"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveSettings()">Save settings</button>
+      <button class="btn btn-secondary" onclick="closeModal('settings-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  DATA LAYER
+// ═══════════════════════════════════════════════════════
+const IS_PRO = true; // Basic version sets this to false
+const MAX_TENANTS = IS_PRO ? Infinity : 10;
+
+const DB_TENANTS  = 'prc_tenants';
+const DB_PAYMENTS = 'prc_payments';
+const DB_SETTINGS = 'prc_settings';
+
+function load(key){ try{return JSON.parse(localStorage.getItem(key))||[]}catch{return []} }
+function loadObj(key){ try{return JSON.parse(localStorage.getItem(key))||{}}catch{return {}} }
+function save(key,val){ localStorage.setItem(key, JSON.stringify(val)) }
+
+function getTenants(){ return load(DB_TENANTS) }
+function getPayments(){ return load(DB_PAYMENTS) }
+function getSettings(){ return loadObj(DB_SETTINGS) }
+
+function uid(){ return Math.random().toString(36).slice(2,10).toUpperCase() }
+function rcpNo(){ return 'RCP-'+uid() }
+
+function ghs(n){ return 'GHS '+Number(n||0).toLocaleString('en-GH',{minimumFractionDigits:2,maximumFractionDigits:2}) }
+
+function todayStr(){
+  const d=new Date(); const y=d.getFullYear(); const m=String(d.getMonth()+1).padStart(2,'0'); const dd=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+function fmtDate(s){ if(!s) return '—'; const [y,m,d]=s.split('-'); return `${d}/${m}/${y}` }
+function fmtPeriod(s){ if(!s) return '—'; const [y,m]=s.split('-'); const months=['January','February','March','April','May','June','July','August','September','October','November','December']; return `${months[+m-1]} ${y}` }
+function currentPeriod(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` }
+
+// ═══════════════════════════════════════════════════════
+//  TAB NAVIGATION
+// ═══════════════════════════════════════════════════════
+function switchTab(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='dashboard') renderDashboard();
+  if(id==='tenants') renderTenants();
+  if(id==='history') renderHistory();
+}
+
+// ═══════════════════════════════════════════════════════
+//  DASHBOARD
+// ═══════════════════════════════════════════════════════
+function renderDashboard(){
+  const tenants = getTenants();
+  const payments = getPayments();
+
+  // Period selector
+  const sel = document.getElementById('dash-period');
+  const periods = [...new Set(payments.map(p=>p.period))].sort().reverse();
+  const curPeriod = currentPeriod();
+  const allPeriods = periods.includes(curPeriod)?periods:[curPeriod,...periods];
+  const selected = sel.value || curPeriod;
+  sel.innerHTML = allPeriods.map(p=>`<option value="${p}" ${p===selected?'selected':''}>${fmtPeriod(p)}</option>`).join('');
+  if(!sel.value) sel.value = curPeriod;
+
+  // Payments for this period
+  const periodPayments = payments.filter(p=>p.period===sel.value);
+  const paidIds = new Set(periodPayments.filter(p=>p.status==='paid').map(p=>p.tenantId));
+  const partialIds = new Set(periodPayments.filter(p=>p.status==='partial').map(p=>p.tenantId));
+
+  const totalTenants = tenants.length;
+  const paidCount = tenants.filter(t=>paidIds.has(t.id)).length;
+  const unpaidCount = tenants.filter(t=>!paidIds.has(t.id)&&!partialIds.has(t.id)).length;
+  const expected = tenants.reduce((s,t)=>s+(+t.elec||0)+(+t.water||0)+(+t.svc||0),0);
+  const collected = periodPayments.reduce((s,p)=>s+(+p.amountPaid||0),0);
+  const outstanding = expected - collected;
+
+  document.getElementById('metrics-grid').innerHTML = `
+    <div class="metric-card"><div class="metric-label">Total tenants</div><div class="metric-value">${totalTenants}</div></div>
+    <div class="metric-card"><div class="metric-label">Paid this period</div><div class="metric-value green">${paidCount}</div></div>
+    <div class="metric-card"><div class="metric-label">Unpaid this period</div><div class="metric-value red">${unpaidCount}</div></div>
+    <div class="metric-card"><div class="metric-label">Expected</div><div class="metric-value">${ghs(expected)}</div></div>
+    <div class="metric-card"><div class="metric-label">Collected</div><div class="metric-value green">${ghs(collected)}</div></div>
+    <div class="metric-card"><div class="metric-label">Outstanding</div><div class="metric-value red">${ghs(outstanding)}</div></div>
+  `;
+
+  document.getElementById('outstanding-title').textContent = `Outstanding payments — ${fmtPeriod(sel.value)}`;
+
+  const unpaid = tenants.filter(t=>{
+    const pp = periodPayments.find(p=>p.tenantId===t.id);
+    return !pp || pp.status==='unpaid' || pp.status==='partial';
+  });
+
+  if(unpaid.length===0){
+    document.getElementById('outstanding-body').innerHTML = `<div style="background:var(--paid-bg);color:var(--paid-c);padding:.75rem 1rem;border-radius:8px;font-size:14px;">✓ All tenants have paid for ${fmtPeriod(sel.value)}.</div>`;
+  } else {
+    document.getElementById('outstanding-body').innerHTML = `
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tenant</th><th>Unit</th><th>Total Due</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          ${unpaid.map(t=>{
+            const pp = periodPayments.find(p=>p.tenantId===t.id);
+            const status = pp?pp.status:'unpaid';
+            const total = (+t.elec||0)+(+t.water||0)+(+t.svc||0);
+            return `<tr>
+              <td>${esc(t.name)}</td><td>${esc(t.unit)}</td>
+              <td>${ghs(total)}</td>
+              <td><span class="pill pill-${status}">${status}</span></td>
+              <td><button class="btn btn-sm btn-success" onclick="openBillingFor('${t.id}','${sel.value}')">Record payment</button></td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table></div>`;
+  }
+}
+
+function openBillingFor(tenantId, period){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn')[2].classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-billing').classList.add('active');
+  document.getElementById('billing-period').value = period;
+  loadBillingPeriod();
+  setTimeout(()=>openPaymentModal(tenantId,period,false),200);
+}
+
+// ═══════════════════════════════════════════════════════
+//  TENANTS
+// ═══════════════════════════════════════════════════════
+function renderTenants(){
+  const tenants = getTenants();
+  const tbody = document.getElementById('tenant-tbody');
+  document.getElementById('tenant-count-label').textContent = `Tenants (${tenants.length})`;
+
+  const addBtn = document.getElementById('add-tenant-btn');
+  if(!IS_PRO && tenants.length >= MAX_TENANTS){
+    addBtn.disabled = true;
+    addBtn.title = 'Basic plan supports up to 10 tenants. Upgrade to Pro for unlimited tenants.';
+    addBtn.style.opacity = '.5';
+    addBtn.style.cursor = 'not-allowed';
+  } else {
+    addBtn.disabled = false; addBtn.title=''; addBtn.style.opacity=''; addBtn.style.cursor='';
+  }
+
+  if(tenants.length===0){
+    document.getElementById('tenant-empty').style.display='block';
+    tbody.innerHTML='';
+    document.querySelector('#tenant-table').style.display='none';
+    return;
+  }
+  document.getElementById('tenant-empty').style.display='none';
+  document.querySelector('#tenant-table').style.display='';
+
+  tbody.innerHTML = tenants.map(t=>{
+    const total = (+t.elec||0)+(+t.water||0)+(+t.svc||0);
+    return `<tr>
+      <td><strong>${esc(t.name)}</strong><br><small style="color:var(--wg)">${esc(t.unit)}${t.property?` · ${esc(t.property)}`:''}</small></td>
+      <td>${ghs(t.elec)}</td><td>${ghs(t.water)}</td><td>${ghs(t.svc)}</td>
+      <td><strong>${ghs(total)}</strong></td>
+      <td style="white-space:nowrap">
+        <button class="btn-icon" title="Edit" onclick="openTenantModal('${t.id}')">✏️</button>
+        <button class="btn-icon red" title="Delete" onclick="deleteTenant('${t.id}')">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function openTenantModal(id){
+  const tenants = getTenants();
+  const t = id ? tenants.find(x=>x.id===id) : null;
+  document.getElementById('tenant-modal-title').textContent = t ? 'Edit tenant' : 'Add tenant';
+  document.getElementById('edit-tenant-id').value = id||'';
+  document.getElementById('t-name').value    = t?t.name:'';
+  document.getElementById('t-unit').value    = t?t.unit:'';
+  document.getElementById('t-phone').value   = t?t.phone:'';
+  document.getElementById('t-start').value   = t?t.start:'';
+  document.getElementById('t-property').value= t?t.property:'';
+  document.getElementById('t-elec').value    = t?t.elec:0;
+  document.getElementById('t-water').value   = t?t.water:0;
+  document.getElementById('t-svc').value     = t?t.svc:0;
+  openModal('tenant-modal');
+}
+
+function saveTenant(){
+  const name = document.getElementById('t-name').value.trim();
+  const unit = document.getElementById('t-unit').value.trim();
+  if(!name||!unit){ alert('Name and Unit are required.'); return; }
+  const tenants = getTenants();
+  const id = document.getElementById('edit-tenant-id').value;
+  const obj = {
+    id: id||uid(), name, unit,
+    phone: document.getElementById('t-phone').value.trim(),
+    start: document.getElementById('t-start').value,
+    property: document.getElementById('t-property').value.trim(),
+    elec:  parseFloat(document.getElementById('t-elec').value)||0,
+    water: parseFloat(document.getElementById('t-water').value)||0,
+    svc:   parseFloat(document.getElementById('t-svc').value)||0,
+    createdAt: id?tenants.find(t=>t.id===id)?.createdAt||new Date().toISOString():new Date().toISOString()
+  };
+  if(id){
+    const i=tenants.findIndex(t=>t.id===id); if(i>-1) tenants[i]=obj;
+  } else {
+    if(!IS_PRO && tenants.length>=MAX_TENANTS){ alert('Basic plan supports up to 10 tenants. Upgrade to Pro.'); return; }
+    tenants.push(obj);
+  }
+  save(DB_TENANTS, tenants);
+  closeModal('tenant-modal');
+  renderTenants();
+}
+
+function deleteTenant(id){
+  if(!confirm('Delete this tenant? Their payment history will be kept.')) return;
+  const tenants = getTenants().filter(t=>t.id!==id);
+  save(DB_TENANTS, tenants);
+  renderTenants();
+}
+
+// ═══════════════════════════════════════════════════════
+//  BILLING
+// ═══════════════════════════════════════════════════════
+function loadBillingPeriod(){
+  const period = document.getElementById('billing-period').value;
+  if(!period){ alert('Please select a billing period.'); return; }
+  const tenants = getTenants();
+  const payments = getPayments();
+
+  if(tenants.length===0){
+    document.getElementById('billing-empty').innerHTML=`<div class="empty-icon">👥</div><p>No tenants found. Go to the Tenants tab to add your tenants before billing.</p>`;
+    document.getElementById('billing-table').style.display='none';
+    return;
+  }
+  document.getElementById('billing-empty').style.display='none';
+  document.getElementById('billing-table').style.display='';
+
+  const tbody = document.getElementById('billing-tbody');
+  tbody.innerHTML = tenants.map(t=>{
+    const p = payments.find(x=>x.tenantId===t.id&&x.period===period);
+    const total = (+t.elec||0)+(+t.water||0)+(+t.svc||0);
+    const status = p?p.status:'unpaid';
+    let actions = '';
+    if(status==='unpaid'){
+      actions=`<button class="btn btn-sm btn-success" onclick="openPaymentModal('${t.id}','${period}',false)">Mark paid</button>
+               <button class="btn btn-sm btn-secondary" style="margin-left:.4rem" onclick="openPaymentModal('${t.id}','${period}',true)">Partial</button>`;
+    } else if(status==='paid'){
+      actions=`<button class="btn-icon" title="View receipt" onclick="openReceiptById('${p.id}')">🧾</button>
+               <button class="btn btn-sm btn-danger" style="margin-left:.4rem" onclick="undoPayment('${p.id}','${period}')">Undo</button>`;
+    } else if(status==='partial'){
+      actions=`<button class="btn btn-sm btn-success" onclick="openPaymentModal('${t.id}','${period}',false)">Mark paid</button>
+               <button class="btn-icon" title="View receipt" style="margin-left:.4rem" onclick="openReceiptById('${p.id}')">🧾</button>`;
+    }
+    return `<tr>
+      <td><strong>${esc(t.name)}</strong><br><small style="color:var(--wg)">${esc(t.unit)}</small></td>
+      <td>${ghs(t.elec)}</td><td>${ghs(t.water)}</td><td>${ghs(t.svc)}</td>
+      <td><strong>${ghs(total)}</strong></td>
+      <td><span class="pill pill-${status}">${status}</span></td>
+      <td style="white-space:nowrap">${actions}</td>
+    </tr>`;
+  }).join('');
+}
+
+function openPaymentModal(tenantId, period, isPartial){
+  const tenants = getTenants();
+  const t = tenants.find(x=>x.id===tenantId);
+  if(!t) return;
+  const total = (+t.elec||0)+(+t.water||0)+(+t.svc||0);
+  document.getElementById('pay-tenant-id').value = tenantId;
+  document.getElementById('pay-period').value = period;
+  document.getElementById('pay-is-partial').value = isPartial?'1':'0';
+  document.getElementById('pay-modal-title').textContent = isPartial?'Record partial payment':'Record payment';
+  document.getElementById('pay-date').value = todayStr();
+  document.getElementById('pay-received-by').value='';
+  document.getElementById('pay-notes').value='';
+  document.getElementById('pay-method').value='Mobile Money (MoMo)';
+  const pg = document.getElementById('partial-amount-group');
+  pg.style.display = isPartial?'block':'none';
+  if(isPartial) document.getElementById('pay-partial-amount').value='';
+  document.getElementById('pay-summary').innerHTML=`
+    <div style="font-weight:600;margin-bottom:.5rem">${esc(t.name)} — ${esc(t.unit)}</div>
+    <div style="font-size:12px;color:var(--wg);margin-bottom:.5rem">${fmtPeriod(period)}</div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span>Electricity</span><span>${ghs(t.elec)}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span>Water</span><span>${ghs(t.water)}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span>Service Charge</span><span>${ghs(t.svc)}</span></div>
+    <hr style="margin:.5rem 0;border:none;border-top:1px solid #D0CCC8">
+    <div style="display:flex;justify-content:space-between;font-weight:700"><span>Total Due</span><span>${ghs(total)}</span></div>
+  `;
+  openModal('payment-modal');
+}
+
+function confirmPayment(){
+  const tenantId = document.getElementById('pay-tenant-id').value;
+  const period   = document.getElementById('pay-period').value;
+  const isPartial= document.getElementById('pay-is-partial').value==='1';
+  const tenants  = getTenants();
+  const t = tenants.find(x=>x.id===tenantId);
+  if(!t) return;
+  const total = (+t.elec||0)+(+t.water||0)+(+t.svc||0);
+  let amountPaid = total;
+  if(isPartial){
+    amountPaid = parseFloat(document.getElementById('pay-partial-amount').value)||0;
+    if(amountPaid<=0){ alert('Please enter the amount received.'); return; }
+    if(amountPaid>total){ alert('Amount received cannot exceed total due.'); return; }
+  }
+  const status = amountPaid>=total?'paid':'partial';
+  const payments = getPayments().filter(p=>!(p.tenantId===tenantId&&p.period===period));
+  const newPayment = {
+    id: uid(), receiptNo: rcpNo(), tenantId, period, status,
+    totalDue: total, amountPaid,
+    datePaid: document.getElementById('pay-date').value,
+    method: document.getElementById('pay-method').value,
+    receivedBy: document.getElementById('pay-received-by').value.trim(),
+    notes: document.getElementById('pay-notes').value.trim(),
+    elec: +t.elec||0, water: +t.water||0, svc: +t.svc||0,
+    tenantName: t.name, tenantUnit: t.unit, tenantProperty: t.property||'',
+    createdAt: new Date().toISOString()
+  };
+  payments.push(newPayment);
+  save(DB_PAYMENTS, payments);
+  closeModal('payment-modal');
+  loadBillingPeriod();
+  openReceiptById(newPayment.id);
+}
+
+function undoPayment(id, period){
+  if(!confirm('Remove this payment record? This cannot be undone.')) return;
+  const payments = getPayments().filter(p=>p.id!==id);
+  save(DB_PAYMENTS, payments);
+  loadBillingPeriod();
+}
+
+// ═══════════════════════════════════════════════════════
+//  RECEIPT
+// ═══════════════════════════════════════════════════════
+let _currentReceipt = null;
+
+function openReceiptById(id){
+  const p = getPayments().find(x=>x.id===id);
+  if(!p) return;
+  _currentReceipt = p;
+  const s = getSettings();
+  const company = s.company||'Property and Rent Consult';
+  const owner   = s.owner||'Property and Rent Consult';
+  const balance = (+p.totalDue||0)-(+p.amountPaid||0);
+  document.getElementById('receipt-body').innerHTML=`
+    <div class="receipt-header-bar">
+      <div class="r-org">${esc(company)}</div>
+      <div class="r-title">UTILITY PAYMENT RECEIPT</div>
+      <div class="r-org">Ghana Edition</div>
+    </div>
+    <div class="receipt-no">${esc(p.receiptNo)}</div>
+    <table class="receipt-table">
+      <tr><td>Date Issued</td><td>${fmtDate(p.datePaid||todayStr())}</td></tr>
+      <tr><td>Tenant</td><td>${esc(p.tenantName||'')}</td></tr>
+      <tr><td>Unit / Room</td><td>${esc(p.tenantUnit||'')}</td></tr>
+      ${p.tenantProperty?`<tr><td>Property</td><td>${esc(p.tenantProperty)}</td></tr>`:''}
+      <tr><td>Billing Period</td><td>${fmtPeriod(p.period)}</td></tr>
+    </table>
+    <hr class="receipt-divider">
+    <table class="receipt-table">
+      <tr><td>Electricity</td><td>${ghs(p.elec)}</td></tr>
+      <tr><td>Water</td><td>${ghs(p.water)}</td></tr>
+      <tr><td>Service Charge</td><td>${ghs(p.svc)}</td></tr>
+    </table>
+    <hr class="receipt-divider">
+    <table class="receipt-table">
+      <tr><td>Total Due</td><td>${ghs(p.totalDue)}</td></tr>
+      <tr class="receipt-total"><td>Amount Paid</td><td>${ghs(p.amountPaid)}</td></tr>
+      ${balance>0?`<tr><td style="color:var(--unpaid-c)">Balance Remaining</td><td style="color:var(--unpaid-c)">${ghs(balance)}</td></tr>`:''}
+    </table>
+    <hr class="receipt-divider">
+    <table class="receipt-table">
+      <tr><td>Payment Method</td><td>${esc(p.method||'')}</td></tr>
+      <tr><td>Date Paid</td><td>${fmtDate(p.datePaid)}</td></tr>
+      ${p.receivedBy?`<tr><td>Received By</td><td>${esc(p.receivedBy)}</td></tr>`:''}
+      ${p.notes?`<tr><td>Notes</td><td>${esc(p.notes)}</td></tr>`:''}
+      <tr><td>Status</td><td><span class="pill pill-${p.status}">${p.status}</span></td></tr>
+    </table>
+    ${owner?`<div style="text-align:right;font-size:12px;color:var(--wg);margin-top:.5rem">Issued by: ${esc(owner)}</div>`:''}
+    <div class="receipt-footer">This receipt is computer-generated by the PRC Utility Payment Tracker.<br>Retain for your records. © 2026 Property and Rent Consult.</div>
+  `;
+  openModal('receipt-modal');
+}
+
+function printReceipt(){
+  if(!_currentReceipt) return;
+  const p = _currentReceipt;
+  const s = getSettings();
+  const company = s.company||'Property and Rent Consult';
+  const owner   = s.owner||'Property and Rent Consult';
+  const addr    = s.address||'';
+  const phone   = s.phone||'';
+  const balance = (+p.totalDue||0)-(+p.amountPaid||0);
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Receipt ${p.receiptNo}</title>
+<style>
+@page{size:A4;margin:1.5cm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;font-size:11pt;color:#2D2D2D;background:#fff}
+.header{background:#36221C;color:#fff;padding:1rem 1.5rem;text-align:center;margin-bottom:1.5rem}
+.header .org{font-size:9pt;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+.header .title{font-size:16pt;font-weight:700;margin:.2rem 0}
+.rcp-no{text-align:center;font-size:9pt;color:#63645A;margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;margin:.5rem 0}
+td{padding:.35rem .5rem;font-size:10pt}
+td:last-child{text-align:right;font-weight:500}
+.divider{border:none;border-top:1px solid #E0D8D4;margin:.5rem 0}
+.total td{font-weight:700;font-size:11pt}
+.pill{display:inline-block;padding:.15rem .5rem;border-radius:20px;font-size:9pt;font-weight:600}
+.pill-paid{background:#EAF3DE;color:#3B6D11}
+.pill-partial{background:#FAEEDA;color:#854F0B}
+.footer{text-align:center;font-size:8pt;color:#63645A;margin-top:2rem;padding-top:.75rem;border-top:1px solid #E0D8D4}
+.co-block{font-size:9pt;text-align:right;color:#63645A;margin-bottom:1rem}
+</style></head><body>
+<div class="header"><div class="org">${esc(company)}</div><div class="title">UTILITY PAYMENT RECEIPT</div><div class="org">Ghana Edition</div></div>
+${addr||phone?`<div class="co-block">${addr?esc(addr)+'<br>':''}${phone?esc(phone):''}</div>`:''}
+<div class="rcp-no">${esc(p.receiptNo)}</div>
+<table>
+  <tr><td>Date Issued</td><td>${fmtDate(p.datePaid||todayStr())}</td></tr>
+  <tr><td>Tenant</td><td>${esc(p.tenantName||'')}</td></tr>
+  <tr><td>Unit / Room</td><td>${esc(p.tenantUnit||'')}</td></tr>
+  ${p.tenantProperty?`<tr><td>Property</td><td>${esc(p.tenantProperty)}</td></tr>`:''}
+  <tr><td>Billing Period</td><td>${fmtPeriod(p.period)}</td></tr>
+</table>
+<hr class="divider">
+<table>
+  <tr><td>Electricity</td><td>${ghs(p.elec)}</td></tr>
+  <tr><td>Water</td><td>${ghs(p.water)}</td></tr>
+  <tr><td>Service Charge</td><td>${ghs(p.svc)}</td></tr>
+</table>
+<hr class="divider">
+<table>
+  <tr><td>Total Due</td><td>${ghs(p.totalDue)}</td></tr>
+  <tr class="total"><td>Amount Paid</td><td>${ghs(p.amountPaid)}</td></tr>
+  ${balance>0?`<tr><td style="color:#A32D2D">Balance Remaining</td><td style="color:#A32D2D">${ghs(balance)}</td></tr>`:''}
+</table>
+<hr class="divider">
+<table>
+  <tr><td>Payment Method</td><td>${esc(p.method||'')}</td></tr>
+  <tr><td>Date Paid</td><td>${fmtDate(p.datePaid)}</td></tr>
+  ${p.receivedBy?`<tr><td>Received By</td><td>${esc(p.receivedBy)}</td></tr>`:''}
+  ${p.notes?`<tr><td>Notes</td><td>${esc(p.notes)}</td></tr>`:''}
+  <tr><td>Status</td><td><span class="pill pill-${p.status}">${p.status}</span></td></tr>
+</table>
+${owner?`<div style="text-align:right;font-size:9pt;color:#63645A;margin-top:.5rem">Issued by: ${esc(owner)}</div>`:''}
+<div class="footer">This receipt is computer-generated by the PRC Utility Payment Tracker. Retain for your records.<br>© 2026 Property and Rent Consult.</div>
+</body></html>`;
+  const w = window.open('','_blank');
+  w.document.write(html); w.document.close();
+  setTimeout(()=>w.print(),400);
+}
+
+// ═══════════════════════════════════════════════════════
+//  HISTORY
+// ═══════════════════════════════════════════════════════
+function renderHistory(){
+  const payments = getPayments().sort((a,b)=>b.createdAt?.localeCompare(a.createdAt||'')||0);
+  const q = document.getElementById('hist-search').value.toLowerCase();
+  const st = document.getElementById('hist-status').value;
+  const per = document.getElementById('hist-period').value;
+
+  // Update period dropdown
+  const periods = [...new Set(payments.map(p=>p.period))].sort().reverse();
+  const selPer = document.getElementById('hist-period');
+  const curVal = selPer.value;
+  selPer.innerHTML='<option value="">All periods</option>'+periods.map(p=>`<option value="${p}" ${p===curVal?'selected':''}>${fmtPeriod(p)}</option>`).join('');
+
+  const filtered = payments.filter(p=>{
+    if(q && !p.tenantName?.toLowerCase().includes(q) && !p.tenantUnit?.toLowerCase().includes(q)) return false;
+    if(st && p.status!==st) return false;
+    if(per && p.period!==per) return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('history-tbody');
+  document.getElementById('history-empty').style.display = payments.length===0?'block':'none';
+  document.getElementById('history-no-results').style.display = payments.length>0&&filtered.length===0?'block':'none';
+
+  tbody.innerHTML = filtered.map(p=>`<tr>
+    <td><strong>${esc(p.tenantName||'')}</strong><br><small style="color:var(--wg)">${esc(p.tenantUnit||'')}</small></td>
+    <td>${fmtPeriod(p.period)}</td>
+    <td>${ghs(p.elec)}</td><td>${ghs(p.water)}</td><td>${ghs(p.svc)}</td>
+    <td>${ghs(p.totalDue)}</td><td>${ghs(p.amountPaid)}</td>
+    <td><span class="pill pill-${p.status}">${p.status}</span></td>
+    <td>${fmtDate(p.datePaid)}</td>
+    <td>${esc(p.method||'')}</td>
+    <td><button class="btn-icon" title="View receipt" onclick="openReceiptById('${p.id}')">🧾</button></td>
+  </tr>`).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+//  SETTINGS
+// ═══════════════════════════════════════════════════════
+function openSettings(){
+  const s = getSettings();
+  document.getElementById('s-company').value = s.company||'';
+  document.getElementById('s-owner').value   = s.owner||'';
+  document.getElementById('s-address').value = s.address||'';
+  document.getElementById('s-phone').value   = s.phone||'';
+  openModal('settings-modal');
+}
+function saveSettings(){
+  save(DB_SETTINGS, {
+    company: document.getElementById('s-company').value.trim(),
+    owner:   document.getElementById('s-owner').value.trim(),
+    address: document.getElementById('s-address').value.trim(),
+    phone:   document.getElementById('s-phone').value.trim()
+  });
+  closeModal('settings-modal');
+}
+
+// ═══════════════════════════════════════════════════════
+//  EXPORT (Pro only)
+// ═══════════════════════════════════════════════════════
+function openExport(){
+  const data = { tenants: getTenants(), payments: getPayments(), settings: getSettings(), exportedAt: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const today = todayStr();
+  a.href=url; a.download=`PRC-Tracker-Export-${today}.json`; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════════════════════
+//  MODAL HELPERS
+// ═══════════════════════════════════════════════════════
+function openModal(id){ document.getElementById(id).classList.add('open') }
+function closeModal(id){ document.getElementById(id).classList.remove('open') }
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open')}));
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+document.getElementById('billing-period').value = currentPeriod();
+renderDashboard();
+</script>
+
+<footer style="text-align:center;padding:2rem 1rem;font-size:12px;color:var(--wg)">
+  © 2026 Property and Rent Consult — For personal/internal business use only. Not for resale.
+</footer>
+</body>
+</html>

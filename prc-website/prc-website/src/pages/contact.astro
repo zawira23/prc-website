@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Contact" description="Contact Property and Rent Consult — email, form, or WhatsApp. We respond within one business day.">
+  <section class="section">
+    <div class="wrap">
+      <span class="cite">Get in touch</span>
+      <h1>Contact PRC</h1>
+      <div class="grid grid-2" style="margin-top:2rem; align-items:start;">
+        <form class="card" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <p><label for="name">Name</label><input id="name" name="name" required /></p>
+          <p><label for="email">Email</label><input id="email" type="email" name="email" required /></p>
+          <p><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></p>
+          <p><button class="btn btn-primary" type="submit">Send message</button></p>
+        </form>
+        <div class="card">
+          <h3 style="margin-top:0;">Direct lines</h3>
+          <p>Email: <a href="mailto:info@propertyandrentconsult.com">info@propertyandrentconsult.com</a></p>
+          <p>WhatsApp: <a href="https://wa.me/233000000000" rel="noopener">message the desk</a></p>
+          <p class="small muted">We respond within one business day. Directory corrections for the <a href="/resources/rent-control-offices/">Rent Control office directory</a> are welcome here too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

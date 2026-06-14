@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+const services = [
+  { name: 'Rent Assessment Advisory', desc: 'A written, evidence-based position on the rent your premises can lawfully and defensibly command — before you serve the notice.', price: 'From GHS [price]', time: '[X] business days' },
+  { name: 'Tenancy Documentation Review', desc: 'Your agreement, offer letter, or notice reviewed against Act 220 and Ghanaian practice, with marked-up corrections.', price: 'From GHS [price]', time: '[X] business days' },
+  { name: 'Landlord Compliance Audit', desc: 'A property-by-property review of your documentation, advance handling, receipts, and notice practices — with a remediation checklist.', price: 'From GHS [price]', time: '[X] business days' },
+  { name: 'Dispute Guidance', desc: 'Structured preparation of your file and position before you lodge or respond to a complaint — chronology, evidence, options.', price: 'From GHS [price]', time: '[X] business days' },
+];
+---
+<Base title="Consultations & Services" description="Written, fixed-scope advisory from PRC's consulting desk: rent assessment, documentation review, compliance audits, and dispute guidance for Ghana.">
+  <section class="section">
+    <div class="wrap">
+      <span class="cite">The consulting desk</span>
+      <h1>Some situations need more than a template.</h1>
+      <p class="muted" style="max-width:680px;">Written advice, fixed scope, transparent pricing. Send your situation; receive a scope and quote; get a written advisory you can act on.</p>
+
+      <div class="grid grid-2" style="margin-top:2rem;">
+        {services.map(s => (
+          <div class="card">
+            <h3>{s.name}</h3>
+            <p class="small muted">{s.desc}</p>
+            <p class="small"><strong>{s.price}</strong> · Turnaround: {s.time}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 style="margin-top:3rem;">How it works</h2>
+      <ol>
+        <li><strong>Send your situation</strong> — the form below or WhatsApp, with the documents you have.</li>
+        <li><strong>Receive a scope and quote</strong> — what we will deliver, by when, for how much.</li>
+        <li><strong>Written advisory delivered</strong> — a document you can keep, act on, and refer back to.</li>
+      </ol>
+
+      <div class="grid grid-2" style="margin-top:2rem; align-items:start;">
+        <form class="card" name="consultation" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="consultation" />
+          <p><label for="name">Name</label><input id="name" name="name" required /></p>
+          <p><label for="email">Email</label><input id="email" type="email" name="email" required /></p>
+          <p><label for="whatsapp">WhatsApp number</label><input id="whatsapp" name="whatsapp" /></p>
+          <p><label for="service">Service</label>
+            <select id="service" name="service">
+              {services.map(s => <option>{s.name}</option>)}
+              <option>Not sure yet</option>
+            </select></p>
+          <p><label for="brief">Briefly describe the situation</label><textarea id="brief" name="brief" rows="4"></textarea></p>
+          <p><button class="btn btn-primary" type="submit">Request a quote</button></p>
+        </form>
+        <div>
+          <div class="card" style="margin-bottom:1.25rem;">
+            <h3 style="margin-top:0;">Prefer WhatsApp?</h3>
+            <p class="small muted">Most clients do. Message the consulting desk directly and we'll take it from there.</p>
+            <a class="btn btn-ghost" href="https://wa.me/233000000000" rel="noopener">Chat on WhatsApp</a>
+          </div>
+          <div class="notice">
+            <strong>Scope of PRC's services.</strong> PRC advises and prepares documentation. PRC does not appear for or represent parties in Rent Control proceedings, and engagement of PRC confers no advantage in any matter before any Rent Control office. Content and advisories are professional guidance, not legal advice.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

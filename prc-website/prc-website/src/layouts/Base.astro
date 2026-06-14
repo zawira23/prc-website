@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+const { title, description = "Trusted guidance in property and tenancy — Act 220-compliant documents, tools, and advice for Ghana." } = Astro.props;
+const nav = [
+  { href: '/knowledge/', label: 'Knowledge Hub' },
+  { href: '/resources/', label: 'Resources' },
+  { href: '/products/', label: 'Digital Products' },
+  { href: '/services/', label: 'Consultations' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en-GH">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} | Property and Rent Consult</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={new URL(path, Astro.site)} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="/">
+        <span class="brand-mark">PRC</span>
+        <span class="brand-name">Property and Rent Consult</span>
+      </a>
+      <nav aria-label="Main">
+        {nav.map(n => (
+          <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>
+        ))}
+      </nav>
+    </div>
+    <hr class="rule-double" />
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <hr class="rule-double" />
+    <div class="wrap foot">
+      <div>
+        <p class="display" style="font-size:1.15rem; margin-bottom:.3rem;">Property and Rent Consult</p>
+        <p class="small muted">Trusted Guidance in Property &amp; Tenancy<br/>Accra, Ghana · <a href="mailto:info@propertyandrentconsult.com">info@propertyandrentconsult.com</a></p>
+      </div>
+      <div class="small">
+        <a href="/knowledge/">Knowledge Hub</a> · <a href="/resources/">Resources</a> · <a href="/products/">Products</a> · <a href="/services/">Consultations</a><br/>
+        <a href="/disclaimer/">Disclaimer</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="small muted" style="padding-bottom:1.5rem;">PRC provides general guidance and documentation; it does not represent parties in Rent Control proceedings adjudicated by its principals. Content on this site is general information, not legal advice. Statutory references: Rent Act, 1963 (Act 220); Rent Regulations, 1964 (L.I. 369).</p>
+    </div>
+  </footer>
+
+  <style>
+    .site-header { background: var(--paper); position: sticky; top: 0; z-index: 10; }
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: .9rem; padding-bottom: .9rem; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); }
+    .brand-mark { font-family: "Fraunces", Georgia, serif; font-weight: 600; background: var(--ink); color: var(--paper); padding: .15rem .5rem; border-radius: 2px; letter-spacing: .05em; }
+    .brand-name { font-weight: 700; font-size: .95rem; letter-spacing: .01em; }
+    nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+    nav a { font-size: .9rem; font-weight: 600; text-decoration: none; color: var(--grey); }
+    nav a:hover, nav a[aria-current="page"] { color: var(--ink); border-bottom: 2px solid var(--steel); }
+    .site-footer { margin-top: 4rem; }
+    .foot { display: flex; justify-content: space-between; gap: 2rem; padding: 2rem 1.25rem 1rem; flex-wrap: wrap; }
+  </style>
+</body>
+</html>

@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+// TODO: extend with the full 17-product catalogue across all categories; each product gets its own landing page.
+const categories = [
+  { name: 'Document Templates', items: [
+    { code: 'PRC-TA-RES-01', name: 'Residential Tenancy Agreement', blurb: 'The clauses Act 220 expects, the protections most agreements miss.', href: '/products/residential-tenancy-agreement/', price: 'GHS [price]' },
+    { code: 'PRC-LA-COM-01', name: 'Commercial Lease Agreement', blurb: 'Built for shops, offices, and mixed-use premises in Ghana.', href: '#', price: 'GHS [price]' },
+    { code: 'PRC-OL-01', name: 'Tenancy Offer Letter', blurb: 'Set the terms in writing before the agreement is drawn.', href: '#', price: 'GHS [price]' },
+  ]},
+  { name: 'Rent & Tenancy Tools', items: [] },
+  { name: 'Property Management Systems', items: [] },
+  { name: 'Advisory & Education', items: [] },
+];
+---
+<Base title="Digital Products" description="Act 220-compliant tenancy agreements, leases, notices, and property tools for Ghana — from Property and Rent Consult.">
+  <section class="section">
+    <div class="wrap">
+      <span class="cite">The PRC catalogue</span>
+      <h1>Documents and tools that hold up.</h1>
+      <p class="muted" style="max-width:680px;">Every product is grounded in the Rent Act, 1963 (Act 220) and L.I. 369, and shaped by frontline experience in rent administration, valuation, and property management.</p>
+      {categories.map(c => c.items.length > 0 && (
+        <div style="margin-top:2.5rem;">
+          <h2>{c.name}</h2>
+          <div class="grid grid-3">
+            {c.items.map(p => (
+              <div class="card">
+                <span class="tag">{p.code}</span>
+                <h3 style="font-size:1.1rem;">{p.name}</h3>
+                <p class="small muted">{p.blurb}</p>
+                <p><strong>{p.price}</strong></p>
+                <a href={p.href}>View details →</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="notice" style="margin-top:2.5rem; max-width:720px;">More products from the Rent &amp; Tenancy Tools, Property Management Systems, and Advisory &amp; Education categories are being added. <a href="/contact/">Ask about a product</a> or follow the Knowledge Hub for release notes.</div>
+    </div>
+  </section>
+</Base>

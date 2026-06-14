@@ -1,0 +1,383 @@
+SELAR LISTING COPY — PRC PRODUCTS 1 & 2
+Ghana Edition | Property and Rent Consult
+
+═══════════════════════════════════════════════════════════════════════════════
+PRODUCT 1 — MAINTENANCE REQUEST LOG
+═══════════════════════════════════════════════════════════════════════════════
+
+LANDLORD TIER — GHS 49
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Maintenance Request Log — Ghana Edition (Landlord)
+
+Short Description:
+Track every repair across your property — log requests, assign vendors, record
+costs, and monitor response times. Offline HTML app.
+
+Full Description:
+Every landlord eventually faces the question: "Did that plumber ever come back
+to fix the ceiling?" Without a system, you are relying on memory and WhatsApp
+threads that scroll out of reach.
+
+The PRC Maintenance Request Log gives you a simple, structured system for
+tracking every maintenance issue at your property — from the first report to
+the completed job.
+
+What it does:
+✓ Log maintenance requests with category, priority, description, and due date
+✓ Assign requests to specific vendors and track response times
+✓ Record estimated and actual costs per job
+✓ Auto-generate reference numbers (MR-2026-0001 format)
+✓ Dashboard shows open, in-progress, completed, and overdue jobs at a glance
+✓ Runs offline — open in any browser, no internet needed
+
+9 maintenance categories covered:
+Structural · Electrical · Plumbing · Roofing · Painting · Pest Control ·
+Security/Locks · Appliance · Compound/Drainage
+
+Perfect for:
+• Landlords managing 1 property
+• Property owners with up to 15 units
+• Anyone who needs a simple, offline maintenance tracker
+
+What's inside:
+✓ PRC-Maintenance-Log-Landlord.html (1 property, up to 15 units)
+✓ PRC-Maintenance-Log-Guide.pdf (8-section user guide)
+✓ PRC-READ-ME-FIRST.txt (quick start guide)
+
+System Requirements:
+• Any modern web browser (Chrome, Firefox, Safari, Edge)
+• Works offline — no internet required
+• All data stored locally on your computer
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Landlord — GHS 49"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+maintenance tracker Ghana, property repair log Ghana, vendor tracker Ghana,
+landlord tools Ghana, property management Ghana, maintenance request Ghana,
+PRC Ghana, property and rent consult, repair log Ghana, artisan tracker Ghana
+
+---
+
+MANAGER TIER — GHS 99
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Maintenance Request Log — Ghana Edition (Manager)
+
+Short Description:
+Unlimited properties, unlimited units — the complete maintenance tracking
+system for property managers and letting agents.
+
+Full Description:
+Everything in Landlord tier, with no property or unit limits. Built for
+professional property managers who oversee multiple buildings, blocks,
+or developments.
+
+What it adds:
+✓ Unlimited properties and units
+✓ Vendor directory with rating system and specialty categories
+✓ Track vendor performance metrics (response time, job count, average cost)
+✓ Export all data as JSON for backup and analysis
+✓ Full job history searchable by property, vendor, category, or date range
+✓ Advanced filtering and sorting across all tabs
+
+Perfect for:
+• Property managers overseeing multiple properties
+• Letting agents with multi-site portfolios
+• Real estate companies needing centralized maintenance tracking
+• Team collaboration (shared HTML file)
+
+What's inside:
+✓ PRC-Maintenance-Log-Manager.html (unlimited properties/units)
+✓ PRC-Maintenance-Log-Guide.pdf (8-section user guide)
+✓ PRC-READ-ME-FIRST.txt (quick start guide)
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Manager — GHS 99"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+property manager tools Ghana, maintenance tracker professional, letting agent
+software Ghana, property portfolio management, vendor management Ghana, PRC
+Ghana, property and rent consult
+
+---
+
+PORTFOLIO TIER — GHS 179
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+PRC Maintenance Request Log — Ghana Edition (Portfolio)
+
+Short Description:
+The full maintenance management bundle — HTML app, Excel log template, and
+WhatsApp cards for property management companies.
+
+Full Description:
+Everything in Manager tier, plus premium tools for teams and marketing.
+
+What it adds to Manager:
+✓ Excel Log Template (.xlsx) — 4 sheets with conditional formatting:
+  - Active Requests (with priority colour coding)
+  - Vendor Directory
+  - Cost Summary by month and category
+  - Request Log Archive
+✓ WhatsApp Image Set — 5 branded cards (1080×1350px, ready to share):
+  - Cover card with product tagline
+  - Features overview card
+  - 9 maintenance categories grid
+  - Response time importance explanation
+  - Pricing and call-to-action card
+✓ Branded README files
+✓ Password-protected Excel sheets (PRC2026)
+
+Use cases:
+• Share maintenance data with team members via Excel
+• Post WhatsApp marketing cards to promote your service
+• Track costs and budgets by property and maintenance type
+• Generate month-on-month cost reports
+• Present professional maintenance records to clients
+
+Perfect for:
+• Property management companies
+• Real estate firms with internal teams
+• Landlords wanting to expand their business
+• Organizations seeking client-facing reports
+
+What's inside:
+✓ PRC-Maintenance-Log-Manager.html (unlimited)
+✓ PRC-Maintenance-Log-Guide.pdf
+✓ PRC-Maintenance-Log-Template.xlsx (4 sheets, conditional formatting)
+✓ PRC-Maintenance-Card-1.png through Card-5.png (5 WhatsApp cards)
+✓ PRC-READ-ME-FIRST.txt
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Portfolio — GHS 179"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+property management software Ghana, landlord tools, maintenance management,
+real estate templates, property manager portfolio, WhatsApp marketing Ghana,
+PRC Ghana, property and rent consult
+
+═══════════════════════════════════════════════════════════════════════════════
+PRODUCT 2 — GHANA PROPERTY INSPECTION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+LANDLORD TIER — GHS 39
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+Ghana Property Inspection Checklist — PRC Edition (Landlord)
+
+Short Description:
+A 9-section, 60+ item property inspection checklist built for Ghana — fillable
+PDF covering structural, electrical, plumbing, pest, and more.
+
+Full Description:
+A proper inspection record protects both the landlord and the tenant. It
+documents the condition of the property at the start and end of every tenancy
+and provides evidence in any deposit or damage dispute.
+
+The Ghana Property Inspection Checklist covers every inspection type:
+Move-In | Routine | Move-Out | Pre-Letting
+
+9 sections, 60+ checklist items:
+✓ Structural Integrity (walls, roof, ceiling, floors, lintels)
+✓ Electrical Systems (distribution board, ECG meter, wiring, sockets)
+✓ Plumbing and Water Supply (storage tank, pressure, drainage, WC)
+✓ Doors and Windows (frames, louvres, security grilles, keys)
+✓ Kitchen (cabinets, sink, ventilation, gas installation)
+✓ Bathrooms and Toilets (tiles, WC, drainage, ventilation)
+✓ Pest and Environmental (termites, cockroaches, rodents, mould, asbestos note)
+✓ Compound and External Areas (gate, compound surface, lighting, generator)
+✓ Final Assessment (ratings, action lists, cost estimates, possession decision)
+
+Ghana-specific items included:
+• ECG/NEDCo meter seal check
+• Louvre blade inspection
+• Septic tank/soakaway condition
+• Asbestos risk flag (pre-1990 roofing)
+
+Perfect for:
+• Landlords renting out property
+• Agents handling tenant move-ins/move-outs
+• Property owners documenting pre-letting condition
+• Anyone needing a legal inspection record
+
+What's inside:
+✓ PRC-Property-Inspection-Checklist.pdf (fillable, type directly into the form)
+✓ PRC-READ-ME-FIRST.txt (quick start guide)
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Landlord — GHS 39"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+property inspection Ghana, inspection checklist Ghana, move-in checklist Ghana,
+landlord checklist Ghana, building inspection Ghana, structural inspection Ghana,
+PRC Ghana, property and rent consult, ECG meter check, Ghana housing inspection
+
+---
+
+MANAGER TIER — GHS 79
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+Ghana Property Inspection Checklist — PRC Edition (Manager)
+
+Short Description:
+Fillable PDF + interactive HTML app — inspect any property and generate a
+printable report in minutes.
+
+Full Description:
+Everything in Landlord tier, plus an interactive web-based inspection app
+that guides you through all 9 sections with step-by-step progress tracking.
+
+What it adds:
+✓ PRC-Property-Inspection-App.html — interactive inspection app with:
+  - 10-step guided form with progress indicator
+  - Condition ratings (Good/Fair/Poor/N/A) for every item
+  - Draft saves automatically — never lose a half-completed inspection
+  - Generate printable A4 inspection report at the end
+  - Save unlimited inspections with unique INSP-YYYY-NNNN IDs
+  - All offline, all private
+✓ Print-ready reports in A4 format
+✓ View and delete saved inspections
+✓ Search saved inspections by property or date
+
+Perfect for:
+• Property managers conducting inspections across multiple properties
+• Letting agents who need digital records
+• Organizations wanting paperless inspection workflows
+• Anyone needing to generate professional inspection reports
+
+What's inside:
+✓ PRC-Property-Inspection-Checklist.pdf (fillable PDF)
+✓ PRC-Property-Inspection-App.html (interactive web app)
+✓ PRC-READ-ME-FIRST.txt (quick start guide)
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Manager — GHS 79"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+property inspection app Ghana, digital inspection, interactive checklist Ghana,
+building inspection software, letting agent tools, property manager checklist,
+PRC Ghana, property and rent consult
+
+---
+
+PORTFOLIO TIER — GHS 139
+─────────────────────────────────────────────────────────────────────────────
+
+Title:
+Ghana Property Inspection Checklist — PRC Edition (Portfolio)
+
+Short Description:
+The complete inspection toolkit — fillable PDF, HTML app, Excel register, and
+WhatsApp cards for property management teams.
+
+Full Description:
+Everything in Manager tier, plus Excel tracking and WhatsApp marketing materials.
+
+What it adds to Manager:
+✓ Excel Inspection Register (.xlsx) — 3 sheets:
+  - Inspection Log (with overall rating colour coding and action tracking)
+  - Action Tracker (immediate/short/long-term tasks with deadlines and status)
+  - Cost Summary per property and period
+✓ WhatsApp Image Set — 5 branded cards (1080×1350px):
+  - Cover with product tagline
+  - 9-section coverage overview with icons
+  - Ghana-specific features highlighted
+  - Move-in/routine/move-out paper trail explanation
+  - Pricing and call-to-action card
+✓ Password-protected Excel sheets (PRC2026)
+✓ Professional README files
+
+Use cases:
+• Track inspection follow-ups in Excel
+• Share action items with contractors and team members
+• Post WhatsApp cards to market your inspection service
+• Generate period reports on property conditions
+• Maintain audit trail of all inspections
+
+Perfect for:
+• Property management companies
+• Real estate firms with multiple properties
+• Organizations seeking professional workflows
+• Landlords building a property management business
+
+What's inside:
+✓ PRC-Property-Inspection-Checklist.pdf (fillable)
+✓ PRC-Property-Inspection-App.html (interactive app)
+✓ PRC-Inspection-Register.xlsx (3 sheets, conditional formatting)
+✓ PRC-Inspection-Card-1.png through Card-5.png (5 WhatsApp cards)
+✓ PRC-READ-ME-FIRST.txt
+
+Produced by Property and Rent Consult.
+
+Website Buttons:
+- Button Text: "Get Portfolio — GHS 139"
+- Trust Line: Secure payment via Selar · Mobile Money & Card accepted
+- Delivery Line: Instant download after payment
+
+Selar Tags:
+property inspection toolkit Ghana, property management software, inspection
+register, letting agent tools, professional inspection, property audit Ghana,
+PRC Ghana, property and rent consult
+
+═══════════════════════════════════════════════════════════════════════════════
+
+GLOBAL MESSAGING
+
+About PRC (Property and Rent Consult):
+Property and Rent Consult provides practical, offline-first tools for landlords,
+property managers, and real estate professionals in Ghana. All our products are
+built around three principles:
+
+1. Privacy: Your data stays on your computer. No cloud, no servers, no snooping.
+2. Simplicity: Built for Ghana. No confusing jargon. Tools that work offline.
+3. Value: Affordable, one-time purchase. No subscriptions, no hidden fees.
+
+All products are produced in Ghana, for Ghana, and designed for the needs of
+Ghanaian property owners.
+
+Customer Support:
+Email: info@propertynrentconsult.homes
+Website: propertynrentconsult.homes
+
+Payment:
+All products are sold via Selar. We accept:
+• Mobile Money (Vodafone, MTN, AirtelTigo)
+• Debit Card
+• Credit Card
+• Selar Wallet
+
+Trust & Security:
+• Secure payment via Selar
+• Instant download after payment
+• 30-day satisfaction guarantee
+• No account required
+• No spam, no follow-up emails
+
+═══════════════════════════════════════════════════════════════════════════════

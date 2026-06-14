@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('knowledge', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const topics = ['Advance Rent', 'Agreements', 'Rent Control', 'Eviction', 'Compliance'];
+---
+<Base title="Knowledge Hub" description="Practical, statute-grounded guidance on rent and tenancy in Ghana — advance rent, agreements, Rent Control, eviction, and landlord compliance.">
+  <section class="section">
+    <div class="wrap">
+      <span class="cite">The PRC Knowledge Hub</span>
+      <h1>Ghana's practical library on rent and tenancy.</h1>
+      <p class="muted" style="max-width: 680px;">Statute-grounded answers to the questions tenants and landlords actually ask — written to be used, not admired.</p>
+      <p>{topics.map(t => <span class="tag" style="margin-right:.5rem;">{t}</span>)}</p>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {articles.map(a => (
+          <a class="card" style="text-decoration:none; display:block;" href={`/knowledge/${a.slug}/`}>
+            <span class="tag">{a.data.topic}</span>
+            <h3 style="font-size: 1.1rem; margin-top:.6rem;">{a.data.title}</h3>
+            <p class="small muted">{a.data.description}</p>
+            <p class="small muted">Last reviewed: {a.data.lastReviewed.toLocaleDateString('en-GH', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

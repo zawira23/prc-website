@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('knowledge');
+  return articles.map(a => ({ params: { slug: a.slug }, props: { article: a } }));
+}
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+<Base title={article.data.title} description={article.data.description}>
+  <article class="section">
+    <div class="wrap">
+      <span class="tag">{article.data.topic}</span>
+      <h1 style="max-width: 800px;">{article.data.title}</h1>
+      <p class="small muted">Published {article.data.pubDate.toLocaleDateString('en-GH', { year: 'numeric', month: 'long', day: 'numeric' })} · Last reviewed {article.data.lastReviewed.toLocaleDateString('en-GH', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      <div class="notice" style="max-width: 720px; margin: 1.25rem 0 2rem;">
+        This article is general information about Ghanaian rent and tenancy law, not legal advice. For guidance on your specific situation, <a href="/services/">book a consultation</a>.
+      </div>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>

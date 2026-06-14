@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRC Maintenance Request Log — Ghana Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: #F8F5F2;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background-color: #36221C;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-left h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .header-left p {
+            font-size: 13px;
+            color: #63645A;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .badge {
+            background-color: #516984;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid #E0D8D4;
+            padding: 0 24px;
+            gap: 32px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #36221C;
+            border-bottom-color: #36221C;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Metric cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #E0D8D4;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .metric-card h3 {
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .metric-card .value {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .metric-card.open .value { color: #F59E0B; }
+        .metric-card.progress .value { color: #516984; }
+        .metric-card.completed .value { color: #10B981; }
+        .metric-card.overdue .value { color: #EF4444; }
+        .metric-card.vendors .value { color: #516984; }
+        .metric-card.response .value { color: #516984; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E0D8D4;
+        }
+
+        thead {
+            background-color: #F8F5F2;
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            text-transform: uppercase;
+            border-bottom: 1px solid #E0D8D4;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #E0D8D4;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background-color: #F8F5F2;
+            cursor: pointer;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Pills */
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .pill.urgent { background-color: #FEE2E2; color: #EF4444; }
+        .pill.high { background-color: #FEF3C7; color: #F59E0B; }
+        .pill.normal { background-color: #DBEAFE; color: #516984; }
+        .pill.low { background-color: #E5E7EB; color: #666; }
+
+        .pill.open { background-color: #FEF3C7; color: #F59E0B; }
+        .pill.in-progress { background-color: #DBEAFE; color: #516984; }
+        .pill.completed { background-color: #DCFCE7; color: #10B981; }
+        .pill.cancelled { background-color: #E5E7EB; color: #666; }
+        .pill.overdue { background-color: #FEE2E2; color: #EF4444; }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #36221C;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2a1815;
+        }
+
+        .btn-primary:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            border: 1px solid #516984;
+            color: #516984;
+        }
+
+        .btn-secondary:hover {
+            background-color: #F0F4F8;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            color: #516984;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+        }
+
+        .btn-icon:hover {
+            color: #36221C;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+        }
+
+        .modal-content h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #36221C;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #E0D8D4;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #516984;
+            box-shadow: 0 0 0 3px rgba(81,105,132,0.1);
+        }
+
+        .required::after {
+            content: " *";
+            color: #EF4444;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        /* Header actions */
+        .tab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-header h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .count-badge {
+            background-color: #E0D8D4;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+
+        /* Search and filter */
+        .search-filter-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-filter-bar input,
+        .search-filter-bar select {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        /* Actions column */
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Settings panel */
+        .settings-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .settings-panel.active {
+            display: block;
+        }
+
+        .settings-panel h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #36221C;
+        }
+
+        .settings-panel .close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        /* Utility */
+        .hidden { display: none; }
+        .text-muted { color: #999; }
+        .text-truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 300px;
+        }
+
+        @media print {
+            .header, .tabs-container, .btn, .settings-btn {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .modal-content {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="header-left">
+        <h1>Maintenance Request Log</h1>
+        <p>Property and Rent Consult</p>
+    </div>
+    <div class="header-right">
+        <div class="badge">Ghana Edition</div>
+        <button class="settings-btn" id="settingsBtn">⚙️</button>
+    </div>
+</div>
+
+<!-- Settings Panel -->
+<div class="settings-panel" id="settingsPanel">
+    <button class="close" id="closeSettings">✕</button>
+    <h3>Settings</h3>
+    <div class="form-group">
+        <label>Company / Property Name</label>
+        <input type="text" id="companyName">
+    </div>
+    <div class="form-group">
+        <label>Owner / Manager Name</label>
+        <input type="text" id="ownerName">
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="companyAddress">
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" id="companyPhone">
+    </div>
+    <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+</div>
+
+<!-- Tabs -->
+<div class="tabs-container">
+    <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+    <button class="tab-btn" data-tab="requests">Requests</button>
+    <button class="tab-btn" data-tab="vendors">Vendors</button>
+    <button class="tab-btn" data-tab="properties">Properties</button>
+    <button class="tab-btn" data-tab="history">History</button>
+</div>
+
+<!-- Tab: Dashboard -->
+<div class="tab-content active" id="dashboard">
+    <h2 style="margin-bottom: 20px;">Dashboard</h2>
+    <div class="metrics-grid">
+        <div class="metric-card open">
+            <h3>Open Requests</h3>
+            <div class="value" id="openCount">0</div>
+        </div>
+        <div class="metric-card progress">
+            <h3>In Progress</h3>
+            <div class="value" id="progressCount">0</div>
+        </div>
+        <div class="metric-card completed">
+            <h3>Completed This Month</h3>
+            <div class="value" id="completedCount">0</div>
+        </div>
+        <div class="metric-card overdue">
+            <h3>Overdue</h3>
+            <div class="value" id="overdueCount">0</div>
+        </div>
+        <div class="metric-card vendors">
+            <h3>Total Vendors</h3>
+            <div class="value" id="vendorCount">0</div>
+        </div>
+        <div class="metric-card response">
+            <h3>Avg. Response Time (Days)</h3>
+            <div class="value" id="avgResponseTime">0</div>
+        </div>
+    </div>
+
+    <h3 style="margin: 30px 0 16px 0; font-size: 16px; font-weight: 500;">Open Requests</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Ref No.</th>
+                <th>Unit</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Reported</th>
+                <th>Due Date</th>
+                <th>Vendor</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="dashboardRequestsTable">
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab: Requests -->
+<div class="tab-content" id="requests">
+    <div class="tab-header">
+        <div>
+            <h2>Requests</h2>
+            <span class="count-badge"><span id="requestCount">0</span> total</span>
+        </div>
+        <button class="btn btn-primary" id="newRequestBtn">+ New Request</button>
+    </div>
+
+    <div class="search-filter-bar">
+        <input type="text" placeholder="Search by ref, unit..." id="requestSearch">
+        <select id="requestStatusFilter">
+            <option value="">All Status</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ref No.</th>
+                <th>Unit</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Reported</th>
+                <th>Due Date</th>
+                <th>Vendor</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="requestsTable">
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab: Vendors -->
+<div class="tab-content" id="vendors">
+    <div class="tab-header">
+        <div>
+            <h2>Vendors</h2>
+            <span class="count-badge"><span id="vendorCountBadge">0</span> total</span>
+        </div>
+        <button class="btn btn-primary" id="newVendorBtn">+ Add Vendor</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Trade / Specialty</th>
+                <th>Phone</th>
+                <th>WhatsApp</th>
+                <th>Rating</th>
+                <th>Jobs Done</th>
+                <th>Avg Response Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="vendorsTable">
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab: Properties -->
+<div class="tab-content" id="properties">
+    <div class="tab-header">
+        <div>
+            <h2>Properties</h2>
+            <span class="count-badge"><span id="propertyCountBadge">0</span> total</span>
+        </div>
+        <button class="btn btn-primary" id="newPropertyBtn" data-tooltip="Landlord plan supports 1 property. Upgrade to Manager for unlimited.">+ Add Property</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Property Name</th>
+                <th>Address</th>
+                <th>GPS</th>
+                <th>Units</th>
+                <th>Open Requests</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="propertiesTable">
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab: History -->
+<div class="tab-content" id="history">
+    <div class="tab-header">
+        <div>
+            <h2>Request History</h2>
+        </div>
+    </div>
+
+    <div class="search-filter-bar">
+        <input type="text" placeholder="Search by unit, vendor..." id="historySearch">
+        <select id="historyStatusFilter">
+            <option value="">All Status</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <input type="date" id="historyFromDate" placeholder="From Date">
+        <input type="date" id="historyToDate" placeholder="To Date">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ref No.</th>
+                <th>Unit</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Reported</th>
+                <th>Completed</th>
+                <th>Vendor</th>
+                <th>Status</th>
+                <th>Response Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="historyTable">
+        </tbody>
+    </table>
+</div>
+
+<!-- Modals -->
+<!-- Request Modal -->
+<div class="modal" id="requestModal">
+    <div class="modal-content">
+        <h2 id="requestModalTitle">New Request</h2>
+        <form id="requestForm">
+            <div class="form-group">
+                <label class="required">Property</label>
+                <select id="requestProperty" required>
+                    <option value="">Select Property</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="required">Unit / Room</label>
+                <input type="text" id="requestUnit" placeholder="e.g. Master Bedroom" required>
+            </div>
+            <div class="form-group">
+                <label>Reported by</label>
+                <input type="text" id="requestReportedBy" placeholder="Tenant name or 'Landlord'">
+            </div>
+            <div class="form-group">
+                <label class="required">Date Reported</label>
+                <input type="date" id="requestDateReported" required>
+            </div>
+            <div class="form-group">
+                <label class="required">Category</label>
+                <select id="requestCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="Structural">Structural</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Roofing">Roofing</option>
+                    <option value="Painting & Finishing">Painting & Finishing</option>
+                    <option value="Pest Control">Pest Control</option>
+                    <option value="Security/Locks">Security/Locks</option>
+                    <option value="Appliance">Appliance</option>
+                    <option value="Compound/Drainage">Compound/Drainage</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="required">Description</label>
+                <textarea id="requestDescription" placeholder="Full description of the problem" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="required">Priority</label>
+                <select id="requestPriority" required>
+                    <option value="Normal">Normal</option>
+                    <option value="Low">Low</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" id="requestDueDate">
+            </div>
+            <div class="form-group">
+                <label>Assigned Vendor</label>
+                <select id="requestVendor">
+                    <option value="">Unassigned</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Estimated Cost (GHS)</label>
+                <input type="number" id="requestEstimatedCost" min="0">
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <select id="requestStatus">
+                    <option value="Open">Open</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="form-group hidden" id="actualCostGroup">
+                <label>Actual Cost (GHS)</label>
+                <input type="number" id="requestActualCost" min="0">
+            </div>
+            <div class="form-group hidden" id="completedDateGroup">
+                <label class="required">Date Completed</label>
+                <input type="date" id="requestDateCompleted">
+            </div>
+            <div class="form-group">
+                <label>Internal Notes</label>
+                <textarea id="requestNotes" placeholder="Landlord notes"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Attachments Note</label>
+                <input type="text" id="requestAttachments" placeholder="e.g. photo-leak.jpg">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="closeRequestModal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Request</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Vendor Modal -->
+<div class="modal" id="vendorModal">
+    <div class="modal-content">
+        <h2 id="vendorModalTitle">Add Vendor</h2>
+        <form id="vendorForm">
+            <div class="form-group">
+                <label class="required">Vendor Name</label>
+                <input type="text" id="vendorName" required>
+            </div>
+            <div class="form-group">
+                <label class="required">Trade / Specialty</label>
+                <select id="vendorTrade" required>
+                    <option value="">Select Trade</option>
+                    <option value="Electrician">Electrician</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Mason / Bricklayer">Mason / Bricklayer</option>
+                    <option value="Carpenter">Carpenter</option>
+                    <option value="Painter">Painter</option>
+                    <option value="Pest Control">Pest Control</option>
+                    <option value="Roofer">Roofer</option>
+                    <option value="Tiler">Tiler</option>
+                    <option value="General Maintenance">General Maintenance</option>
+                    <option value="Security">Security</option>
+                    <option value="Appliance Repair">Appliance Repair</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="required">Phone</label>
+                <input type="text" id="vendorPhone" required>
+            </div>
+            <div class="form-group">
+                <label>WhatsApp Number</label>
+                <input type="text" id="vendorWhatsapp">
+            </div>
+            <div class="form-group">
+                <label>Address / Location</label>
+                <input type="text" id="vendorAddress" placeholder="Neighbourhood or area">
+            </div>
+            <div class="form-group">
+                <label>Rating (1-5)</label>
+                <select id="vendorRating">
+                    <option value="0">Not rated</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="vendorNotes" placeholder="Reliability, payment terms, etc."></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="closeVendorModal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Vendor</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Property Modal -->
+<div class="modal" id="propertyModal">
+    <div class="modal-content">
+        <h2 id="propertyModalTitle">Add Property</h2>
+        <form id="propertyForm">
+            <div class="form-group">
+                <label class="required">Property Name</label>
+                <input type="text" id="propertyName" placeholder="e.g. My Home" required>
+            </div>
+            <div class="form-group">
+                <label>Street Address</label>
+                <input type="text" id="propertyAddress">
+            </div>
+            <div class="form-group">
+                <label>Ghana Post GPS</label>
+                <input type="text" id="propertyGPS" placeholder="e.g. GHA-123-4567">
+            </div>
+            <div class="form-group">
+                <label>Nearest Landmark</label>
+                <input type="text" id="propertyLandmark">
+            </div>
+            <div class="form-group">
+                <label>Number of Units</label>
+                <input type="number" id="propertyUnits" min="1" max="15" placeholder="Max 15 units">
+            </div>
+            <div class="form-group">
+                <label>Property Type</label>
+                <select id="propertyType">
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Mixed Use">Mixed Use</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="propertyNotes"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="closePropertyModal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Property</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Request Detail Modal -->
+<div class="modal" id="detailModal">
+    <div class="modal-content">
+        <h2>Request Details</h2>
+        <div id="detailContent" style="margin-bottom: 20px;"></div>
+        <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="closeDetailModal">Close</button>
+            <button type="button" class="btn btn-primary" id="printDetailBtn">🖨️ Print</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const IS_LANDLORD = true;
+    const MAX_PROPERTIES = 1;
+    const MAX_UNITS = 15;
+
+    // Data Management
+    class MaintenanceLog {
+        constructor() {
+            this.requests = JSON.parse(localStorage.getItem('prc_maint_requests')) || [];
+            this.vendors = JSON.parse(localStorage.getItem('prc_maint_vendors')) || [];
+            this.properties = JSON.parse(localStorage.getItem('prc_maint_properties')) || [];
+            this.settings = JSON.parse(localStorage.getItem('prc_maint_settings')) || {
+                companyName: '',
+                ownerName: '',
+                address: '',
+                phone: ''
+            };
+            this.counter = parseInt(localStorage.getItem('prc_maint_counter')) || 0;
+        }
+
+        save() {
+            localStorage.setItem('prc_maint_requests', JSON.stringify(this.requests));
+            localStorage.setItem('prc_maint_vendors', JSON.stringify(this.vendors));
+            localStorage.setItem('prc_maint_properties', JSON.stringify(this.properties));
+            localStorage.setItem('prc_maint_settings', JSON.stringify(this.settings));
+            localStorage.setItem('prc_maint_counter', this.counter.toString());
+        }
+
+        generateRefNo() {
+            this.counter++;
+            const year = new Date().getFullYear();
+            return `MR-${year}-${this.counter.toString().padStart(4, '0')}`;
+        }
+
+        addRequest(data) {
+            const request = {
+                id: Date.now().toString(),
+                refNo: data.refNo || this.generateRefNo(),
+                propertyId: data.propertyId,
+                propertyName: data.propertyName,
+                unit: data.unit,
+                reportedBy: data.reportedBy,
+                dateReported: data.dateReported,
+                category: data.category,
+                description: data.description,
+                priority: data.priority,
+                dueDate: data.dueDate,
+                vendorId: data.vendorId,
+                vendorName: data.vendorName,
+                estimatedCost: parseFloat(data.estimatedCost) || 0,
+                actualCost: parseFloat(data.actualCost) || 0,
+                status: data.status || 'Open',
+                dateCompleted: data.dateCompleted,
+                responseTimeDays: data.responseTimeDays || 0,
+                notes: data.notes,
+                attachmentsNote: data.attachmentsNote,
+                createdAt: data.createdAt || new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+            this.requests.push(request);
+            this.save();
+            return request;
+        }
+
+        updateRequest(id, data) {
+            const idx = this.requests.findIndex(r => r.id === id);
+            if (idx !== -1) {
+                this.requests[idx] = { ...this.requests[idx], ...data, updatedAt: new Date().toISOString() };
+                this.save();
+                return this.requests[idx];
+            }
+        }
+
+        deleteRequest(id) {
+            this.requests = this.requests.filter(r => r.id !== id);
+            this.save();
+        }
+
+        addVendor(data) {
+            const vendor = {
+                id: Date.now().toString(),
+                name: data.name,
+                trade: data.trade,
+                phone: data.phone,
+                whatsapp: data.whatsapp,
+                address: data.address,
+                rating: parseInt(data.rating) || 0,
+                notes: data.notes,
+                createdAt: new Date().toISOString()
+            };
+            this.vendors.push(vendor);
+            this.save();
+            return vendor;
+        }
+
+        updateVendor(id, data) {
+            const idx = this.vendors.findIndex(v => v.id === id);
+            if (idx !== -1) {
+                this.vendors[idx] = { ...this.vendors[idx], ...data };
+                this.save();
+            }
+        }
+
+        deleteVendor(id) {
+            this.vendors = this.vendors.filter(v => v.id !== id);
+            this.save();
+        }
+
+        addProperty(data) {
+            const property = {
+                id: Date.now().toString(),
+                name: data.name,
+                address: data.address,
+                gps: data.gps,
+                landmark: data.landmark,
+                units: parseInt(data.units) || 1,
+                type: data.type,
+                notes: data.notes,
+                createdAt: new Date().toISOString()
+            };
+            this.properties.push(property);
+            this.save();
+            return property;
+        }
+
+        updateProperty(id, data) {
+            const idx = this.properties.findIndex(p => p.id === id);
+            if (idx !== -1) {
+                this.properties[idx] = { ...this.properties[idx], ...data };
+                this.save();
+            }
+        }
+
+        deleteProperty(id) {
+            this.properties = this.properties.filter(p => p.id !== id);
+            this.save();
+        }
+
+        getOpenRequests() {
+            return this.requests.filter(r => ['Open', 'In Progress'].includes(r.status));
+        }
+
+        getCompletedThisMonth() {
+            const now = new Date();
+            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+            return this.requests.filter(r =>
+                r.status === 'Completed' && new Date(r.dateCompleted) >= monthStart
+            );
+        }
+
+        getOverdueRequests() {
+            const today = new Date().toISOString().split('T')[0];
+            return this.requests.filter(r =>
+                r.dueDate < today && (r.status === 'Open' || r.status === 'In Progress')
+            );
+        }
+
+        getAverageResponseTime() {
+            const completed = this.requests.filter(r => r.status === 'Completed' && r.dateCompleted);
+            if (!completed.length) return 0;
+            const total = completed.reduce((sum, r) => {
+                const start = new Date(r.dateReported);
+                const end = new Date(r.dateCompleted);
+                const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                return sum + days;
+            }, 0);
+            return Math.round(total / completed.length);
+        }
+
+        getVendorStats(vendorId) {
+            const jobs = this.requests.filter(r => r.vendorId === vendorId && r.status === 'Completed');
+            if (!jobs.length) return { count: 0, avgTime: 0 };
+            const avgTime = jobs.reduce((sum, r) => {
+                const start = new Date(r.dateReported);
+                const end = new Date(r.dateCompleted);
+                const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                return sum + days;
+            }, 0) / jobs.length;
+            return { count: jobs.length, avgTime: Math.round(avgTime) };
+        }
+    }
+
+    const log = new MaintenanceLog();
+
+    // UI Controller (same as Manager but with landlord restrictions)
+    class UIController {
+        constructor(log) {
+            this.log = log;
+            this.currentEditId = null;
+            this.initEventListeners();
+            this.render();
+        }
+
+        initEventListeners() {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+            });
+
+            document.getElementById('settingsBtn').addEventListener('click', () => {
+                document.getElementById('settingsPanel').classList.add('active');
+                this.loadSettings();
+            });
+            document.getElementById('closeSettings').addEventListener('click', () => {
+                document.getElementById('settingsPanel').classList.remove('active');
+            });
+            document.getElementById('saveSettings').addEventListener('click', () => this.saveSettings());
+
+            document.getElementById('newRequestBtn').addEventListener('click', () => this.openRequestModal());
+            document.getElementById('requestForm').addEventListener('submit', (e) => this.saveRequest(e));
+            document.getElementById('closeRequestModal').addEventListener('click', () => this.closeModal('requestModal'));
+            document.getElementById('requestStatus').addEventListener('change', () => this.toggleRequestFields());
+
+            document.getElementById('newVendorBtn').addEventListener('click', () => this.openVendorModal());
+            document.getElementById('vendorForm').addEventListener('submit', (e) => this.saveVendor(e));
+            document.getElementById('closeVendorModal').addEventListener('click', () => this.closeModal('vendorModal'));
+
+            document.getElementById('newPropertyBtn').addEventListener('click', () => this.openPropertyModal());
+            document.getElementById('propertyForm').addEventListener('submit', (e) => this.saveProperty(e));
+            document.getElementById('closePropertyModal').addEventListener('click', () => this.closeModal('propertyModal'));
+
+            document.getElementById('closeDetailModal').addEventListener('click', () => this.closeModal('detailModal'));
+            document.getElementById('printDetailBtn').addEventListener('click', () => this.printDetail());
+
+            document.getElementById('requestSearch').addEventListener('input', () => this.renderRequestsTable());
+            document.getElementById('requestStatusFilter').addEventListener('change', () => this.renderRequestsTable());
+            document.getElementById('historySearch').addEventListener('input', () => this.renderHistoryTable());
+            document.getElementById('historyStatusFilter').addEventListener('change', () => this.renderHistoryTable());
+            document.getElementById('historyFromDate').addEventListener('change', () => this.renderHistoryTable());
+            document.getElementById('historyToDate').addEventListener('change', () => this.renderHistoryTable());
+        }
+
+        switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            this.render();
+        }
+
+        openRequestModal(requestId = null) {
+            this.currentEditId = requestId;
+            const modal = document.getElementById('requestModal');
+            const form = document.getElementById('requestForm');
+            form.reset();
+
+            if (requestId) {
+                const req = this.log.requests.find(r => r.id === requestId);
+                document.getElementById('requestModalTitle').textContent = 'Edit Request';
+                document.getElementById('requestProperty').value = req.propertyId;
+                document.getElementById('requestUnit').value = req.unit;
+                document.getElementById('requestReportedBy').value = req.reportedBy;
+                document.getElementById('requestDateReported').value = req.dateReported;
+                document.getElementById('requestCategory').value = req.category;
+                document.getElementById('requestDescription').value = req.description;
+                document.getElementById('requestPriority').value = req.priority;
+                document.getElementById('requestDueDate').value = req.dueDate;
+                document.getElementById('requestVendor').value = req.vendorId || '';
+                document.getElementById('requestEstimatedCost').value = req.estimatedCost || '';
+                document.getElementById('requestStatus').value = req.status;
+                document.getElementById('requestActualCost').value = req.actualCost || '';
+                document.getElementById('requestDateCompleted').value = req.dateCompleted || '';
+                document.getElementById('requestNotes').value = req.notes;
+                document.getElementById('requestAttachments').value = req.attachmentsNote;
+            } else {
+                document.getElementById('requestModalTitle').textContent = 'New Request';
+                document.getElementById('requestDateReported').value = new Date().toISOString().split('T')[0];
+            }
+
+            this.populatePropertyDropdown('requestProperty');
+            this.populateVendorDropdown('requestVendor');
+            this.toggleRequestFields();
+            modal.classList.add('active');
+        }
+
+        toggleRequestFields() {
+            const status = document.getElementById('requestStatus').value;
+            document.getElementById('actualCostGroup').classList.toggle('hidden', status !== 'Completed');
+            document.getElementById('completedDateGroup').classList.toggle('hidden', status !== 'Completed');
+        }
+
+        openVendorModal(vendorId = null) {
+            this.currentEditId = vendorId;
+            const modal = document.getElementById('vendorModal');
+            const form = document.getElementById('vendorForm');
+            form.reset();
+
+            if (vendorId) {
+                const vendor = this.log.vendors.find(v => v.id === vendorId);
+                document.getElementById('vendorModalTitle').textContent = 'Edit Vendor';
+                document.getElementById('vendorName').value = vendor.name;
+                document.getElementById('vendorTrade').value = vendor.trade;
+                document.getElementById('vendorPhone').value = vendor.phone;
+                document.getElementById('vendorWhatsapp').value = vendor.whatsapp;
+                document.getElementById('vendorAddress').value = vendor.address;
+                document.getElementById('vendorRating').value = vendor.rating;
+                document.getElementById('vendorNotes').value = vendor.notes;
+            } else {
+                document.getElementById('vendorModalTitle').textContent = 'Add Vendor';
+            }
+
+            modal.classList.add('active');
+        }
+
+        openPropertyModal(propertyId = null) {
+            // Landlord tier: check if property limit reached
+            if (!propertyId && IS_LANDLORD && this.log.properties.length >= MAX_PROPERTIES) {
+                alert('Landlord plan supports 1 property. Upgrade to Manager for unlimited properties.');
+                return;
+            }
+
+            this.currentEditId = propertyId;
+            const modal = document.getElementById('propertyModal');
+            const form = document.getElementById('propertyForm');
+            form.reset();
+
+            if (propertyId) {
+                const prop = this.log.properties.find(p => p.id === propertyId);
+                document.getElementById('propertyModalTitle').textContent = 'Edit Property';
+                document.getElementById('propertyName').value = prop.name;
+                document.getElementById('propertyAddress').value = prop.address;
+                document.getElementById('propertyGPS').value = prop.gps;
+                document.getElementById('propertyLandmark').value = prop.landmark;
+                document.getElementById('propertyUnits').value = prop.units;
+                document.getElementById('propertyType').value = prop.type;
+                document.getElementById('propertyNotes').value = prop.notes;
+            } else {
+                document.getElementById('propertyModalTitle').textContent = 'Add Property';
+            }
+
+            modal.classList.add('active');
+        }
+
+        saveRequest(e) {
+            e.preventDefault();
+            const propertyId = document.getElementById('requestProperty').value;
+            const propertyName = this.log.properties.find(p => p.id === propertyId)?.name || '';
+
+            const data = {
+                propertyId,
+                propertyName,
+                unit: document.getElementById('requestUnit').value,
+                reportedBy: document.getElementById('requestReportedBy').value,
+                dateReported: document.getElementById('requestDateReported').value,
+                category: document.getElementById('requestCategory').value,
+                description: document.getElementById('requestDescription').value,
+                priority: document.getElementById('requestPriority').value,
+                dueDate: document.getElementById('requestDueDate').value,
+                vendorId: document.getElementById('requestVendor').value,
+                vendorName: this.log.vendors.find(v => v.id === document.getElementById('requestVendor').value)?.name || '',
+                estimatedCost: document.getElementById('requestEstimatedCost').value,
+                actualCost: document.getElementById('requestActualCost').value,
+                status: document.getElementById('requestStatus').value,
+                dateCompleted: document.getElementById('requestDateCompleted').value,
+                notes: document.getElementById('requestNotes').value,
+                attachmentsNote: document.getElementById('requestAttachments').value
+            };
+
+            if (this.currentEditId) {
+                this.log.updateRequest(this.currentEditId, data);
+            } else {
+                this.log.addRequest(data);
+            }
+
+            this.closeModal('requestModal');
+            this.render();
+        }
+
+        saveVendor(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('vendorName').value,
+                trade: document.getElementById('vendorTrade').value,
+                phone: document.getElementById('vendorPhone').value,
+                whatsapp: document.getElementById('vendorWhatsapp').value,
+                address: document.getElementById('vendorAddress').value,
+                rating: document.getElementById('vendorRating').value,
+                notes: document.getElementById('vendorNotes').value
+            };
+
+            if (this.currentEditId) {
+                this.log.updateVendor(this.currentEditId, data);
+            } else {
+                this.log.addVendor(data);
+            }
+
+            this.closeModal('vendorModal');
+            this.render();
+        }
+
+        saveProperty(e) {
+            e.preventDefault();
+            const units = parseInt(document.getElementById('propertyUnits').value) || 1;
+            if (IS_LANDLORD && units > MAX_UNITS) {
+                alert(`Landlord plan supports max ${MAX_UNITS} units.`);
+                return;
+            }
+
+            const data = {
+                name: document.getElementById('propertyName').value,
+                address: document.getElementById('propertyAddress').value,
+                gps: document.getElementById('propertyGPS').value,
+                landmark: document.getElementById('propertyLandmark').value,
+                units: units,
+                type: document.getElementById('propertyType').value,
+                notes: document.getElementById('propertyNotes').value
+            };
+
+            if (this.currentEditId) {
+                this.log.updateProperty(this.currentEditId, data);
+            } else {
+                this.log.addProperty(data);
+            }
+
+            this.closeModal('propertyModal');
+            this.render();
+        }
+
+        saveSettings() {
+            this.log.settings = {
+                companyName: document.getElementById('companyName').value,
+                ownerName: document.getElementById('ownerName').value,
+                address: document.getElementById('companyAddress').value,
+                phone: document.getElementById('companyPhone').value
+            };
+            this.log.save();
+            document.getElementById('settingsPanel').classList.remove('active');
+            alert('Settings saved!');
+        }
+
+        loadSettings() {
+            document.getElementById('companyName').value = this.log.settings.companyName;
+            document.getElementById('ownerName').value = this.log.settings.ownerName;
+            document.getElementById('companyAddress').value = this.log.settings.address;
+            document.getElementById('companyPhone').value = this.log.settings.phone;
+        }
+
+        closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            this.currentEditId = null;
+        }
+
+        populatePropertyDropdown(elementId) {
+            const select = document.getElementById(elementId);
+            const current = select.value;
+            select.innerHTML = '<option value="">Select Property</option>';
+            this.log.properties.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = p.name;
+                select.appendChild(opt);
+            });
+            select.value = current;
+        }
+
+        populateVendorDropdown(elementId) {
+            const select = document.getElementById(elementId);
+            const current = select.value;
+            select.innerHTML = '<option value="">Unassigned</option>';
+            this.log.vendors.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.id;
+                opt.textContent = v.name;
+                select.appendChild(opt);
+            });
+            select.value = current;
+        }
+
+        render() {
+            this.renderDashboard();
+            this.renderRequestsTable();
+            this.renderVendorsTable();
+            this.renderPropertiesTable();
+            this.renderHistoryTable();
+            this.updatePropertyButtonState();
+        }
+
+        updatePropertyButtonState() {
+            const btn = document.getElementById('newPropertyBtn');
+            if (IS_LANDLORD && this.log.properties.length >= MAX_PROPERTIES) {
+                btn.disabled = true;
+                btn.title = 'Landlord plan supports 1 property. Upgrade to Manager for unlimited.';
+            } else {
+                btn.disabled = false;
+                btn.title = '';
+            }
+        }
+
+        renderDashboard() {
+            const open = this.log.getOpenRequests().length;
+            const progress = this.log.requests.filter(r => r.status === 'In Progress').length;
+            const completed = this.log.getCompletedThisMonth().length;
+            const overdue = this.log.getOverdueRequests().length;
+            const vendors = this.log.vendors.length;
+            const avgTime = this.log.getAverageResponseTime();
+
+            document.getElementById('openCount').textContent = open;
+            document.getElementById('progressCount').textContent = progress;
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('overdueCount').textContent = overdue;
+            document.getElementById('vendorCount').textContent = vendors;
+            document.getElementById('avgResponseTime').textContent = avgTime;
+
+            this.renderDashboardTable();
+        }
+
+        renderDashboardTable() {
+            const tbody = document.getElementById('dashboardRequestsTable');
+            const open = this.log.getOpenRequests();
+            tbody.innerHTML = open.map(r => `
+                <tr onclick="ui.showDetail('${r.id}')">
+                    <td><strong>${r.refNo}</strong></td>
+                    <td>${r.unit}</td>
+                    <td>${r.category}</td>
+                    <td class="text-truncate">${r.description}</td>
+                    <td><span class="pill ${r.priority.toLowerCase()}">${r.priority}</span></td>
+                    <td>${r.dateReported}</td>
+                    <td>${r.dueDate || '-'}</td>
+                    <td>${r.vendorName || '-'}</td>
+                    <td><span class="pill ${r.status.toLowerCase().replace(' ', '-')}">${r.status}</span></td>
+                    <td><button class="btn-icon" onclick="event.stopPropagation(); ui.openRequestModal('${r.id}')">✎</button></td>
+                </tr>
+            `).join('');
+        }
+
+        renderRequestsTable() {
+            const tbody = document.getElementById('requestsTable');
+            const search = document.getElementById('requestSearch').value.toLowerCase();
+            const status = document.getElementById('requestStatusFilter').value;
+
+            let requests = this.log.requests;
+            if (status) requests = requests.filter(r => r.status === status);
+            if (search) {
+                requests = requests.filter(r =>
+                    r.refNo.toLowerCase().includes(search) ||
+                    r.unit.toLowerCase().includes(search)
+                );
+            }
+
+            document.getElementById('requestCount').textContent = this.log.requests.length;
+            tbody.innerHTML = requests.map(r => `
+                <tr onclick="ui.showDetail('${r.id}')">
+                    <td><strong>${r.refNo}</strong></td>
+                    <td>${r.unit}</td>
+                    <td>${r.category}</td>
+                    <td><span class="pill ${r.priority.toLowerCase()}">${r.priority}</span></td>
+                    <td>${r.dateReported}</td>
+                    <td>${r.dueDate || '-'}</td>
+                    <td>${r.vendorName || '-'}</td>
+                    <td><span class="pill ${r.status.toLowerCase().replace(' ', '-')}">${r.status}</span></td>
+                    <td class="actions">
+                        <button class="btn-icon" onclick="event.stopPropagation(); ui.openRequestModal('${r.id}')">✎</button>
+                        <button class="btn-icon" onclick="event.stopPropagation(); ui.deleteRequest('${r.id}')">🗑️</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        renderVendorsTable() {
+            const tbody = document.getElementById('vendorsTable');
+            document.getElementById('vendorCountBadge').textContent = this.log.vendors.length;
+            tbody.innerHTML = this.log.vendors.map(v => {
+                const stats = this.log.getVendorStats(v.id);
+                const stars = '⭐'.repeat(v.rating);
+                return `
+                    <tr onclick="ui.openVendorModal('${v.id}')">
+                        <td><strong>${v.name}</strong></td>
+                        <td>${v.trade}</td>
+                        <td>${v.phone}</td>
+                        <td>${v.whatsapp || '-'}</td>
+                        <td>${stars || 'Unrated'}</td>
+                        <td>${stats.count}</td>
+                        <td>${stats.avgTime} days</td>
+                        <td class="actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); ui.openVendorModal('${v.id}')">✎</button>
+                            <button class="btn-icon" onclick="event.stopPropagation(); ui.deleteVendor('${v.id}')">🗑️</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        renderPropertiesTable() {
+            const tbody = document.getElementById('propertiesTable');
+            document.getElementById('propertyCountBadge').textContent = this.log.properties.length;
+            tbody.innerHTML = this.log.properties.map(p => {
+                const openCount = this.log.requests.filter(r => r.propertyId === p.id && ['Open', 'In Progress'].includes(r.status)).length;
+                return `
+                    <tr onclick="ui.openPropertyModal('${p.id}')">
+                        <td><strong>${p.name}</strong></td>
+                        <td>${p.address}</td>
+                        <td>${p.gps}</td>
+                        <td>${p.units}</td>
+                        <td>${openCount}</td>
+                        <td class="actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); ui.openPropertyModal('${p.id}')">✎</button>
+                            <button class="btn-icon" onclick="event.stopPropagation(); ui.deleteProperty('${p.id}')">🗑️</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        renderHistoryTable() {
+            const tbody = document.getElementById('historyTable');
+            const search = document.getElementById('historySearch').value.toLowerCase();
+            const status = document.getElementById('historyStatusFilter').value;
+            const fromDate = document.getElementById('historyFromDate').value;
+            const toDate = document.getElementById('historyToDate').value;
+
+            let requests = this.log.requests.filter(r => ['Completed', 'Cancelled'].includes(r.status));
+
+            if (status) requests = requests.filter(r => r.status === status);
+            if (search) {
+                requests = requests.filter(r =>
+                    r.unit.toLowerCase().includes(search) ||
+                    r.vendorName.toLowerCase().includes(search)
+                );
+            }
+            if (fromDate) requests = requests.filter(r => r.dateCompleted >= fromDate);
+            if (toDate) requests = requests.filter(r => r.dateCompleted <= toDate);
+
+            tbody.innerHTML = requests.map(r => {
+                const start = new Date(r.dateReported);
+                const end = new Date(r.dateCompleted);
+                const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                return `
+                    <tr onclick="ui.showDetail('${r.id}')">
+                        <td><strong>${r.refNo}</strong></td>
+                        <td>${r.unit}</td>
+                        <td>${r.category}</td>
+                        <td><span class="pill ${r.priority.toLowerCase()}">${r.priority}</span></td>
+                        <td>${r.dateReported}</td>
+                        <td>${r.dateCompleted}</td>
+                        <td>${r.vendorName || '-'}</td>
+                        <td><span class="pill ${r.status.toLowerCase().replace(' ', '-')}">${r.status}</span></td>
+                        <td>${days} days</td>
+                        <td class="actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); ui.deleteRequest('${r.id}')">🗑️</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        showDetail(requestId) {
+            const r = this.log.requests.find(req => req.id === requestId);
+            if (!r) return;
+
+            const start = new Date(r.dateReported);
+            const end = r.dateCompleted ? new Date(r.dateCompleted) : null;
+            const days = end ? Math.ceil((end - start) / (1000 * 60 * 60 * 24)) : '-';
+
+            const html = `
+                <div style="line-height: 1.8;">
+                    <p><strong>Reference No.:</strong> ${r.refNo}</p>
+                    <p><strong>Unit:</strong> ${r.unit}</p>
+                    <p><strong>Category:</strong> ${r.category}</p>
+                    <p><strong>Description:</strong> ${r.description}</p>
+                    <p><strong>Priority:</strong> <span class="pill ${r.priority.toLowerCase()}">${r.priority}</span></p>
+                    <p><strong>Reported by:</strong> ${r.reportedBy}</p>
+                    <p><strong>Date Reported:</strong> ${r.dateReported}</p>
+                    <p><strong>Due Date:</strong> ${r.dueDate || '-'}</p>
+                    <p><strong>Assigned Vendor:</strong> ${r.vendorName || 'Unassigned'}</p>
+                    <p><strong>Status:</strong> <span class="pill ${r.status.toLowerCase().replace(' ', '-')}">${r.status}</span></p>
+                    <p><strong>Estimated Cost:</strong> GHS ${r.estimatedCost || 0}</p>
+                    <p><strong>Actual Cost:</strong> GHS ${r.actualCost || 0}</p>
+                    ${r.dateCompleted ? `<p><strong>Date Completed:</strong> ${r.dateCompleted}</p>` : ''}
+                    ${days !== '-' ? `<p><strong>Response Time:</strong> ${days} days</p>` : ''}
+                    ${r.notes ? `<p><strong>Internal Notes:</strong> ${r.notes}</p>` : ''}
+                    ${r.attachmentsNote ? `<p><strong>Attachments:</strong> ${r.attachmentsNote}</p>` : ''}
+                </div>
+            `;
+
+            document.getElementById('detailContent').innerHTML = html;
+            document.getElementById('detailModal').classList.add('active');
+        }
+
+        deleteRequest(id) {
+            if (confirm('Delete this request?')) {
+                this.log.deleteRequest(id);
+                this.render();
+            }
+        }
+
+        deleteVendor(id) {
+            if (confirm('Delete this vendor?')) {
+                this.log.deleteVendor(id);
+                this.render();
+            }
+        }
+
+        deleteProperty(id) {
+            if (confirm('Delete this property?')) {
+                this.log.deleteProperty(id);
+                this.render();
+            }
+        }
+
+        printDetail() {
+            window.print();
+        }
+    }
+
+    const ui = new UIController(log);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+const values = [
+  ['Accountability', 'We stand behind every document we publish.'],
+  ['Loyalty to Clients', 'The client\u2019s protection comes before the easy sale.'],
+  ['Professionalism', 'Chartered standards, applied to everyday tenancy problems.'],
+  ['Integrity', 'We say what the law provides — even when the market disagrees.'],
+  ['Novel Approaches', 'Digital tools for problems the industry still handles on paper.'],
+  ['Excellence', 'Documents and advice built to hold up in practice.'],
+];
+---
+<Base title="About PRC" description="Property and Rent Consult is Ghana's digital authority on rent, tenancy, and property documentation — grounded in Act 220 and built on chartered surveying practice.">
+  <section class="section">
+    <div class="wrap" style="max-width:820px;">
+      <span class="cite">About the company</span>
+      <h1>Property and Rent Consult</h1>
+      <p class="muted" style="font-size:1.15rem;">PRC exists because of a gap: between what Ghana's rent law provides and what landlords and tenants actually sign.</p>
+
+      <h2>The brand story</h2>
+      <p>Every working day, tenancies in Ghana are created on documents that would not survive their first dispute — foreign templates, recycled agreements, verbal arrangements. The law that should govern them, the Rent Act, 1963 (Act 220), is six decades old and still widely unread. PRC packages professional-grade property and tenancy knowledge — the kind normally locked inside surveying firms and government offices — into affordable, legally compliant digital products and written advisory anyone can use.</p>
+
+      <h2>Our values — ALPINE</h2>
+      <ul>
+        {values.map(([k, v]) => <li><strong>{k}</strong> — {v}</li>)}
+      </ul>
+
+      <h2>Professional foundation</h2>
+      <p>PRC's products and advisories are built on chartered practice: membership of the Ghana Institution of Surveyors (MGhIS), formal training in Land Economy and Procurement Management, and frontline experience in rent administration, valuation, and property management. The company speaks institutionally — what you buy is the standard, not a personality.</p>
+
+      <h2>Executive Management Team</h2>
+      <p class="muted">[Roles and remits of the Executive Management Team render here — titles and credentials, consistent with PRC's faceless brand.]</p>
+
+      <div class="notice">PRC provides general guidance and documentation; it does not represent parties in Rent Control proceedings adjudicated by its principals.</div>
+    </div>
+  </section>
+</Base>
