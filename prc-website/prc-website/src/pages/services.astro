@@ -1,10 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 const services = [
-  { name: 'Rent Assessment Advisory', desc: 'A written, evidence-based position on the rent your premises can lawfully and defensibly command — before you serve the notice.', price: 'From GHS [price]', time: '[X] business days' },
-  { name: 'Tenancy Documentation Review', desc: 'Your agreement, offer letter, or notice reviewed against Act 220 and Ghanaian practice, with marked-up corrections.', price: 'From GHS [price]', time: '[X] business days' },
-  { name: 'Landlord Compliance Audit', desc: 'A property-by-property review of your documentation, advance handling, receipts, and notice practices — with a remediation checklist.', price: 'From GHS [price]', time: '[X] business days' },
-  { name: 'Dispute Guidance', desc: 'Structured preparation of your file and position before you lodge or respond to a complaint — chronology, evidence, options.', price: 'From GHS [price]', time: '[X] business days' },
+  { name: 'Rent Assessment Advisory', desc: 'Evidence-based written position on the lawful, defensible rent for your premises under Act 220 and L.I. 369 — delivered before you serve notice.', price: 'GHS 200 – 400', time: '2–3 working days' },
+  { name: 'Tenancy Documentation Review', desc: 'Your lease, offer letter, or notice reviewed line-by-line against Act 220 compliance, with marked corrections and a summary of gaps.', price: 'GHS 150 per agreement', time: '1–2 working days' },
+  { name: 'Landlord Compliance Audit', desc: 'Full property-by-property review of your documentation, advance handling, rent receipts, and notice practices — with remediation checklist.', price: 'GHS 500 – 1,000', time: '3–5 working days' },
+  { name: 'Dispute Guidance (Consultation)', desc: 'Structured file preparation and position-building before you lodge or respond to a complaint — evidence audit, chronology, and options.', price: 'GHS 200 per session', time: 'Same day / within 24 hours' },
+  { name: 'Rent Increase Advisory', desc: 'Written guidance on whether a proposed rent increase is lawful, how much you can increase under Act 220, and the proper notice procedure.', price: 'GHS 250', time: '2 working days' },
+  { name: 'Tenancy Agreement Drafting', desc: 'Custom drafting of a residential, commercial, furnished, or month-to-month lease fully compliant with Act 220 and L.I. 369.', price: 'GHS 350 – 600', time: '2–3 working days' },
+  { name: 'Property Inspection & Advisory Report', desc: 'Professional property inspection with condition assessment, photographic record, cost-to-repair estimates, and a written advisory report.', price: 'GHS 400 – 800', time: '2–4 working days' },
+  { name: 'Property Management Consultation', desc: 'Hourly consultation on rent policy, tenant relations, property maintenance schedules, compliance, and operational best practices.', price: 'GHS 250 per hour', time: 'By appointment' },
+  { name: 'Property Record Review & Setup', desc: 'Audit of your existing property records and setup of a compliant documentation system for leases, tenants, payments, and notices.', price: 'GHS 300 – 700', time: '2–5 working days' },
+  { name: 'Eviction and Recovery of Possession Guidance', desc: 'Step-by-step guidance on the legal eviction process under Act 220, including notice service, Form 9 preparation, and Rent Magistrate procedure.', price: 'GHS 400', time: '2–3 working days' },
+  { name: 'Rental Market Analysis Report', desc: 'Market research report on comparable rental rates in your location, property type, and tenure — data-driven positioning for rent-setting.', price: 'GHS 500 – 1,000', time: '3–5 working days' },
 ];
 ---
 <Base title="Consultations & Services" description="Written, fixed-scope advisory from PRC's consulting desk: rent assessment, documentation review, compliance audits, and dispute guidance for Ghana.">
@@ -38,7 +45,8 @@ const services = [
           <p><label for="email">Email</label><input id="email" type="email" name="email" required /></p>
           <p><label for="whatsapp">WhatsApp number</label><input id="whatsapp" name="whatsapp" /></p>
           <p><label for="service">Service</label>
-            <select id="service" name="service">
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
               {services.map(s => <option>{s.name}</option>)}
               <option>Not sure yet</option>
             </select></p>
@@ -49,7 +57,7 @@ const services = [
           <div class="card" style="margin-bottom:1.25rem;">
             <h3 style="margin-top:0;">Prefer WhatsApp?</h3>
             <p class="small muted">Most clients do. Message the consulting desk directly and we'll take it from there.</p>
-            <a class="btn btn-ghost" href="https://wa.me/233000000000" rel="noopener">Chat on WhatsApp</a>
+            <a class="btn btn-ghost" href="https://wa.me/233208071633" rel="noopener">Chat on WhatsApp</a>
           </div>
           <div class="notice">
             <strong>Scope of PRC's services.</strong> PRC advises and prepares documentation. PRC does not appear for or represent parties in Rent Control proceedings, and engagement of PRC confers no advantage in any matter before any Rent Control office. Content and advisories are professional guidance, not legal advice.
