@@ -7,6 +7,7 @@ const categories = [
       code: 'PRC-MLR-001',
       name: 'Maintenance Request Log',
       blurb: 'Track maintenance requests, vendors, costs, and unit inventory across your properties.',
+      detailsLink: '/products/maintenance-request-log/',
       tiers: [
         { tier: 'Landlord', price: 'GHS 49', features: '1 property, up to 15 units', href: 'https://selar.com/9380s42111' },
         { tier: 'Manager', price: 'GHS 99', features: 'Unlimited properties & units', href: 'https://selar.com/5712z42216' },
@@ -17,6 +18,7 @@ const categories = [
       code: 'PRC-RTR-001',
       name: 'Rent Collection Tracker',
       blurb: 'Automated rent tracking with late fee calculations, arrears register, and dashboard KPIs.',
+      detailsLink: '/products/rent-collection-tracker/',
       tiers: [
         { tier: 'Landlord', price: 'GHS 49', features: 'Up to 10 units', href: 'https://selar.com/t18i981du5' },
         { tier: 'Manager', price: 'GHS 99', features: 'Unlimited + PDF guide', href: 'https://selar.com/g2x1377cmx' },
@@ -27,6 +29,7 @@ const categories = [
       code: 'PRC-TSC-001',
       name: 'Tenant Screening Checklist & Scorecard',
       blurb: 'Comprehensive 25-point scorecard with risk categories, verification checklist, and decision page.',
+      detailsLink: '/products/tenant-screening-checklist/',
       tiers: [
         { tier: 'Basic', price: 'GHS 49', features: 'Printable & Fillable PDF', href: 'https://selar.com/8q9f34t894' },
         { tier: 'Pro', price: 'GHS 99', features: '+ Excel workbook, Word template', href: 'https://selar.com/7q48h4a47a' },
@@ -39,6 +42,7 @@ const categories = [
       code: 'PRC-PIC-001',
       name: 'Ghana Property Inspection Checklist',
       blurb: 'Comprehensive 60-item inspection with automated register, color-coded ratings, and cost tracking.',
+      detailsLink: '/products/property-inspection-checklist/',
       tiers: [
         { tier: 'Landlord', price: 'GHS 39', features: 'Fillable PDF checklist', href: 'https://selar.com/0n237w0851' },
         { tier: 'Manager', price: 'GHS 79', features: '+ Interactive app, Excel register', href: 'https://selar.com/10e07c38m5' },
@@ -49,6 +53,7 @@ const categories = [
       code: 'PRC-UT-001',
       name: 'Utility Payment Tracker',
       blurb: 'Track water, electricity, and gas payments across multiple units with automated summaries.',
+      detailsLink: '/products/utility-payment-tracker/',
       tiers: [
         { tier: 'Basic', price: 'GHS 49', features: 'Up to 10 tenants', href: 'https://selar.com/i143w9r719' },
         { tier: 'Pro', price: 'GHS 99', features: 'Unlimited tenants + PDF guide', href: 'https://selar.com/oaj57wf56u' },
@@ -61,6 +66,7 @@ const categories = [
       code: 'PRC-LA-PACK-001',
       name: 'Ghana Lease Agreement Template Pack',
       blurb: 'Complete set of lease agreements for residential, commercial, month-to-month, and room rentals.',
+      detailsLink: '/products/lease-agreement-pack/',
       tiers: [
         { tier: 'Basic', price: 'GHS 49', features: '2 agreements (DOCX + PDF)', href: 'https://selar.com/68rdh61h87' },
         { tier: 'Pro', price: 'GHS 99', features: '4 agreements (DOCX + PDF)', href: 'https://selar.com/13bi2h25kh' },
@@ -71,6 +77,7 @@ const categories = [
       code: 'PRC-CS-PACK-001',
       name: 'Landlord Communication Scripts Pack',
       blurb: 'Ready-to-use scripts for rent reminders, inspections, maintenance, and tenant relations.',
+      detailsLink: '/products/communication-scripts-pack/',
       tiers: [
         { tier: 'Basic', price: 'GHS 29', features: '2 scripts (formal + WhatsApp)', href: 'https://selar.com/385q56339p' },
         { tier: 'Pro', price: 'GHS 49', features: '4 scripts (formal + WhatsApp)', href: 'https://selar.com/215vd95328' }
@@ -82,6 +89,7 @@ const categories = [
       code: 'PRC-EVG-001',
       name: 'Legal Eviction Process in Ghana E-Book',
       blurb: 'Plain-language guide to legal eviction under Act 220 (Rent Act 1963). 12 chapters, step-by-step process.',
+      detailsLink: '/products/eviction-guide/',
       tiers: [
         { tier: 'E-Book', price: 'GHS 89', features: '12 chapters, HTML + PDF + WhatsApp cards', href: 'https://selar.com/0e9417p776' }
       ]
@@ -114,6 +122,9 @@ const categories = [
                         <a href={tier.href} target="_blank" class="btn btn-primary" style="display:block; text-align:center; padding:0.75rem; background:#516784; color:white; text-decoration:none; border-radius:4px; font-weight:600; font-size:1rem;">Get {tier.tier === 'E-Book' ? 'Now' : tier.tier} on Selar →</a>
                       </div>
                     ))}
+                    {p.detailsLink && (
+                      <a href={p.detailsLink} style="display:inline-block; margin-top:0.75rem; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784;">Learn more →</a>
+                    )}
                   </div>
                 ) : (
                   <>
