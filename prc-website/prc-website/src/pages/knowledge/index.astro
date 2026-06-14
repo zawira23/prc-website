@@ -5,7 +5,7 @@ const articles = (await getCollection('knowledge', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const topics = ['Advance Rent', 'Agreements', 'Rent Control', 'Eviction', 'Compliance'];
 ---
-<Base title="Knowledge Hub" description="Practical, statute-grounded guidance on rent and tenancy in Ghana — advance rent, agreements, Rent Control, eviction, and landlord compliance.">
+<Base title="Ghana Rent &amp; Tenancy Law Guides | PRC Knowledge Hub" description="Practical, statute-grounded guidance on rent and tenancy in Ghana — advance rent, agreements, Rent Control, eviction, and landlord compliance.">
   <section class="section">
     <div class="wrap">
       <span class="cite">The PRC Knowledge Hub</span>
