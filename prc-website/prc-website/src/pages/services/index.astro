@@ -21,14 +21,14 @@ const services = [
       <h1>Some situations need more than a template.</h1>
       <p class="muted" style="max-width:680px;">Written advice, fixed scope, transparent pricing. Send your situation; receive a scope and quote; get a written advisory you can act on.</p>
 
-      <div class="grid grid-2" style="margin-top:2rem;">
+      <div class="grid grid-2" service-cards-grid style="margin-top:2rem;">
         {services.map(s => (
-          <div class="card" style="cursor:pointer; transition:all 0.2s ease;" onclick={`selectService('${s.name}')`}>
+          <div class="card" style="cursor:pointer; transition:all 0.2s ease;">
             <h3>{s.name}</h3>
             <p class="small muted">{s.desc}</p>
             <p class="small"><strong>{s.price}</strong> · Turnaround: {s.time}</p>
             <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-              <button type="button" onclick={`selectService('${s.name}'); event.stopPropagation();`} style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</button>
+              <button type="button" class="get-quote-btn" data-service={s.name} style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</button>
               <a href={s.slug} style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
             </div>
           </div>
@@ -72,12 +72,29 @@ const services = [
   </section>
 
   <script>
-    function selectService(serviceName) {
-      const serviceSelect = document.getElementById('service');
-      serviceSelect.value = serviceName;
-      document.getElementById('name').focus();
-      window.scrollTo({ top: document.querySelector('form').offsetTop - 100, behavior: 'smooth' });
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const quoteButtons = document.querySelectorAll('.get-quote-btn');
+      quoteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const serviceName = this.getAttribute('data-service');
+          const serviceSelect = document.getElementById('service');
+          if (serviceSelect) {
+            serviceSelect.value = serviceName;
+            const nameInput = document.getElementById('name');
+            if (nameInput) {
+              nameInput.focus();
+            }
+            const form = document.querySelector('form[name="consultation"]');
+            if (form) {
+              const formTop = form.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({ top: formTop - 100, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    });
   </script>
 
   <style>
