@@ -28,7 +28,7 @@ const services = [
             <p class="small muted">{s.desc}</p>
             <p class="small"><strong>{s.price}</strong> · Turnaround: {s.time}</p>
             <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-              <button type="button" class="get-quote-btn" data-service-idx={idx} style="display:inline-block; padding:0.5rem 1rem; background:#f0f4f8; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #516784; cursor:pointer; font-size:0.9rem;">Get Quote</button>
+              <button type="button" class="get-quote-btn">Get Quote</button>
               <a href={s.slug} style="display:inline-block; padding:0.5rem 1rem; background:transparent; color:#516784; text-decoration:none; border-radius:4px; font-weight:600; border:1px solid #e0e0e0; font-size:0.9rem;">Learn more →</a>
             </div>
           </div>
@@ -75,10 +75,10 @@ const services = [
     const SERVICES = ["Rent Assessment Advisory","Tenancy Documentation Review","Landlord Compliance Audit","Dispute Guidance (Consultation)","Rent Increase Advisory","Tenancy Agreement Drafting","Property Inspection & Advisory Report","Property Management Consultation","Property Record Review & Setup","Eviction and Recovery of Possession Guidance","Rental Market Analysis Report"];
 
     function handleQuoteClick() {
-      const btns = document.querySelectorAll('[data-service-idx]');
-      btns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const idx = parseInt(this.getAttribute('data-service-idx'));
+      const btns = document.querySelectorAll('.get-quote-btn');
+      btns.forEach((btn, idx) => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
           const serviceName = SERVICES[idx];
           const serviceSelect = document.getElementById('service');
           if (serviceSelect) {
@@ -107,6 +107,23 @@ const services = [
       background: rgba(81, 103, 132, 0.02);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .get-quote-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #f0f4f8;
+      color: #516784;
+      border: 1px solid #516784;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .get-quote-btn:hover {
+      background: #516784;
+      color: #fff;
     }
   </style>
 </Base>
