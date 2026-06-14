@@ -57,6 +57,11 @@
   <url><loc>https://www.propertynrentconsult.homes/resources/rent-control-offices/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.propertynrentconsult.homes/resources/rent-advance-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- Legal -->
+  <url><loc>https://www.propertynrentconsult.homes/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/terms/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.propertynrentconsult.homes/disclaimer/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+
   <!-- Free downloads -->
   <url><loc>https://www.propertynrentconsult.homes/free/tenant-rights-guide/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
