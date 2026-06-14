@@ -1,3 +1,4 @@
 [build]
+  base    = "prc-website/prc-website"
   command = "npm run build"
   publish = "dist"
